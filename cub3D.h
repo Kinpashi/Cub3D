@@ -29,6 +29,13 @@ typedef struct s_data
 {
     char **my_map;
     char *line;
+    void *mlx;
+    void *mlx_win;
+    void *img;
+    int height;
+    int width;
+    int x;
+    int y;
 } t_data;
 
 // Libft functions
@@ -52,5 +59,9 @@ void check_top_border(char **map);
 void check_bottem_border(char **map);
 void check_left_border(char **map);
 void check_right_border(char **map);
+
+// minilibx functions
+int handle_esc(int keycode, void *param);
+int close_win(t_data *data);
 
 #endif
