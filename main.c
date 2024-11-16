@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/11 19:09:45 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/16 17:49:29 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,30 @@ int main(int argc, char **argv)
 {
     char **map;
     t_data data;
+    int i;
 
     if (argc != 2)
     {
         printf("Too much arguments !\n");
         exit(1);
     }
+    i = 0;
     check_path(argv[1]);
     map = read_lines(argv[1], &data);
+    while (i < 4)
+    {
+        printf("%s\n", map[i]);
+        check_no_identifier(map[i]);
+        i++;
+    }
     check_player(map);
     check_top_border(map);
     check_bottem_border(map);
     check_left_border(map);
     check_right_border(map);
     data.mlx = mlx_init();
-    data.mlx_win = mlx_new_window(data.mlx, 800, 300, "Cub3D");
-    mlx_hook(data.mlx_win, 2, (1L<<0), handle_esc, &data);
+    data.mlx_win = mlx_new_window(data.mlx, 500, 500, "Cub3D");
+    mlx_hook(data.mlx_win, 2, (1L << 0), handle_esc, &data);
     mlx_hook(data.mlx_win, 17, 0, close_win, &data);
     // data.height = 300;
     // data.width = 300;

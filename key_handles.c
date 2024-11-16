@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handles.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 22:08:07 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/13 22:08:09 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/15 05:35:04 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int handle_esc(int keycode, void *param)
 {
     (void)param;
-
-    if (keycode == 65307)
+    
+    if (keycode == 53)
         exit(0);
     return (0);
 }

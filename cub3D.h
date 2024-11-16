@@ -6,14 +6,14 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/11 19:09:11 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/16 17:26:21 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 #define CUB3D_H
 
-#include "./minilibx-linux/mlx.h"
+#include "./minilibx_opengl/mlx.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -24,6 +24,14 @@
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 42
 #endif
+
+#define MINI_MAP_HEIGHT 100
+#define MINI_MAP_WIDTH 100
+#define SCALE_FACTOR 5
+
+#define WALL_COLOR 0x000000
+#define FLOOR_COLOR 0xFFFFFF
+#define PLAAYER_COLOR 0xFF0000
 
 typedef struct s_data
 {
@@ -37,6 +45,7 @@ typedef struct s_data
     int x;
     int y;
 } t_data;
+
 
 // Libft functions
 char *ft_strrchr(const char *s, int c);
@@ -59,9 +68,13 @@ void check_top_border(char **map);
 void check_bottem_border(char **map);
 void check_left_border(char **map);
 void check_right_border(char **map);
+void check_no_identifier(char *line);
+void check_for_identifier(char *str);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);
 int close_win(t_data *data);
+
+// mini_map functions
 
 #endif

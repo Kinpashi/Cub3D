@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:38:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/11 16:50:44 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/16 17:32:15 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,26 @@ void check_right_border(char **map)
         }
         i++;
     }
+}
+
+void check_no_identifier(char *line)
+{
+    size_t i;
+    char *prefix;
+
+    i = 0;
+    while (line[i] != ' ' && line[i] != '\0')
+        i++;
+    prefix = malloc(i + 1);
+    if (!prefix)
+        return;
+    i = 0;
+    while (line[i] != ' ' && line[i] != '\0')
+    {
+        prefix[i] = line[i];
+        i++;
+    }
+    prefix[i] = '\0';
+    printf("%s\n", prefix);
+    check_for_identifier(prefix);
 }
