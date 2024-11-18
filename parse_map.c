@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:38:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/16 17:32:15 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/18 00:08:40 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,24 +116,86 @@ void check_right_border(char **map)
     }
 }
 
-void check_no_identifier(char *line)
+void check_no_identifier(t_data *data)
 {
     size_t i;
+    size_t j;
+    int count;
     char *prefix;
 
-    i = 0;
-    while (line[i] != ' ' && line[i] != '\0')
-        i++;
-    prefix = malloc(i + 1);
+    count = 0;
+    prefix = malloc(3 + 1);
     if (!prefix)
         return;
     i = 0;
-    while (line[i] != ' ' && line[i] != '\0')
+    while (data->my_map[i] != '\0')
     {
-        prefix[i] = line[i];
+        j = 0;
+        while (data->my_map[i][j] != ' ')
+        {
+            prefix[j] = data->my_map[i][j];
+            j++;
+        }
+        prefix[j] = '\0';
+        count = check_for_identifier(prefix, count);
         i++;
     }
-    prefix[i] = '\0';
-    printf("%s\n", prefix);
-    check_for_identifier(prefix);
+    if (count != 4)
+    {
+        printf("Error\n incorrect identifier !");
+        exit(1);
+    }
+}
+
+void check_colors(t_data *data)
+{
+    int i;
+    int j;
+    int w;
+    int count;
+    int len;
+    char *prefix;
+    char *rest;
+
+    count = 0;
+    len = 0;
+    prefix = malloc(2);
+    if (!prefix)
+        return;
+    rest = malloc(100);
+    if (!rest)
+        return;
+    i = 0;
+    while (data->my_color[i])
+    {
+        j = 0;
+        w = 0;
+        while (data->my_color[i][j] != ' ')
+        {
+            prefix[j] = data->my_color[i][j];
+            j++;
+        }
+        prefix[j] = '\0';
+        while (data->my_color[i][j] != '\0')
+        {
+            rest[w] = data->my_color[i][j];
+            w++;
+            j++;
+        }
+        rest[j] = '\0';
+        count = check_for_colors(prefix, count);
+        len = check_length_color(rest, len);
+        check_rgb(rest);
+        i++;
+    }
+    if (count != 2)
+    {
+        printf("Error\n incorrect identifier !");
+        exit(1);
+    }
+    if (len != 4)
+    {
+        printf("Error\n missing or adding ',' !");
+        exit(1);
+    }
 }

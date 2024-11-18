@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/16 17:26:21 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/18 00:07:19 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@
 typedef struct s_data
 {
     char **my_map;
+    char **my_color;
     char *line;
+    char *rgb_res;
     void *mlx;
     void *mlx_win;
     void *img;
@@ -56,6 +58,7 @@ void *ft_calloc(size_t count, size_t size);
 void ft_bzero(void *s, size_t n);
 char *ft_strdup(const char *s1);
 char	**ft_split(char const *s, char c);
+int	ft_atoi(const char *str);
 
 // get_next_line function
 char *get_next_line(int fd);
@@ -63,13 +66,17 @@ char *get_next_line(int fd);
 // Parsing map functions
 void check_player(char **map);
 void check_path(char *path);
-char **read_lines(char *path, t_data *data);
+void read_lines(char *path, t_data *data);
 void check_top_border(char **map);
 void check_bottem_border(char **map);
 void check_left_border(char **map);
 void check_right_border(char **map);
-void check_no_identifier(char *line);
-void check_for_identifier(char *str);
+void check_no_identifier(t_data *data);
+int check_for_identifier(char *str, int i);
+void check_colors(t_data *data);
+int check_for_colors(char *str, int i);
+int check_length_color(char *str, int i);
+void check_rgb(char *str);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);
