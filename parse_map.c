@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:38:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/18 00:08:40 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/18 23:21:14 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,16 +176,21 @@ void check_colors(t_data *data)
             j++;
         }
         prefix[j] = '\0';
+        if (data->my_color[i][j] == ' ')
+            j++;
         while (data->my_color[i][j] != '\0')
         {
             rest[w] = data->my_color[i][j];
             w++;
             j++;
         }
-        rest[j] = '\0';
+        rest[w] = '\0';
         count = check_for_colors(prefix, count);
         len = check_length_color(rest, len);
-        check_rgb(rest);
+        if (ft_strcmp(prefix, "F") == 0)
+            check_floor_rgb(rest, data);
+        else if (ft_strcmp(prefix, "C") == 0)
+            check_cell_rgb(rest, data);
         i++;
     }
     if (count != 2)

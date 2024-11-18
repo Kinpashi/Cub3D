@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/18 00:07:19 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/18 23:14:57 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_data
     void *mlx;
     void *mlx_win;
     void *img;
+    int floor[3];
+    int cell[3];
     int height;
     int width;
     int x;
@@ -76,7 +78,8 @@ int check_for_identifier(char *str, int i);
 void check_colors(t_data *data);
 int check_for_colors(char *str, int i);
 int check_length_color(char *str, int i);
-void check_rgb(char *str);
+void check_floor_rgb(char *str, t_data *data);
+void check_cell_rgb(char *str, t_data *data);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);

@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:24:59 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/18 00:12:56 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/18 23:25:36 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,22 +44,64 @@ int check_length_color(char *str, int i)
    return (i);
 }
 
-void check_rgb(char *str)
+void check_floor_rgb(char *str, t_data *data)
 {
    int i;
-   char *res;
-   int rgb;
+   int j;
+   char res[4];
+   int rgb[3];
+   int x;
 
    i = 0;
-   res = malloc(50);
-   if (!res)
-      return;
-   while (str[i] != ',')
+   x = 0;
+   while (x < 3)
    {
-      res[i] = str[i];
-      i++;
+      j = 0;
+      while (str[i] && str[i] != '\0' && str[i] != ',')
+      {
+         if (j <= 3)
+         {
+            res[j] = str[i];
+            j++;
+         }
+         i++;
+      }
+      res[j] = '\0';
+      rgb[x] = ft_atoi(res);
+      data->floor[x] = rgb[x];
+      x++;
+      if (str[i] == ',')
+         i++;
    }
-   res[i] = '\0';
-   rgb = ft_atoi(res);
-   exit(1);
+}
+
+void check_cell_rgb(char *str, t_data *data)
+{
+   int i;
+   int j;
+   char res[4];
+   int rgb[3];
+   int y;
+
+   i = 0;
+   y = 0;
+   while (y < 3)
+   {
+      j = 0;
+      while (str[i] && str[i] != '\0' && str[i] != ',')
+      {
+         if (j <= 3)
+         {
+            res[j] = str[i];
+            j++;
+         }
+         i++;
+      }
+      res[j] = '\0';
+      rgb[y] = ft_atoi(res);
+      data->cell[y] = rgb[y];
+      y++;
+      if (str[i] == ',')
+         i++;
+   }
 }
