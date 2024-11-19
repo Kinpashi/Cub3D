@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:24:59 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/18 23:25:36 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:07:52 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,37 @@ void check_cell_rgb(char *str, t_data *data)
       y++;
       if (str[i] == ',')
          i++;
+   }
+}
+
+void check_rgb_fllor_range(t_data *data)
+{
+   int i;
+
+   i = 0;
+   while (i < 3)
+   {
+      if (data->floor[i] < 0 || data->floor[i] > 255)
+      {
+         printf("Error\n RGB range is incorrect !");
+         exit(1);
+      }
+      i++;
+   }
+}
+
+void check_rgb_cell_range(t_data *data)
+{
+   int j;
+
+   j = 0;
+   while (j < 3)
+   {
+      if (data->cell[j] < 0 || data->cell[j] > 255)
+      {
+         printf("Error\n RGB range is incorrect !");
+         exit(1);
+      }
+      j++;
    }
 }

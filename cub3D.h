@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/18 23:14:57 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:50:20 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int check_for_colors(char *str, int i);
 int check_length_color(char *str, int i);
 void check_floor_rgb(char *str, t_data *data);
 void check_cell_rgb(char *str, t_data *data);
+void check_rgb_fllor_range(t_data *data);
+void check_rgb_cell_range(t_data *data);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);

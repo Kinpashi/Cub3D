@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:38:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/18 23:21:14 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:06:35 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,8 @@ void check_colors(t_data *data)
             check_floor_rgb(rest, data);
         else if (ft_strcmp(prefix, "C") == 0)
             check_cell_rgb(rest, data);
+        check_rgb_fllor_range(data);
+        check_rgb_cell_range(data);
         i++;
     }
     if (count != 2)
