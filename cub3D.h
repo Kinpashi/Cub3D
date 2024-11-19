@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/19 13:50:20 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:32:22 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_data
 {
     char **my_map;
     char **my_color;
+    char **mini_map;
     char *line;
     char *rgb_res;
     void *mlx;
@@ -66,13 +67,13 @@ int	ft_atoi(const char *str);
 char *get_next_line(int fd);
 
 // Parsing map functions
-void check_player(char **map);
+void check_player(t_data *data);
 void check_path(char *path);
 void read_lines(char *path, t_data *data);
-void check_top_border(char **map);
-void check_bottem_border(char **map);
-void check_left_border(char **map);
-void check_right_border(char **map);
+void check_top_border(t_data *data);
+void check_bottem_border(t_data *data);
+void check_left_border(t_data *data);
+void check_right_border(t_data *data);
 void check_no_identifier(t_data *data);
 int check_for_identifier(char *str, int i);
 void check_colors(t_data *data);
@@ -82,6 +83,7 @@ void check_floor_rgb(char *str, t_data *data);
 void check_cell_rgb(char *str, t_data *data);
 void check_rgb_fllor_range(t_data *data);
 void check_rgb_cell_range(t_data *data);
+void check_mini_map(t_data *data);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);

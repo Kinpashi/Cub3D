@@ -6,13 +6,13 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:38:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/19 14:06:35 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:36:19 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void check_player(char **map)
+void check_player(t_data *data)
 {
     int i;
     int j;
@@ -21,12 +21,12 @@ void check_player(char **map)
     i = 0;
     j = 0;
     p = 0;
-    while (map[i])
+    while (data->mini_map[i])
     {
         j = 0;
-        while (map[i][j])
+        while (data->mini_map[i][j])
         {
-            if (map[i][j] == 'N' || map[i][j] == 'E' || map[i][j] == 'S' || map[i][j] == 'W')
+            if (data->mini_map[i][j] == 'N' || data->mini_map[i][j] == 'E' || data->mini_map[i][j] == 'S' || data->mini_map[i][j] == 'W')
                 p++;
             j++;
         }
@@ -39,18 +39,18 @@ void check_player(char **map)
     }
 }
 
-void check_top_border(char **map)
+void check_top_border(t_data *data)
 {
     int i;
     int j;
 
     i = 0;
     j = 0;
-    while (map[i])
+    while (data->mini_map[i])
     {
-        while (map[i][j])
+        while (data->mini_map[i][j])
         {
-            if (map[i][j] != '1')
+            if (data->mini_map[i][j] != '1')
             {
                 printf("Error\n No border !");
                 exit(1);
@@ -61,19 +61,19 @@ void check_top_border(char **map)
     }
 }
 
-void check_bottem_border(char **map)
+void check_bottem_border(t_data *data)
 {
     size_t len;
     size_t i;
 
     i = 0;
-    while (map[i])
+    while (data->mini_map[i])
         i++;
     len = i;
     i = 0;
-    while (map[len - 1][i])
+    while (data->mini_map[len - 1][i])
     {
-        if (map[len - 1][i] != '1')
+        if (data->mini_map[len - 1][i] != '1')
         {
             printf("Error\n No border !");
             exit(1);
@@ -82,14 +82,14 @@ void check_bottem_border(char **map)
     }
 }
 
-void check_left_border(char **map)
+void check_left_border(t_data *data)
 {
     size_t i;
 
     i = 0;
-    while (map[i])
+    while (data->mini_map[i])
     {
-        if (map[i][0] != '1')
+        if (data->mini_map[i][0] != '1')
         {
             printf("Error\n No border !");
             exit(1);
@@ -98,16 +98,16 @@ void check_left_border(char **map)
     }
 }
 
-void check_right_border(char **map)
+void check_right_border(t_data *data)
 {
     size_t len;
     size_t i;
 
-    len = ft_strlen(map[0]);
+    len = ft_strlen(data->mini_map[0]);
     i = 0;
-    while (map[i])
+    while (data->mini_map[i])
     {
-        if (map[i][len - 1] != '1')
+        if (data->mini_map[i][len - 1] != '1')
         {
             printf("Error\n No border !");
             exit(1);
@@ -205,4 +205,13 @@ void check_colors(t_data *data)
         printf("Error\n missing or adding ',' !");
         exit(1);
     }
+}
+
+void check_mini_map(t_data *data)
+{
+    check_player(data);
+    check_left_border(data);
+    check_right_border(data);
+    check_top_border(data);
+    check_bottem_border(data);
 }

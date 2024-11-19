@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:40:09 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/17 22:54:42 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/19 14:54:40 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,15 @@ void read_lines(char *path, t_data *data)
         }
     }
     data->my_color = ft_split(lines, '\n');
+    lines = NULL;
+    while (1)
+    {
+        line = get_next_line(fd);
+        if (!line)
+            break;
+        lines = ft_strjoin(lines, line);
+        free(line);
+        i++;
+    }
+    data->mini_map = ft_split(lines, '\n');
 }

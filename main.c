@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/17 22:59:44 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/19 15:36:58 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ int main(int argc, char **argv)
     read_lines(argv[1], &data);
     check_no_identifier(&data);
     check_colors(&data);
-    // check_player(map); 
-    // check_top_border(map);
-    // check_bottem_border(map);
-    // check_left_border(map);
-    // check_right_border(map);
+    check_mini_map(&data);
     data.mlx = mlx_init();
     data.mlx_win = mlx_new_window(data.mlx, 500, 500, "Cub3D");
     mlx_hook(data.mlx_win, 2, (1L << 0), handle_esc, &data);
