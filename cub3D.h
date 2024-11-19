@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/19 15:32:22 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/19 16:22:11 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_data
     char **my_color;
     char **mini_map;
     char *line;
+    char *texture;
     char *rgb_res;
     void *mlx;
     void *mlx_win;
@@ -84,6 +85,7 @@ void check_cell_rgb(char *str, t_data *data);
 void check_rgb_fllor_range(t_data *data);
 void check_rgb_cell_range(t_data *data);
 void check_mini_map(t_data *data);
+void check_texture(char *str, t_data *data);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);

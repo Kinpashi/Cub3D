@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:24:59 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/19 14:07:52 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:52:44 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,4 +136,27 @@ void check_rgb_cell_range(t_data *data)
       }
       j++;
    }
+}
+
+void check_texture(char *str, t_data *data)
+{
+   int i;
+   char *extention;
+
+   if (!str)
+      return;
+   i = 0;
+   extention = ft_strrchr(str, '.');
+   if (!extention)
+      return;
+   if (ft_strcmp(extention, ".xpm") == 0)
+   {
+      data->texture = str;
+   }
+   else
+   {
+      printf("Error\n incorrect texture !");
+      exit(1);
+   }
+   i++;
 }

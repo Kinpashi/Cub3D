@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:38:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/19 15:36:19 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:53:01 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,24 +120,40 @@ void check_no_identifier(t_data *data)
 {
     size_t i;
     size_t j;
+    int y;
     int count;
     char *prefix;
+    char *texture;
 
     count = 0;
     prefix = malloc(3 + 1);
     if (!prefix)
         return;
+    texture = malloc(100);
+    if (!texture)
+        return;
     i = 0;
-    while (data->my_map[i] != '\0')
+    while (i < 4)
     {
         j = 0;
+        y = 0;
         while (data->my_map[i][j] != ' ')
         {
             prefix[j] = data->my_map[i][j];
             j++;
         }
         prefix[j] = '\0';
+        if (data->my_map[i][j] == ' ')
+            j++;
+        while (data->my_map[i][j] != '\0')
+        {
+            texture[y] = data->my_map[i][j];
+            j++;
+            y++;
+        }
+        texture[y] = '\0';
         count = check_for_identifier(prefix, count);
+        check_texture(texture, data);
         i++;
     }
     if (count != 4)
