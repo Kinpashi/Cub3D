@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/19 16:22:11 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/21 00:16:31 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@
 
 typedef struct s_data
 {
-    char **my_map;
-    char **my_color;
-    char **mini_map;
+    char **my_map; // struct to store the textures
+    char **my_color; // struct to store the colors
+    char **mini_map; // struct to strore the map (1-0)
     char *line;
     char *texture;
-    char *rgb_res;
+    char *rgb_res; // contain the rgb values in integers
     void *mlx;
     void *mlx_win;
     void *img;
-    int floor[3];
-    int cell[3];
+    int floor[3]; // struct to stock floor values
+    int cell[3]; // struct to stock cell values
     int height;
     int width;
     int x;
@@ -86,6 +86,8 @@ void check_rgb_fllor_range(t_data *data);
 void check_rgb_cell_range(t_data *data);
 void check_mini_map(t_data *data);
 void check_texture(char *str, t_data *data);
+void draw_window(t_data *data);
+int handle_rgb(int red, int green, int blue);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);
