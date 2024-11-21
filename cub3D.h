@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/21 00:16:31 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/21 18:22:51 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ typedef struct s_data
     int cell[3]; // struct to stock cell values
     int height;
     int width;
+    int bits_per_pixel;
+    int size_line;
+    int endian;
     int x;
     int y;
 } t_data;
@@ -88,6 +91,7 @@ void check_mini_map(t_data *data);
 void check_texture(char *str, t_data *data);
 void draw_window(t_data *data);
 int handle_rgb(int red, int green, int blue);
+void set_pixel(char *pixel_buffer, int x, int y, int color, int lengh, int bits_per_pixel);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);
