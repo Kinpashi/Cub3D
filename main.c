@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/21 00:37:14 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:50:36 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int main(int argc, char **argv)
 {
     t_data data;
+    t_path path;
 
     if (argc != 2)
     {
@@ -26,6 +27,7 @@ int main(int argc, char **argv)
     check_no_identifier(&data);
     check_colors(&data);
     check_mini_map(&data);
+    pars_texture(&data, &path);
     data.mlx = mlx_init();
     data.mlx_win = mlx_new_window(data.mlx, 500, 500, "Cub3D");
     draw_window(&data);

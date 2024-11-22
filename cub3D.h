@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/21 18:22:51 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:35:18 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,26 @@
 #define BUFFER_SIZE 42
 #endif
 
-#define MINI_MAP_HEIGHT 100
-#define MINI_MAP_WIDTH 100
-#define SCALE_FACTOR 5
-
-#define WALL_COLOR 0x000000
-#define FLOOR_COLOR 0xFFFFFF
-#define PLAAYER_COLOR 0xFF0000
+typedef struct s_path
+{
+    char *key;
+    char *value;
+} t_path;
 
 typedef struct s_data
 {
-    char **my_map; // struct to store the textures
+    char **my_map;   // struct to store the textures
     char **my_color; // struct to store the colors
     char **mini_map; // struct to strore the map (1-0)
     char *line;
+    t_path *path;
     char *texture;
     char *rgb_res; // contain the rgb values in integers
     void *mlx;
     void *mlx_win;
     void *img;
     int floor[3]; // struct to stock floor values
-    int cell[3]; // struct to stock cell values
+    int cell[3];  // struct to stock cell values
     int height;
     int width;
     int bits_per_pixel;
@@ -55,7 +54,6 @@ typedef struct s_data
     int y;
 } t_data;
 
-
 // Libft functions
 char *ft_strrchr(const char *s, int c);
 size_t ft_strlen(const char *s);
@@ -64,8 +62,8 @@ char *ft_strjoin(char *s1, char *s2);
 void *ft_calloc(size_t count, size_t size);
 void ft_bzero(void *s, size_t n);
 char *ft_strdup(const char *s1);
-char	**ft_split(char const *s, char c);
-int	ft_atoi(const char *str);
+char **ft_split(char const *s, char c);
+int ft_atoi(const char *str);
 
 // get_next_line function
 char *get_next_line(int fd);
@@ -92,6 +90,7 @@ void check_texture(char *str, t_data *data);
 void draw_window(t_data *data);
 int handle_rgb(int red, int green, int blue);
 void set_pixel(char *pixel_buffer, int x, int y, int color, int lengh, int bits_per_pixel);
+void pars_texture(t_data *data, t_path *path);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);

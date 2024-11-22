@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 23:57:58 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/21 19:42:40 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2024/11/21 22:38:17 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,29 +27,39 @@ void set_pixel(char *pixel_buffer, int x, int y, int color, int line_len, int bi
 
 void draw_window(t_data *data)
 {
-    int color;
+    int floor_color;
+    int cell_color;
     int x;
     int y;
     char *pixel_buffer;
 
-    color = 0;
     y = 0;
-    color = handle_rgb(data->floor[0], data->floor[1], data->floor[2]);
+    floor_color = handle_rgb(data->floor[0], data->floor[1], data->floor[2]);
+    cell_color = handle_rgb(data->cell[0], data->cell[1], data->cell[2]);
     data->img = mlx_new_image(data->mlx, 500, 500);
     pixel_buffer = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->size_line, &data->endian);
+    while (y < 250)
+    {
+        x = 0;
+        while (x < 500)
+        {
+            set_pixel(pixel_buffer, x, y, cell_color, data->size_line, data->bits_per_pixel);
+            x++;
+        }
+        y++;
+    }
     while (y < 500)
     {
         x = 0;
         while (x < 500)
         {
-            set_pixel(pixel_buffer, x, y, color, data->size_line, data->bits_per_pixel);
+            set_pixel(pixel_buffer, x, y, floor_color, data->size_line, data->bits_per_pixel);
             x++;
         }
         y++;
     }
-    mlx_put_image_to_window(data->mlx,data->mlx_win, data->img, 0, 0);
+    mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
 }
-
 
 // bits_per_pixel : This indicat how many bits are used to represent each pixel in the image.
 // size_line : This represent the total number of bytes in a single row of pixels in the image.
