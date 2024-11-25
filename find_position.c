@@ -102,27 +102,3 @@ void calculat_dda(t_data *data, double raydirx, double raydiry) // x = 2.0 y = 0
     data->raydistans = data->perpwalldist;
 }
 
-void draw_wall(int x, double perpwalldist, t_data *data)
-{
-    int lineheight;
-    int drawstart;
-    int drawend;
-    int wallcolor;
-    int y;
-
-    data->screenheight = 500;
-    lineheight = (int)(data->screenheight / data->perpwalldist);
-    drawstart = data->screenheight / 2 - lineheight / 2;
-    drawend = data->screenheight / 2 + lineheight / 2;
-    if (drawstart < 0)
-        drawstart = 0;
-    if (drawend >= data->screenheight)
-        drawend = data->screenheight - 1;
-    wallcolor = 0xFFFFFF;
-    y = drawstart;
-    while (y < drawend)
-    {
-        mlx_pixel_put(data->mlx, data->mlx_win, x, y, wallcolor);
-        y++;
-    }
-}
