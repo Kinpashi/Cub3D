@@ -36,11 +36,10 @@ int main(int argc, char **argv)
     check_colors(&data);
     check_mini_map(&data);
     pars_texture(&data, &path);
-    double raydirx = 2.0;
-    double raydiry = 0.5;
+    double raydirx = 2.9;
+    double raydiry = 0.4;
     calculat_dda(&data, raydirx, raydiry);
     printf("Ray Distance to Wall: %f\n", data.raydistans);
-    exit(1);
     data.mlx = mlx_init();
     data.mlx_win = mlx_new_window(data.mlx, 500, 500, "Cub3D");
     draw_window(&data);
