@@ -13,13 +13,14 @@
 #ifndef CUB3D_H
 #define CUB3D_H
 
-#include "./minilibx_opengl/mlx.h"
+#include "./minilibx-linux/mlx.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <unistd.h>
 #include <string.h>
 #include <fcntl.h>
+#include <math.h>
 
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 42
@@ -52,6 +53,20 @@ typedef struct s_data
     int endian;
     int x;
     int y;
+    int player_x;
+    int player_y;
+    int map_x;
+    int map_y;
+    int stepx;
+    int stepy;
+    int side;
+    int wall;
+    double deltadistx;
+    double deltadisty;
+    double sidedistx;
+    double sidedisty;
+    double perpwalldist;
+    double raydistans;
 } t_data;
 
 // Libft functions
@@ -90,7 +105,10 @@ void check_texture(char *str, t_data *data);
 void draw_window(t_data *data);
 int handle_rgb(int red, int green, int blue);
 void set_pixel(char *pixel_buffer, int x, int y, int color, int lengh, int bits_per_pixel);
+void check_all_in_map(t_data *data);
 void pars_texture(t_data *data, t_path *path);
+void find_player_position(t_data *data);
+void  calculat_dda(t_data *data, double raydirx, double raydiry);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);

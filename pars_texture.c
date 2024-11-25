@@ -18,12 +18,12 @@ void pars_texture(t_data *data, t_path *path)
     char **splited;
 
     i = 0;
-    while (data->my_map[i] != '\0')
+    while (data->my_map[i])
     {
         splited = ft_split(data->my_map[i], ' ');
         if (!splited)
             return;
-        if (splited[0] != '\0' || splited[1] != '\0')
+        if (splited[0] || splited[1])
         {
             path->key = ft_strdup(splited[0]);
             path->value = ft_strdup(splited[1]);

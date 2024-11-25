@@ -16,7 +16,7 @@ int handle_esc(int keycode, void *param)
 {
     (void)param;
     
-    if (keycode == 53)
+    if (keycode == 65307)
         exit(0);
     return (0);
 }

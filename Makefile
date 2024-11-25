@@ -15,14 +15,15 @@ CC= cc
 
 CFLAGS= -Wall -Wextra -Werror -g
 
-FLAGS= -L./minilibx_opengl -lmlx -framework OpenGL -framework AppKit
-#   -Lminilibx-linux -lmlx -lXext -lX11
+FLAGS=  -Lminilibx-linux -lmlx -lXext -lX11
+#-L./minilibx_opengl -lmlx -framework OpenGL -framework AppKit
+
 NAME= cub3D
 
 SOURCES= parse_map.c check_map.c ft_strcmp.c Libft/ft_strrchr.c Libft/ft_strlen.c \
 Libft/ft_split.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
 main.c key_handles.c check_identifier.c Libft/ft_atoi.c handle_rgb_colors.c \
-pars_texture.c
+pars_texture.c find_position.c
 
 OBJECTS= $(SOURCES:.c=.o)
 

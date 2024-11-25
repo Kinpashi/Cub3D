@@ -38,6 +38,28 @@ void check_path(char *path)
     close(fd);
 }
 
+void check_all_in_map(t_data *data)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (data->mini_map[i])
+    {
+        j = 0;
+        while (data->mini_map[i][j])
+        {
+            if (data->mini_map[i][j] != '1' && data->mini_map[i][j] != '0' && data->mini_map[i][j] != 'N' && data->mini_map[i][j] != 'W' && data->mini_map[i][j] != 'S' && data->mini_map[i][j] != 'E')
+            {
+                printf("Error\n incorrect caracter !");
+                exit(1);
+            }
+            j++;
+        }
+        i++;
+    }
+}
+
 void read_lines(char *path, t_data *data)
 {
     char *line;
@@ -72,7 +94,7 @@ void read_lines(char *path, t_data *data)
         line = get_next_line(fd);
         if (!line)
             break;
-       if (line[0] != '\n')
+        if (line[0] != '\n')
         {
             lines = ft_strjoin(lines, line);
             free(line);

@@ -17,6 +17,12 @@ int main(int argc, char **argv)
     t_data data;
     t_path path;
 
+    data.floor[0] = 0;
+    data.floor[1] = 0;
+    data.floor[2] = 0;
+    data.cell[0] = 0;
+    data.cell[1] = 0;
+    data.cell[2] = 0;
     if (argc != 2)
     {
         printf("Too much arguments !\n");
@@ -24,10 +30,17 @@ int main(int argc, char **argv)
     }
     check_path(argv[1]);
     read_lines(argv[1], &data);
+    check_all_in_map(&data);
+    find_player_position(&data);
     check_no_identifier(&data);
     check_colors(&data);
     check_mini_map(&data);
     pars_texture(&data, &path);
+    double raydirx = 2.0;
+    double raydiry = 0.5;
+    calculat_dda(&data, raydirx, raydiry);
+    printf("Ray Distance to Wall: %f\n", data.raydistans);
+    exit(1);
     data.mlx = mlx_init();
     data.mlx_win = mlx_new_window(data.mlx, 500, 500, "Cub3D");
     draw_window(&data);
