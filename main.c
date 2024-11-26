@@ -23,6 +23,8 @@ int main(int argc, char **argv)
     data.cell[0] = 0;
     data.cell[1] = 0;
     data.cell[2] = 0;
+    data.screenheight = 500;
+    data.screenwidth = 500;
     if (argc != 2)
     {
         printf("Too much arguments !\n");

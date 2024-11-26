@@ -36,6 +36,27 @@ void find_player_position(t_data *data)
     }
 }
 
+void calculate_line_hight(t_data *data)
+{
+    int line_height;
+    int draw_start;
+    int draw_end;
+
+    line_height = 0;
+    draw_start = 0;
+    draw_end = 0;
+    line_height = (int)(data->screenheight / data->perpwalldist);
+    draw_start = -line_height / 2 + data->screenheight / 2;
+    draw_end = line_height / 2 + data->screenheight / 2;
+    if (draw_start < 0)
+        draw_start = 0;
+    if (draw_end >= data->screenheight)
+        draw_end = data->screenheight - 1;
+    data->line_height = line_height;
+    data->draw_start = draw_start;
+    data->draw_end = draw_end;
+}
+
 void calculat_dda(t_data *data, double raydirx, double raydiry) // x = 2.0 y = 0.5
 {
     data->map_x = 0;
@@ -99,6 +120,6 @@ void calculat_dda(t_data *data, double raydirx, double raydiry) // x = 2.0 y = 0
     {
         data->perpwalldist = (data->map_y - data->player_y + (1 - data->stepy) / 2) / raydiry;
     }
+    calculate_line_hight(data);
     data->raydistans = data->perpwalldist;
 }
-

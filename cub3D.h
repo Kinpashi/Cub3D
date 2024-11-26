@@ -44,6 +44,8 @@ typedef struct s_data
     void *mlx;
     void *mlx_win;
     void *img;
+    void *wall_img;
+    void *txt_buff;
     int floor[3]; // struct to stock floor values
     int cell[3];  // struct to stock cell values
     int height;
@@ -61,6 +63,11 @@ typedef struct s_data
     int stepy;
     int side;
     int wall;
+    int line_height;
+    int draw_start;
+    int draw_end;
+    int screenheight;
+    int screenwidth;
     double deltadistx;
     double deltadisty;
     double sidedistx;
@@ -109,6 +116,7 @@ void check_all_in_map(t_data *data);
 void pars_texture(t_data *data, t_path *path);
 void find_player_position(t_data *data);
 void  calculat_dda(t_data *data, double raydirx, double raydiry);
+void calculate_line_hight(t_data *data);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);
