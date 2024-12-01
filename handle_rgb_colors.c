@@ -36,12 +36,12 @@ void draw_window(t_data *data)
     y = 0;
     floor_color = handle_rgb(data->floor[0], data->floor[1], data->floor[2]);
     cell_color = handle_rgb(data->cell[0], data->cell[1], data->cell[2]);
-    data->img = mlx_new_image(data->mlx, 500, 500);
+    data->img = mlx_new_image(data->mlx, 1000, 500);
     pixel_buffer = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->size_line, &data->endian);
     while (y < 250)
     {
         x = 0;
-        while (x < 500)
+        while (x < 1000)
         {
             set_pixel(pixel_buffer, x, y, cell_color, data->size_line, data->bits_per_pixel);
             x++;
@@ -51,7 +51,7 @@ void draw_window(t_data *data)
     while (y < 500)
     {
         x = 0;
-        while (x < 500)
+        while (x < 1000)
         {
             set_pixel(pixel_buffer, x, y, floor_color, data->size_line, data->bits_per_pixel);
             x++;

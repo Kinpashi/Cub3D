@@ -68,6 +68,8 @@ typedef struct s_data
     int draw_end;
     int screenheight;
     int screenwidth;
+    int map_height;
+    int map_width;
     double deltadistx;
     double deltadisty;
     double sidedistx;
@@ -117,6 +119,7 @@ void pars_texture(t_data *data, t_path *path);
 void find_player_position(t_data *data);
 void  calculat_dda(t_data *data, double raydirx, double raydiry);
 void calculate_line_hight(t_data *data);
+void draw_mini_map(t_data *data);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);

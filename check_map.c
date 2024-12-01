@@ -110,7 +110,8 @@ void read_lines(char *path, t_data *data)
             break;
         lines = ft_strjoin(lines, line);
         free(line);
-        i++;
     }
     data->mini_map = ft_split(lines, '\n');
+    free(lines);
+    close(fd);
 }

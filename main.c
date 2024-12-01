@@ -24,7 +24,7 @@ int main(int argc, char **argv)
     data.cell[1] = 0;
     data.cell[2] = 0;
     data.screenheight = 500;
-    data.screenwidth = 500;
+    data.screenwidth = 1000;
     if (argc != 2)
     {
         printf("Too much arguments !\n");
@@ -43,8 +43,9 @@ int main(int argc, char **argv)
     calculat_dda(&data, raydirx, raydiry);
     printf("Ray Distance to Wall: %f\n", data.raydistans);
     data.mlx = mlx_init();
-    data.mlx_win = mlx_new_window(data.mlx, 500, 500, "Cub3D");
+    data.mlx_win = mlx_new_window(data.mlx, 1000, 500, "Cub3D");
     draw_window(&data);
+    draw_mini_map(&data);
     mlx_hook(data.mlx_win, 2, (1L << 0), handle_esc, &data);
     mlx_hook(data.mlx_win, 17, 0, close_win, &data);
     // data.height = 300;
