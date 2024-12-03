@@ -50,7 +50,7 @@ void check_top_border(t_data *data)
     {
         while (data->mini_map[i][j])
         {
-            if (data->mini_map[i][j] != '1')
+            if (data->mini_map[i][j] != '1' && data->mini_map[i][j] != ' ')
             {
                 printf("Error\n No border !");
                 exit(1);
@@ -73,7 +73,7 @@ void check_bottem_border(t_data *data)
     i = 0;
     while (data->mini_map[len - 1][i])
     {
-        if (data->mini_map[len - 1][i] != '1')
+        if (data->mini_map[len - 1][i] != '1' && data->mini_map[len - 1][i] != ' ')
         {
             printf("Error\n No border !");
             exit(1);
@@ -89,7 +89,7 @@ void check_left_border(t_data *data)
     i = 0;
     while (data->mini_map[i])
     {
-        if (data->mini_map[i][0] != '1')
+        if (data->mini_map[i][0] != '1' && data->mini_map[i][0] != ' ')
         {
             printf("Error\n No border !");
             exit(1);
@@ -107,7 +107,7 @@ void check_right_border(t_data *data)
     i = 0;
     while (data->mini_map[i])
     {
-        if (data->mini_map[i][len - 1] != '1')
+        if (data->mini_map[i][len - 1] != '1' && data->mini_map[i][len - 1] != ' ')
         {
             printf("Error\n No border !");
             exit(1);
@@ -223,9 +223,35 @@ void check_colors(t_data *data)
     }
 }
 
+void check_map(t_data *data)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (data->mini_map[i])
+    {
+        j = 0;
+        while (data->mini_map[i][j])
+        {
+            if (data->mini_map[i][j] == ' ')
+            {
+                if (data->mini_map[i][j + 1] == '0')
+                {
+                    printf("Error\n a space is found !");
+                    exit(1);
+                }
+            }
+            j++;
+        }
+        i++;
+    }
+}
+
 void check_mini_map(t_data *data)
 {
     check_player(data);
+    check_map(data);
     check_left_border(data);
     check_right_border(data);
     check_top_border(data);

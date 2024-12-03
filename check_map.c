@@ -49,7 +49,7 @@ void check_all_in_map(t_data *data)
         j = 0;
         while (data->mini_map[i][j])
         {
-            if (data->mini_map[i][j] != '1' && data->mini_map[i][j] != '0' && data->mini_map[i][j] != 'N' && data->mini_map[i][j] != 'W' && data->mini_map[i][j] != 'S' && data->mini_map[i][j] != 'E')
+            if (data->mini_map[i][j] != '1' && data->mini_map[i][j] != '0' && data->mini_map[i][j] != 'N' && data->mini_map[i][j] != 'W' && data->mini_map[i][j] != 'S' && data->mini_map[i][j] != 'E' && data->mini_map[i][j] != ' ')
             {
                 printf("Error\n incorrect caracter !");
                 exit(1);

@@ -120,6 +120,7 @@ void find_player_position(t_data *data);
 void  calculat_dda(t_data *data, double raydirx, double raydiry);
 void calculate_line_hight(t_data *data);
 void draw_mini_map(t_data *data);
+void check_map(t_data *data);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);
