@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:40:09 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/19 14:54:40 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/01/17 02:31:48 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void read_lines(char *path, t_data *data)
         printf("Error while opening the file !\n");
         exit(1);
     }
+    // Map For Directions
     while (i < 4)
     {
         line = get_next_line(fd);
@@ -89,6 +90,7 @@ void read_lines(char *path, t_data *data)
     }
     data->my_map = ft_split(lines, '\n');
     lines = NULL;
+    // Map For Colors
     while (i < 6)
     {
         line = get_next_line(fd);
@@ -103,6 +105,7 @@ void read_lines(char *path, t_data *data)
     }
     data->my_color = ft_split(lines, '\n');
     lines = NULL;
+    // Map For The Main Map
     while (1)
     {
         line = get_next_line(fd);
@@ -112,6 +115,11 @@ void read_lines(char *path, t_data *data)
         free(line);
     }
     data->mini_map = ft_split(lines, '\n');
+    check_top_borders(data);
+    check_bottom_border(data);
+    check_left_border(data);
+    check_right_border(data);
+    check_len(data);
     free(lines);
     close(fd);
 }

@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/22 16:35:18 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/01/17 02:27:07 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void ft_bzero(void *s, size_t n);
 char *ft_strdup(const char *s1);
 char **ft_split(char const *s, char c);
 int ft_atoi(const char *str);
+char *ft_strcpy(char *dst, const char *src);
+void	*ft_memset(void *b, int c, size_t len);
 
 // get_next_line function
 char *get_next_line(int fd);
@@ -96,10 +98,6 @@ char *get_next_line(int fd);
 void check_player(t_data *data);
 void check_path(char *path);
 void read_lines(char *path, t_data *data);
-void check_top_border(t_data *data);
-void check_bottem_border(t_data *data);
-void check_left_border(t_data *data);
-void check_right_border(t_data *data);
 void check_no_identifier(t_data *data);
 int check_for_identifier(char *str, int i);
 void check_colors(t_data *data);
@@ -121,6 +119,11 @@ void  calculat_dda(t_data *data, double raydirx, double raydiry);
 void calculate_line_hight(t_data *data);
 void draw_mini_map(t_data *data);
 void check_map(t_data *data);
+void check_top_borders(t_data *data);
+void check_bottom_border(t_data *data);
+void check_left_border(t_data *data);
+void check_right_border(t_data *data);
+void check_len(t_data *data);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);
