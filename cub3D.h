@@ -6,7 +6,7 @@
 /*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/01/20 14:10:42 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/01/20 17:52:12 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,14 @@ typedef struct s_data
     char **my_color; // struct to store the colors
     char **mini_map; // struct to strore the map (1-0)
     char *line;
-    t_path *path;
+    char *prefix;
     char *texture;
+    char *prefix1;
+    char *rest;
+    int count1;
+    int count;
+    int len;
+    t_path *path;
     char *rgb_res; // contain the rgb values in integers
     void *mlx;
     void *mlx_win;
@@ -54,7 +60,8 @@ typedef struct s_data
     int size_line;
     int endian;
     int x;
-    int y;
+    size_t y;
+    size_t j;
     int player_x;
     int player_y;
     int map_x;
@@ -89,7 +96,7 @@ char *ft_strdup(const char *s1);
 char **ft_split(char const *s, char c);
 int ft_atoi(const char *str);
 char *ft_strcpy(char *dst, const char *src);
-void	*ft_memset(void *b, int c, size_t len);
+void *ft_memset(void *b, int c, size_t len);
 
 // get_next_line function
 char *get_next_line(int fd);
@@ -115,7 +122,7 @@ void set_pixel(char *pixel_buffer, int x, int y, int color, int lengh, int bits_
 void check_all_in_map(t_data *data);
 void pars_texture(t_data *data, t_path *path);
 void find_player_position(t_data *data);
-void  calculat_dda(t_data *data, double raydirx, double raydiry);
+void calculat_dda(t_data *data, double raydirx, double raydiry);
 void calculate_line_hight(t_data *data);
 void draw_mini_map(t_data *data);
 void check_map(t_data *data);
@@ -125,6 +132,14 @@ void check_left_border(t_data *data);
 void check_right_border(t_data *data);
 void check_len(t_data *data);
 void check_around_space(t_data *data);
+char *directions_map(int fd, int *i, char *line);
+char *color_map(int fd, int *i, char *line);
+char *main_map(int fd, char *line);
+void caller_function(t_data *data);
+void	iterate_in_map(size_t *i, t_data *data);
+void	check_no_identifier(t_data *data);
+void	check_data(t_data *data);
+void	iterate_color_map(t_data *data, int *i);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);

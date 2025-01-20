@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_position.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:52:29 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/24 15:52:31 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:16:55 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,3 +123,4 @@ void calculat_dda(t_data *data, double raydirx, double raydiry) // x = 2.0 y = 0
     calculate_line_hight(data);
     data->raydistans = data->perpwalldist;
 }
+

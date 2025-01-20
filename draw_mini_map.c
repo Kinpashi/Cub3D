@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_mini_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:34:38 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/28 18:34:40 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:46:30 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void draw_mini_map(t_data *data)
                 color = 0x9933FF;
             else
                 color = 0x000000;
-
             *(int *)(img_data + (y * data->size_line + x * (data->bits_per_pixel / 8))) = color;
             x++;
         }
