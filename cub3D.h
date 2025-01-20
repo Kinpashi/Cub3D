@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/01/17 02:27:07 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:10:42 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ void check_bottom_border(t_data *data);
 void check_left_border(t_data *data);
 void check_right_border(t_data *data);
 void check_len(t_data *data);
+void check_around_space(t_data *data);
 
 // minilibx functions
 int handle_esc(int keycode, void *param);

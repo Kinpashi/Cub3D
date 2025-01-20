@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+         #
+#    By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 00:08:49 by aahlaqqa          #+#    #+#              #
-#    Updated: 2025/01/17 02:30:57 by aahlaqqa         ###   ########.fr        #
+#    Updated: 2025/01/20 15:04:51 by ahmed            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ NAME= cub3D
 SOURCES= parse_map.c check_map.c ft_strcmp.c Libft/ft_strrchr.c Libft/ft_strlen.c \
 Libft/ft_split.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \
 main.c key_handles.c check_identifier.c Libft/ft_atoi.c handle_rgb_colors.c \
-pars_texture.c find_position.c draw_mini_map.c check_borders.c ft_strcpy.c Libft/ft_memset.c
+pars_texture.c find_position.c draw_mini_map.c check_borders.c ft_strcpy.c Libft/ft_memset.c \
+check_len.c
 
 OBJECTS= $(SOURCES:.c=.o)
 

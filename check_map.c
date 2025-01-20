@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:40:09 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/01/17 02:31:48 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:31:37 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void read_lines(char *path, t_data *data)
     check_left_border(data);
     check_right_border(data);
     check_len(data);
+    check_around_space(data);
     free(lines);
     close(fd);
 }
