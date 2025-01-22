@@ -6,7 +6,7 @@
 /*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:34:38 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/01/20 16:46:30 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/01/22 14:04:38 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,31 @@
 
 void draw_mini_map(t_data *data)
 {
-    int x;
-    int y;
-    int map_x;
-    int map_y;
+    int x, y;
+    int i;
+    int map_x, map_y;
     int tile_size;
     void *img;
     char *img_data;
     int color;
+    int mini_map_display_width;
+    int mini_map_display_height;
 
-    tile_size = 20;
-    data->map_height = 5;
-    data->map_width = 9;
+    mini_map_display_width = 300;
+    mini_map_display_height = 300;
+    data->map_height = 0;
+    while (data->mini_map[data->map_height])
+        data->map_height++;
+    data->map_width = 0;
+    i = 0;
+    while (data->mini_map[0][i])
+    {
+        data->map_width++;
+        i++;
+    }
+    tile_size = mini_map_display_width / data->map_width;
+    if (mini_map_display_height / data->map_height < tile_size)
+        tile_size = mini_map_display_height / data->map_height;
     img = mlx_new_image(data->mlx, data->map_width * tile_size, data->map_height * tile_size);
     img_data = mlx_get_data_addr(img, &data->bits_per_pixel, &data->size_line, &data->endian);
     y = 0;
@@ -36,11 +49,12 @@ void draw_mini_map(t_data *data)
         {
             map_x = x / tile_size;
             map_y = y / tile_size;
+
             if (data->mini_map[map_y][map_x] == '1')
                 color = 0xFF0000;
             else if (data->mini_map[map_y][map_x] == '0')
                 color = 0xFFFFFF;
-            else if (data->mini_map[map_y][map_x] == 'N' || data->mini_map[map_y][map_x] == 'W' || 
+            else if (data->mini_map[map_y][map_x] == 'N' || data->mini_map[map_y][map_x] == 'W' ||
                      data->mini_map[map_y][map_x] == 'E' || data->mini_map[map_y][map_x] == 'S')
                 color = 0x9933FF;
             else
@@ -53,4 +67,3 @@ void draw_mini_map(t_data *data)
     mlx_put_image_to_window(data->mlx, data->mlx_win, img, 0, 0);
     mlx_destroy_image(data->mlx, img);
 }
-
