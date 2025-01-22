@@ -6,7 +6,7 @@
 /*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/01/20 17:52:12 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/01/22 17:06:57 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ int handle_rgb(int red, int green, int blue);
 void set_pixel(char *pixel_buffer, int x, int y, int color, int lengh, int bits_per_pixel);
 void check_all_in_map(t_data *data);
 void pars_texture(t_data *data, t_path *path);
-void find_player_position(t_data *data);
 void calculat_dda(t_data *data, double raydirx, double raydiry);
 void calculate_line_hight(t_data *data);
 void draw_mini_map(t_data *data);
@@ -140,9 +139,10 @@ void	iterate_in_map(size_t *i, t_data *data);
 void	check_no_identifier(t_data *data);
 void	check_data(t_data *data);
 void	iterate_color_map(t_data *data, int *i);
+int move_player(t_data *data, int keycode);
+int press_key(int keycode, t_data *data);
 
 // minilibx functions
-int handle_esc(int keycode, void *param);
 int close_win(t_data *data);
 
 // mini_map functions

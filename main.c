@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/22 16:50:36 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:06:39 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int main(int argc, char **argv)
     check_path(argv[1]);
     read_lines(argv[1], &data);
     check_all_in_map(&data);
-    find_player_position(&data);
     check_no_identifier(&data);
     check_colors(&data);
     check_mini_map(&data);
@@ -46,7 +45,7 @@ int main(int argc, char **argv)
     data.mlx_win = mlx_new_window(data.mlx, 1000, 500, "Cub3D");
     draw_window(&data);
     draw_mini_map(&data);
-    mlx_hook(data.mlx_win, 2, (1L << 0), handle_esc, &data);
+    mlx_hook(data.mlx_win, 2, (1L << 0), press_key, &data);
     mlx_hook(data.mlx_win, 17, 0, close_win, &data);
     // data.height = 300;
     // data.width = 300;

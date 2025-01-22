@@ -6,35 +6,11 @@
 /*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:52:29 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/01/20 18:16:55 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/01/22 17:06:50 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-void find_player_position(t_data *data)
-{
-    int i;
-    int j;
-
-    i = 0;
-    data->player_x = 0;
-    data->player_y = 0;
-    while (data->mini_map[i])
-    {
-        j = 0;
-        while (data->mini_map[i][j])
-        {
-            if (data->mini_map[i][j] == 'N' || data->mini_map[i][j] == 'W' || data->mini_map[i][j] == 'S' || data->mini_map[i][j] == 'E')
-            {
-                data->player_x = i;
-                data->player_y = j;
-            }
-            j++;
-        }
-        i++;
-    }
-}
 
 void calculate_line_hight(t_data *data)
 {
@@ -123,4 +99,3 @@ void calculat_dda(t_data *data, double raydirx, double raydiry) // x = 2.0 y = 0
     calculate_line_hight(data);
     data->raydistans = data->perpwalldist;
 }
-
