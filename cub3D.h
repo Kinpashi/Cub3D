@@ -6,7 +6,7 @@
 /*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/01/22 17:06:57 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/01/22 20:44:35 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,27 +62,12 @@ typedef struct s_data
     int x;
     size_t y;
     size_t j;
-    int player_x;
-    int player_y;
-    int map_x;
-    int map_y;
-    int stepx;
-    int stepy;
-    int side;
-    int wall;
-    int line_height;
-    int draw_start;
-    int draw_end;
+    double player_x;
+    double player_y;
     int screenheight;
     int screenwidth;
     int map_height;
     int map_width;
-    double deltadistx;
-    double deltadisty;
-    double sidedistx;
-    double sidedisty;
-    double perpwalldist;
-    double raydistans;
 } t_data;
 
 // Libft functions
@@ -121,8 +106,6 @@ int handle_rgb(int red, int green, int blue);
 void set_pixel(char *pixel_buffer, int x, int y, int color, int lengh, int bits_per_pixel);
 void check_all_in_map(t_data *data);
 void pars_texture(t_data *data, t_path *path);
-void calculat_dda(t_data *data, double raydirx, double raydiry);
-void calculate_line_hight(t_data *data);
 void draw_mini_map(t_data *data);
 void check_map(t_data *data);
 void check_top_borders(t_data *data);

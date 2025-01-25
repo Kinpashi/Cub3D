@@ -6,7 +6,7 @@
 /*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/01/22 17:06:39 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/01/22 20:44:54 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ int main(int argc, char **argv)
     check_colors(&data);
     check_mini_map(&data);
     pars_texture(&data, &path);
-    double raydirx = 2.9;
-    double raydiry = 0.4;
-    calculat_dda(&data, raydirx, raydiry);
-    printf("Ray Distance to Wall: %f\n", data.raydistans);
     data.mlx = mlx_init();
     data.mlx_win = mlx_new_window(data.mlx, 1000, 500, "Cub3D");
     draw_window(&data);
