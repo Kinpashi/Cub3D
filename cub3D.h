@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/01/22 20:44:35 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/02/03 22:41:15 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,17 @@ typedef struct s_data
     int screenwidth;
     int map_height;
     int map_width;
+    int mini_map_display_width;
+    int mini_map_display_height;
+    int view_width;  // Number of tiles to display horizontally
+    int view_height; // Number of tiles to display vertically
+    int tile_size;
+    char *img_data;
+    void *img_mini;
+    int start_x;
+    int start_y;
+    int map_x;
+    int map_y;
 } t_data;
 
 // Libft functions
@@ -103,7 +114,7 @@ void check_mini_map(t_data *data);
 void check_texture(char *str, t_data *data);
 void draw_window(t_data *data);
 int handle_rgb(int red, int green, int blue);
-void set_pixel(char *pixel_buffer, int x, int y, int color, int lengh, int bits_per_pixel);
+void set_pixel(char *pixel_buffer, int x, int y, int color, int line_len, int bits_per_pixel);
 void check_all_in_map(t_data *data);
 void pars_texture(t_data *data, t_path *path);
 void draw_mini_map(t_data *data);
@@ -118,10 +129,10 @@ char *directions_map(int fd, int *i, char *line);
 char *color_map(int fd, int *i, char *line);
 char *main_map(int fd, char *line);
 void caller_function(t_data *data);
-void	iterate_in_map(size_t *i, t_data *data);
-void	check_no_identifier(t_data *data);
-void	check_data(t_data *data);
-void	iterate_color_map(t_data *data, int *i);
+void iterate_in_map(size_t *i, t_data *data);
+void check_no_identifier(t_data *data);
+void check_data(t_data *data);
+void iterate_color_map(t_data *data, int *i);
 int move_player(t_data *data, int keycode);
 int press_key(int keycode, t_data *data);
 
