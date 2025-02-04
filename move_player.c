@@ -3,74 +3,86 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:35:21 by ahmed             #+#    #+#             */
-/*   Updated: 2025/01/22 20:41:54 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/02/04 16:29:59 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int move_player(t_data *data, int keycode)
+void	check_bounds(t_data *data)
 {
-    double new_x;
-    double new_y;
-    int i;
-    int j;
-
-    data->player_x = 0;
-    data->player_y = 0;
-    i = 0;
-    while (data->mini_map[i])
-    {
-        j = 0;
-        while (data->mini_map[i][j])
-        {
-            if (data->mini_map[i][j] == 'N' || data->mini_map[i][j] == 'W' || data->mini_map[i][j] == 'S' || data->mini_map[i][j] == 'E')
-            {
-                data->player_y = (double)i;
-                data->player_x = (double)j;
-            }
-            j++;
-        }
-        i++;
-    }
-    new_x = data->player_x;
-    new_y = data->player_y;
-    if (keycode == 65361) // left
-        new_x--;
-    else if (keycode == 65363) // right
-        new_x++;
-    else if (keycode == 65362) // up
-        new_y--;
-    else if (keycode == 65364) // down
-        new_y++;
-    if (new_x >= 0 && new_x < data->map_width && new_y >= 0 && new_y < data->map_height)
-    {
-        if (data->mini_map[(int)new_y][(int)new_x] == '0')
-        {
-            data->mini_map[(int)data->player_y][(int)data->player_x] = '0';
-            data->mini_map[(int)new_y][(int)new_x] = 'N';
-            data->player_x = new_x;
-            data->player_y = new_y;
-        }
-    }
-    draw_mini_map(data);
-    return (0);
+	if (data->mini_map[(int)data->new_y][(int)data->new_x] == '0')
+	{
+		data->mini_map[(int)data->player_y][(int)data->player_x] = '0';
+		data->mini_map[(int)data->new_y][(int)data->new_x] = 'N';
+		data->player_x = data->new_x;
+		data->player_y = data->new_y;
+	}
 }
 
-int press_key(int keycode, t_data *data)
+void	key_movement(t_data *data, int keycode)
 {
-    if (keycode == 65307)
-        exit(0);
-    else if (keycode == 65361)
-        move_player(data, keycode);
-    else if (keycode == 65363)
-        move_player(data, keycode);
-    else if (keycode == 65362)
-        move_player(data, keycode);
-    else if (keycode == 65364)
-        move_player(data, keycode);
-    return (0);
+	if (keycode == 65361)
+		data->new_x--;
+	else if (keycode == 65363)
+		data->new_x++;
+	else if (keycode == 65362)
+		data->new_y--;
+	else if (keycode == 65364)
+		data->new_y++;
+}
+
+void	check_if_condition(t_data *data)
+{
+	if (data->mini_map[data->player_i][data->player_j] == 'N'
+		|| data->mini_map[data->player_i][data->player_j] == 'W'
+		|| data->mini_map[data->player_i][data->player_j] == 'S'
+		|| data->mini_map[data->player_i][data->player_j] == 'E')
+	{
+		data->player_y = (double)data->player_i;
+		data->player_x = (double)data->player_j;
+	}
+}
+
+int	move_player(t_data *data, int keycode)
+{
+	data->player_x = 0;
+	data->player_y = 0;
+	data->player_i = 0;
+	while (data->mini_map[data->player_i])
+	{
+		data->player_j = 0;
+		while (data->mini_map[data->player_i][data->player_j])
+		{
+			check_if_condition(data);
+			data->player_j++;
+		}
+		data->player_i++;
+	}
+	data->new_x = data->player_x;
+	data->new_y = data->player_y;
+	key_movement(data, keycode);
+	if (data->new_x >= 0 && data->new_x < data->map_width && data->new_y >= 0
+		&& data->new_y < data->map_height)
+		check_bounds(data);
+	draw_mini_map(data);
+	return (0);
+}
+
+int	press_key(int keycode, t_data *data)
+{
+	if (keycode == 65307)
+		exit(0);
+	else if (keycode == 65361)
+		move_player(data, keycode);
+	else if (keycode == 65363)
+		move_player(data, keycode);
+	else if (keycode == 65362)
+		move_player(data, keycode);
+	else if (keycode == 65364)
+		move_player(data, keycode);
+	return (0);
 }

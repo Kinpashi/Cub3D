@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/01/22 20:44:54 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/02/04 16:01:46 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,6 @@ int main(int argc, char **argv)
     draw_mini_map(&data);
     mlx_hook(data.mlx_win, 2, (1L << 0), press_key, &data);
     mlx_hook(data.mlx_win, 17, 0, close_win, &data);
-    // data.height = 300;
-    // data.width = 300;
-    // data.img = mlx_xpm_file_to_image(data.mlx, "copy.xpm",&data.width, &data.height);
-    // mlx_put_image_to_window(data.mlx, data.mlx_win, data.img, 0, 0);
     mlx_loop(data.mlx);
     return (0);
 }

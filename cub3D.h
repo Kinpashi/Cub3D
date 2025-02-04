@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/04 13:39:40 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:25:10 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,10 @@ typedef struct s_data
     int cell_color;
     int mini_x;
     int mini_y;
+    double new_x;
+    double new_y;
+    int player_i;
+    int player_j;
 } t_data;
 
 // Libft functions
