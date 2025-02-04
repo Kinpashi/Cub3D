@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/03 22:41:15 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/04 13:39:40 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,11 @@ typedef struct s_data
     int start_y;
     int map_x;
     int map_y;
+    char *pixel_buffer;
+    int floor_color;
+    int cell_color;
+    int mini_x;
+    int mini_y;
 } t_data;
 
 // Libft functions
@@ -114,7 +119,8 @@ void check_mini_map(t_data *data);
 void check_texture(char *str, t_data *data);
 void draw_window(t_data *data);
 int handle_rgb(int red, int green, int blue);
-void set_pixel(char *pixel_buffer, int x, int y, int color, int line_len, int bits_per_pixel);
+void set_floor_pixel(t_data *data, int x, int y, int line_len);
+void set_cell_pixel(t_data *data, int x, int y, int line_len);
 void check_all_in_map(t_data *data);
 void pars_texture(t_data *data, t_path *path);
 void draw_mini_map(t_data *data);

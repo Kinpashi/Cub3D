@@ -12,7 +12,7 @@
 
 #include "cub3D.h"
 
-int close_win(t_data *data)
+int	close_win(t_data *data)
 {
 	(void)data;
 	exit(0);
