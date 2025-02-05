@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 23:57:58 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/04 13:42:42 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/05 23:03:15 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_data(t_data *data)
 	data->floor_color = handle_rgb(data->floor[0], data->floor[1],
 			data->floor[2]);
 	data->cell_color = handle_rgb(data->cell[0], data->cell[1], data->cell[2]);
-	data->img = mlx_new_image(data->mlx, 1000, 500);
+	data->img = mlx_new_image(data->mlx, 1500, 940);
 	data->pixel_buffer = mlx_get_data_addr(data->img, &data->bits_per_pixel,
 			&data->size_line, &data->endian);
 }
@@ -47,20 +47,20 @@ void	draw_window(t_data *data)
 {
 	data->mini_y = 0;
 	init_data(data);
-	while (data->mini_y < 250)
+	while (data->mini_y < 470)
 	{
 		data->mini_x = 0;
-		while (data->mini_x < 1000)
+		while (data->mini_x < 1500)
 		{
 			set_cell_pixel(data, data->mini_x, data->mini_y, data->size_line);
 			data->mini_x++;
 		}
 		data->mini_y++;
 	}
-	while (data->mini_y < 500)
+	while (data->mini_y < 940)
 	{
 		data->mini_x = 0;
-		while (data->mini_x < 1000)
+		while (data->mini_x < 1500)
 		{
 			set_floor_pixel(data, data->mini_x, data->mini_y, data->size_line);
 			data->mini_x++;

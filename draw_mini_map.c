@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:34:38 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/05 17:01:12 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/05 21:48:00 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,36 @@
 
 void init_mini_map(t_data *data)
 {
-	data->mini_map_display_width = 100;
-	data->mini_map_display_height = 100;
-	data->view_width = 5;
-	data->view_height = 5;
+	int max_size;
+
+	max_size = 100;
 	data->map_height = 0;
 	while (data->mini_map[data->map_height])
 		data->map_height++;
 	data->map_width = 0;
 	while (data->mini_map[0][data->map_width])
 		data->map_width++;
+	if (data->map_width < 10)
+		data->mini_map_display_width = data->map_width * 10;
+	else
+		data->mini_map_display_width = max_size;
+	if (data->map_height < 10)
+		data->mini_map_display_height = data->map_height * 10;
+	else
+		data->mini_map_display_height = max_size;
+	if (data->map_width < 5)
+		data->view_width = data->map_width;
+	else
+		data->view_width = 5;
+	if (data->map_height < 5)
+		data->view_height = data->map_height;
+	else
+		data->view_height = 5;
 	data->tile_size = data->mini_map_display_width / data->view_width;
 	if (data->mini_map_display_height / data->view_height < data->tile_size)
 		data->tile_size = data->mini_map_display_height / data->view_height;
+	if (data->tile_size < 2)
+		data->tile_size = 2;
 }
 
 void calculate_view(t_data *data)
@@ -60,8 +77,7 @@ void render_mini_map(t_data *data)
 	int x;
 	int y;
 	int color;
-	// int x_circle;
-	// int y_circle;
+	printf("%d\n", data->tile_size);
 
 	y = 0;
 	while (y < data->view_height * data->tile_size)
@@ -77,9 +93,6 @@ void render_mini_map(t_data *data)
 		}
 		y++;
 	}
-	// x_circle = (data->player_x - data->start_x) * data->tile_size + data->tile_size / 2;
-	// y_circle = (data->player_y - data->start_y) * data->tile_size + data->tile_size / 2;
-	// draw_player_as_circle(data, x_circle, y_circle, data->tile_size / 4);
 }
 
 void draw_mini_map(t_data *data)

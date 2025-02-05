@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/04 16:01:46 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/05 23:01:20 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     check_mini_map(&data);
     pars_texture(&data, &path);
     data.mlx = mlx_init();
-    data.mlx_win = mlx_new_window(data.mlx, 1000, 500, "Cub3D");
+    data.mlx_win = mlx_new_window(data.mlx, 1500, 940, "Cub3D");
     draw_window(&data);
     draw_mini_map(&data);
     mlx_hook(data.mlx_win, 2, (1L << 0), press_key, &data);
@@ -46,5 +46,3 @@ int main(int argc, char **argv)
     mlx_loop(data.mlx);
     return (0);
 }
-
-
