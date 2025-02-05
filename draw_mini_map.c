@@ -6,11 +6,49 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:34:38 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/05 21:48:00 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/05 23:19:25 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void find_player_position(t_data *data)
+{
+	int y;
+	int x;
+
+	y = 0;
+	while (y < data->map_height)
+	{
+		x = 0;
+		while (x < data->map_width)
+		{
+			if (data->mini_map[y][x] == 'N' || data->mini_map[y][x] == 'E' ||
+				data->mini_map[y][x] == 'W' || data->mini_map[y][x] == 'S')
+			{
+				data->player_x = x;
+				data->player_y = y;
+				return;
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
+void calculate_view(t_data *data)
+{
+	data->start_x = data->player_x - data->view_width / 2;
+	data->start_y = data->player_y - data->view_height / 2;
+	if (data->start_x < 0)
+		data->start_x = 0;
+	if (data->start_y < 0)
+		data->start_y = 0;
+	if (data->start_x + data->view_width > data->map_width)
+		data->start_x = data->map_width - data->view_width;
+	if (data->start_y + data->view_height > data->map_height)
+		data->start_y = data->map_height - data->view_height;
+}
 
 void init_mini_map(t_data *data)
 {
@@ -44,20 +82,8 @@ void init_mini_map(t_data *data)
 		data->tile_size = data->mini_map_display_height / data->view_height;
 	if (data->tile_size < 2)
 		data->tile_size = 2;
-}
-
-void calculate_view(t_data *data)
-{
-	data->start_x = data->player_x - data->view_width / 2;
-	data->start_y = data->player_y - data->view_height / 2;
-	if (data->start_x < 0)
-		data->start_x = 0;
-	if (data->start_y < 0)
-		data->start_y = 0;
-	if (data->start_x + data->view_width > data->map_width)
-		data->start_x = data->map_width - data->view_width;
-	if (data->start_y + data->view_height > data->map_height)
-		data->start_y = data->map_height - data->view_height;
+	find_player_position(data);
+	calculate_view(data);
 }
 
 int draw_tile(char tile)
@@ -77,7 +103,6 @@ void render_mini_map(t_data *data)
 	int x;
 	int y;
 	int color;
-	printf("%d\n", data->tile_size);
 
 	y = 0;
 	while (y < data->view_height * data->tile_size)
