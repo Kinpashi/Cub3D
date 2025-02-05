@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/04 16:25:10 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:46:04 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ void check_data(t_data *data);
 void iterate_color_map(t_data *data, int *i);
 int move_player(t_data *data, int keycode);
 int press_key(int keycode, t_data *data);
+void draw_player_as_circle(t_data *data, int center_x, int center_y, int radius);
 
 // minilibx functions
 int close_win(t_data *data);

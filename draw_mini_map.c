@@ -6,13 +6,13 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:34:38 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/03 18:52:13 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:01:12 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	init_mini_map(t_data *data)
+void init_mini_map(t_data *data)
 {
 	data->mini_map_display_width = 100;
 	data->mini_map_display_height = 100;
@@ -29,7 +29,7 @@ void	init_mini_map(t_data *data)
 		data->tile_size = data->mini_map_display_height / data->view_height;
 }
 
-void	calculate_view(t_data *data)
+void calculate_view(t_data *data)
 {
 	data->start_x = data->player_x - data->view_width / 2;
 	data->start_y = data->player_y - data->view_height / 2;
@@ -43,7 +43,7 @@ void	calculate_view(t_data *data)
 		data->start_y = data->map_height - data->view_height;
 }
 
-int	draw_tile(char tile)
+int draw_tile(char tile)
 {
 	if (tile == '1')
 		return (0xFF0000);
@@ -55,11 +55,13 @@ int	draw_tile(char tile)
 		return (0x000000);
 }
 
-void	render_mini_map(t_data *data)
+void render_mini_map(t_data *data)
 {
-	int	x;
-	int	y;
-	int	color;
+	int x;
+	int y;
+	int color;
+	// int x_circle;
+	// int y_circle;
 
 	y = 0;
 	while (y < data->view_height * data->tile_size)
@@ -70,22 +72,23 @@ void	render_mini_map(t_data *data)
 			data->map_x = data->start_x + x / data->tile_size;
 			data->map_y = data->start_y + y / data->tile_size;
 			color = draw_tile(data->mini_map[data->map_y][data->map_x]);
-			*(int *)(data->img_data + (y * data->size_line + x
-						* (data->bits_per_pixel / 8))) = color;
+			*(int *)(data->img_data + (y * data->size_line + x * (data->bits_per_pixel / 8))) = color;
 			x++;
 		}
 		y++;
 	}
+	// x_circle = (data->player_x - data->start_x) * data->tile_size + data->tile_size / 2;
+	// y_circle = (data->player_y - data->start_y) * data->tile_size + data->tile_size / 2;
+	// draw_player_as_circle(data, x_circle, y_circle, data->tile_size / 4);
 }
 
-void	draw_mini_map(t_data *data)
+void draw_mini_map(t_data *data)
 {
 	init_mini_map(data);
 	calculate_view(data);
-	data->img_mini = mlx_new_image(data->mlx, data->view_width
-			* data->tile_size, data->view_height * data->tile_size);
+	data->img_mini = mlx_new_image(data->mlx, data->view_width * data->tile_size, data->view_height * data->tile_size);
 	data->img_data = mlx_get_data_addr(data->img_mini, &data->bits_per_pixel,
-			&data->size_line, &data->endian);
+									   &data->size_line, &data->endian);
 	render_mini_map(data);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img_mini, 0, 0);
 	mlx_destroy_image(data->mlx, data->img_mini);
