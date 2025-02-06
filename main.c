@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/05 23:01:20 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:51:28 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int main(int argc, char **argv)
     data.cell[0] = 0;
     data.cell[1] = 0;
     data.cell[2] = 0;
-    data.screenheight = 500;
-    data.screenwidth = 1000;
     if (argc != 2)
     {
         printf("Too much arguments !\n");

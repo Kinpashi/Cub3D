@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:34:38 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/05 23:19:25 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/06 14:59:24 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,12 @@ void render_mini_map(t_data *data)
 	int x;
 	int y;
 	int color;
+	int tile_center_x;
+	int tile_center_y;
+	int radius;
+	int dx;
+	int dy;
+	char tile;
 
 	y = 0;
 	while (y < data->view_height * data->tile_size)
@@ -112,7 +118,23 @@ void render_mini_map(t_data *data)
 		{
 			data->map_x = data->start_x + x / data->tile_size;
 			data->map_y = data->start_y + y / data->tile_size;
-			color = draw_tile(data->mini_map[data->map_y][data->map_x]);
+			tile = data->mini_map[data->map_y][data->map_x];
+
+			if (tile == 'N' || tile == 'E' || tile == 'W' || tile == 'S')
+			{
+				tile_center_x = (data->map_x - data->start_x) * data->tile_size + data->tile_size / 2;
+				tile_center_y = (data->map_y - data->start_y) * data->tile_size + data->tile_size / 2;
+				radius = data->tile_size / 3;
+				dx = x - tile_center_x;
+				dy = y - tile_center_y;
+				if ((dx * dx + dy * dy) <= (radius * radius))
+					color = 0x9933FF;
+				else
+					color = draw_tile('0');
+			}
+			else
+				color = draw_tile(tile);
+
 			*(int *)(data->img_data + (y * data->size_line + x * (data->bits_per_pixel / 8))) = color;
 			x++;
 		}
