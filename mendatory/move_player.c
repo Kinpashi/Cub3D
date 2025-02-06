@@ -6,11 +6,11 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:35:21 by ahmed             #+#    #+#             */
-/*   Updated: 2025/02/04 16:29:59 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:46:54 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 void	check_bounds(t_data *data)
 {

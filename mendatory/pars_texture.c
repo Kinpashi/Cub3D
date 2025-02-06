@@ -6,11 +6,11 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 16:28:55 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2024/11/22 16:50:24 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/06 15:46:58 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 void	pars_texture(t_data *data, t_path *path)
 {

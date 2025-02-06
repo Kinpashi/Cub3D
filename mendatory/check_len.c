@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_len.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 15:04:37 by ahmed             #+#    #+#             */
-/*   Updated: 2025/01/20 15:18:16 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/02/06 15:46:12 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "../cub3D.h"
 
 int	find_max_width(char **mini_map)
 {
