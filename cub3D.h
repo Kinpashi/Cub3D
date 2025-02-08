@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/07 15:13:26 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/02/08 19:31:50 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_data
 	char	**my_map;
 	char	**my_color;
 	char	**mini_map;
+	char **start_map;
 	char	*line;
 	char	*prefix;
 	char	*texture;
@@ -47,6 +48,7 @@ typedef struct s_data
 	char	*rest;
 	int		count1;
 	int		count;
+	int flag;
 	int		len;
 	t_path	*path;
 	char	*rgb_res;

@@ -1,9 +1,9 @@
-NO ./copy1.xpm
+   NO ./copy1.xpm
 SO ./copy2.xpm
-WE ./copy3.xpm
-EA ./copy4.xpm
-
 F 220,100,0
+WE ./copy3.xpm
+
+EA ./copy4.xpm
 C 0,255,255
 
 
