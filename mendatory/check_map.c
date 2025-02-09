@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:40:09 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/08 20:56:41 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/09 23:31:03 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,29 @@ void check_all_in_map(t_data *data)
 	}
 }
 
-char *start_reading(int fd, int *i, char *line)
+bool is_empty_line(char *line)
 {
-	char *lines;
+	int i = 0;
 
-	lines = NULL;
-	while (*i < 6)
+	while (line[i] == ' ' || line[i] == '\t')
+		i++;
+	return (line[i] == '\0' || line[i] == '\n'); // Check if the line is empty
+}
+
+char *start_reading(int fd, char *line)
+{
+	char *lines = NULL;
+
+	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break;
-		if (line[0] != '\n')
+		if (!is_empty_line(line))
 		{
 			lines = ft_strjoin(lines, line);
-			free(line);
-			(*i)++;
 		}
+		free(line);
 	}
 	return (lines);
 }
@@ -85,19 +92,19 @@ void check_prefix(t_data *data)
 	int i;
 
 	i = 0;
-	while (data->start_map[i])
+	while (data->new_map[i])
 	{
-		if (data->start_map[i][0] == 'N' && data->start_map[i][1] == 'O')
+		if (data->new_map[i][0] == 'N' && data->new_map[i][1] == 'O')
 			data->flag++;
-		else if (data->start_map[i][0] == 'S' && data->start_map[i][1] == 'O')
+		else if (data->new_map[i][0] == 'S' && data->new_map[i][1] == 'O')
 			data->flag++;
-		else if (data->start_map[i][0] == 'W' && data->start_map[i][1] == 'E')
+		else if (data->new_map[i][0] == 'W' && data->new_map[i][1] == 'E')
 			data->flag++;
-		else if (data->start_map[i][0] == 'E' && data->start_map[i][1] == 'A')
+		else if (data->new_map[i][0] == 'E' && data->new_map[i][1] == 'A')
 			data->flag++;
-		else if (data->start_map[i][0] == 'F')
+		else if (data->new_map[i][0] == 'F')
 			data->flag++;
-		else if (data->start_map[i][0] == 'C')
+		else if (data->new_map[i][0] == 'C')
 			data->flag++;
 		else
 		{
@@ -124,11 +131,11 @@ void assigne_colors(t_data *data)
 		printf("Error while allocating memory !!\n");
 		exit(1);
 	}
-	while (data->start_map[i])
+	while (data->new_map[i])
 	{
-		if (data->start_map[i][0] == 'F' || data->start_map[i][0] == 'C')
+		if (data->new_map[i][0] == 'F' || data->new_map[i][0] == 'C')
 		{
-			data->my_color[j] = data->start_map[i];
+			data->my_color[j] = data->new_map[i];
 			j++;
 		}
 		i++;
@@ -146,9 +153,9 @@ void assigne_texture(t_data *data)
 		printf("Error while allocating memory !!\n");
 		exit(1);
 	}
-	while (data->start_map[i])
+	while (data->new_map[i])
 	{
-		if ((data->start_map[i][0] == 'N' && data->start_map[i][1] == 'O') || (data->start_map[i][0] == 'S' && data->start_map[i][1] == 'O') || (data->start_map[i][0] == 'E' && data->start_map[i][1] == 'A') || (data->start_map[i][0] == 'W' && data->start_map[i][1] == 'E'))
+		if ((data->new_map[i][0] == 'N' && data->new_map[i][1] == 'O') || (data->new_map[i][0] == 'S' && data->new_map[i][1] == 'O') || (data->new_map[i][0] == 'E' && data->new_map[i][1] == 'A') || (data->new_map[i][0] == 'W' && data->new_map[i][1] == 'E'))
 		{
 			data->my_map[j] = data->start_map[i];
 			j++;
@@ -156,20 +163,74 @@ void assigne_texture(t_data *data)
 		i++;
 	}
 }
-
-void skip_sapces(t_data *data)
+void split_map(t_data *data)
 {
-	int i;
+	int i = 0, j = 0, total_lines = 0;
+	while (data->start_map[total_lines])
+		total_lines++;
+	data->new_map = malloc(sizeof(char *) * (6 + 1));
+	if (!data->new_map)
+	{
+		printf("Error while allocating memory for new_map!!\n");
+		exit(1);
+	}
+	while (i < 6)
+	{
+		if (!data->start_map[i])
+		{
+			printf("Error: start_map has less than 6 lines!\n");
+			exit(1);
+		}
+		data->new_map[i] = ft_strdup(data->start_map[i]);
+		if (!data->new_map[i])
+		{
+			printf("Error while allocating memory for new_map[%d]!\n", i);
+			exit(1);
+		}
+		i++;
+	}
+	data->new_map[i] = NULL;
+	int remaining_lines = total_lines - 6;
+	data->mini_map = malloc(sizeof(char *) * (remaining_lines + 1));
+	if (!data->mini_map)
+	{
+		printf("Error while allocating memory for mini_map!!\n");
+		exit(1);
+	}
+	while (i < total_lines)
+	{
+		data->mini_map[j] = ft_strdup(data->start_map[i]);
+		if (!data->mini_map[j])
+		{
+			printf("Error while allocating memory for mini_map[%d]!\n", j);
+			exit(1);
+		}
+		i++;
+		j++;
+	}
+	data->mini_map[j] = NULL;
+}
 
-	i = 0;
-	while (data->start_map[i])
+void handle_spaces(t_data *data)
+{
+	int i = 0;
+	char *trimmed;
+
+	while (data->new_map[i])
 	{
 		int j = 0;
-		while (data->start_map[i][j])
+		while (data->new_map[i][j] == ' ' || data->new_map[i][j] == '\t')
+			j++;
+		if (data->new_map[i][j] != '\0') 
 		{
-			if ((data->start_map[i][j] == 32 || data->start_map[i][j] == '\t')
-				&& (data->start_map[i][j + 1] != 32 || data->start_map[i][j + 1]))
-					j++;
+			trimmed = ft_strdup(&data->new_map[i][j]);
+			if (!trimmed)
+			{
+				printf("Error while allocating memory for trimmed line!\n");
+				exit(1);
+			}
+			free(data->new_map[i]);
+			data->new_map[i] = trimmed;
 		}
 		i++;
 	}
@@ -180,31 +241,23 @@ void read_lines(char *path, t_data *data)
 	char *line;
 	char *lines;
 	int fd;
-	int i;
 
 	lines = NULL;
 	line = NULL;
-	i = 0;
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
 		printf("Error while opening the file !\n");
 		exit(1);
 	}
-	lines = start_reading(fd, &i, line);
+	lines = start_reading(fd, line);
 	data->start_map = ft_split(lines, '\n');
-	for (int i = 0; data->start_map[i]; i++)
-		printf("%s\n", data->start_map[i]);
-	skip_sapces(data);
-	for (int i = 0; data->start_map[i]; i++)
-		printf("%s\n", data->start_map[i]);
-	exit(1);
 	lines = NULL;
+	split_map(data);
+	handle_spaces(data);
 	check_prefix(data);
 	assigne_colors(data);
 	assigne_texture(data);
-	lines = main_map(fd, line);
-	data->mini_map = ft_split(lines, '\n');
 	caller_function(data);
 	free(lines);
 	close(fd);

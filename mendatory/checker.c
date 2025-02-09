@@ -3,21 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:49:56 by ahmed             #+#    #+#             */
-/*   Updated: 2025/02/06 15:46:23 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/09 23:29:24 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void	iterate_in_map(size_t *i, t_data *data)
+void iterate_in_map(size_t *i, t_data *data)
 {
 	while (*i < 4)
 	{
 		data->j = 0;
 		data->y = 0;
+		for (int i = 0; data->my_map[i]; i++)
+			printf("%s\n", data->my_map[i]);
+		exit(1);
 		while (data->my_map[*i][data->j] != ' ')
 		{
 			data->prefix[data->j] = data->my_map[*i][data->j];
@@ -39,15 +42,15 @@ void	iterate_in_map(size_t *i, t_data *data)
 	}
 }
 
-void	check_no_identifier(t_data *data)
+void check_no_identifier(t_data *data)
 {
-	size_t	i;
+	size_t i;
 
 	data->count = 0;
 	data->prefix = malloc(3 + 1);
 	data->texture = malloc(100);
 	if (!data->texture || !data->prefix)
-		return ;
+		return;
 	i = 0;
 	iterate_in_map(&i, data);
 	if (data->count != 4)
@@ -57,7 +60,7 @@ void	check_no_identifier(t_data *data)
 	}
 }
 
-void	check_data(t_data *data)
+void check_data(t_data *data)
 {
 	data->count1 = check_for_colors(data->prefix1, data->count1);
 	data->len = check_length_color(data->rest, data->len);
@@ -69,10 +72,10 @@ void	check_data(t_data *data)
 	check_rgb_cell_range(data);
 }
 
-void	iterate_color_map(t_data *data, int *i)
+void iterate_color_map(t_data *data, int *i)
 {
-	int	j;
-	int	w;
+	int j;
+	int w;
 
 	while (data->my_color[*i])
 	{

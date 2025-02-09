@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/08 19:31:50 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/09 22:30:26 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+#include <stdbool.h>
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
@@ -41,6 +42,7 @@ typedef struct s_data
 	char	**my_color;
 	char	**mini_map;
 	char **start_map;
+	char **new_map;
 	char	*line;
 	char	*prefix;
 	char	*texture;
