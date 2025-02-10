@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:40:09 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/09 23:31:03 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/02/10 12:40:50 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ void assigne_texture(t_data *data)
 	{
 		if ((data->new_map[i][0] == 'N' && data->new_map[i][1] == 'O') || (data->new_map[i][0] == 'S' && data->new_map[i][1] == 'O') || (data->new_map[i][0] == 'E' && data->new_map[i][1] == 'A') || (data->new_map[i][0] == 'W' && data->new_map[i][1] == 'E'))
 		{
-			data->my_map[j] = data->start_map[i];
+			data->my_map[j] = data->new_map[i];
 			j++;
 		}
 		i++;
@@ -221,7 +221,7 @@ void handle_spaces(t_data *data)
 		int j = 0;
 		while (data->new_map[i][j] == ' ' || data->new_map[i][j] == '\t')
 			j++;
-		if (data->new_map[i][j] != '\0') 
+		if (data->new_map[i][j] != '\0')
 		{
 			trimmed = ft_strdup(&data->new_map[i][j]);
 			if (!trimmed)
@@ -255,6 +255,12 @@ void read_lines(char *path, t_data *data)
 	lines = NULL;
 	split_map(data);
 	handle_spaces(data);
+	int j = 0;
+	while (data->new_map[j])
+	{
+		printf("%s\n", data->new_map[j]);
+		j++;
+	}
 	check_prefix(data);
 	assigne_colors(data);
 	assigne_texture(data);

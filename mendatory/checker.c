@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:49:56 by ahmed             #+#    #+#             */
-/*   Updated: 2025/02/09 23:29:24 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/02/10 12:56:15 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,19 @@ void iterate_in_map(size_t *i, t_data *data)
 	{
 		data->j = 0;
 		data->y = 0;
-		for (int i = 0; data->my_map[i]; i++)
-			printf("%s\n", data->my_map[i]);
-		exit(1);
 		while (data->my_map[*i][data->j] != ' ')
 		{
 			data->prefix[data->j] = data->my_map[*i][data->j];
 			data->j++;
 		}
 		data->prefix[data->j] = '\0';
+		if (data->prefix[0] == 'N' && data->prefix[1] == 'O')
+			data->counter++;
+		if (data->counter > 1)
+		{
+			printf("Error\n Duplicated prefix !!\n");
+			exit(1);
+		}
 		if (data->my_map[*i][data->j] == ' ')
 			data->j++;
 		while (data->my_map[*i][data->j] != '\0')
@@ -87,6 +91,13 @@ void iterate_color_map(t_data *data, int *i)
 			j++;
 		}
 		data->prefix1[j] = '\0';
+		if (data->prefix1[0] == 'F')
+			data->color_counter++;
+		if (data->color_counter > 1)
+		{
+			printf("Error\n Duplicated prefix !!\n");
+			exit(1);
+		}
 		if (data->my_color[*i][j] == ' ')
 			j++;
 		while (data->my_color[*i][j] != '\0')

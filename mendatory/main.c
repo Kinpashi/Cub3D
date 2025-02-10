@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/08 19:34:31 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/10 12:51:45 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	main(int argc, char **argv)
 	data.cell[1] = 0;
 	data.cell[2] = 0;
 	data.flag = 0;
+	data.counter = 0;
+	data.color_counter = 0;
 	if (argc != 2)
 	{
 		printf("Too much arguments !\n");
