@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_rgb_colors.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 23:57:58 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/07 15:15:00 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/02/10 22:29:09 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	draw_window(t_data *data)
 {
 	data->mini_y = 0;
 	init_data(data);
-	while (data->mini_y < SCREEN_HEIGHT / 2)
+	while (data->mini_y < SCREEN_HEIGHT)
 	{
 		data->mini_x = 0;
 		while (data->mini_x < SCREEN_WIDTH)
@@ -57,15 +57,15 @@ void	draw_window(t_data *data)
 		}
 		data->mini_y++;
 	}
-	while (data->mini_y < SCREEN_HEIGHT)
-	{
-		data->mini_x = 0;
-		while (data->mini_x < SCREEN_WIDTH)
-		{
-			set_floor_pixel(data, data->mini_x, data->mini_y, data->size_line);
-			data->mini_x++;
-		}
-		data->mini_y++;
-	}
+	// while (data->mini_y < SCREEN_HEIGHT)
+	// {
+	// 	data->mini_x = 0;
+	// 	while (data->mini_x < SCREEN_WIDTH)
+	// 	{
+	// 		set_floor_pixel(data, data->mini_x, data->mini_y, data->size_line);
+	// 		data->mini_x++;
+	// 	}
+	// 	data->mini_y++;
+	// }
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
 }
