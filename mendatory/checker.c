@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:49:56 by ahmed             #+#    #+#             */
-/*   Updated: 2025/02/10 14:11:56 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/10 16:58:22 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,52 @@ void iterate_in_map(size_t *i, t_data *data)
 {
 	while (*i < 4)
 	{
+		if (!data->my_map[*i] || data->my_map[*i][0] == '\0')
+		{
+			printf("Error\n Invalid map entry at line %zu !!\n", *i);
+			exit(1);
+		}
 		data->j = 0;
 		data->y = 0;
-		while (data->my_map[*i][data->j] != ' ')
+		while (data->my_map[*i][data->j] != ' ' && data->my_map[*i][data->j] != '\0')
 		{
 			data->prefix[data->j] = data->my_map[*i][data->j];
 			data->j++;
 		}
 		data->prefix[data->j] = '\0';
+
 		if (data->prefix[0] == 'N' && data->prefix[1] == 'O')
 			data->counter++;
 		if (data->counter > 1)
 		{
-			printf("Error\n Duplicated prefix !!\n");
+			printf("Error\n Duplicated prefix at line %zu!!\n", *i);
 			exit(1);
 		}
-		if (data->my_map[*i][data->j] == ' ')
+		while (data->my_map[*i][data->j] == ' ')
 			data->j++;
 		while (data->my_map[*i][data->j] != '\0')
 		{
-			while (data->my_map[*i][data->j] == '\t' || data->my_map[*i][data->j] == 32)
-				data->j++;
+			if (data->y >= 1000 - 1)
+			{
+				printf("Error\n Texture size exceeded at line %zu !!\n", *i);
+				exit(1);
+			}
 			data->texture[data->y] = data->my_map[*i][data->j];
 			data->j++;
 			data->y++;
 		}
 		data->texture[data->y] = '\0';
-		printf("%s\n", data->texture);
+		if (data->y == 0)
+		{
+			printf("Error\n Empty texture at line %zu !!\n", *i);
+			exit(1);
+		}
 		data->count = check_for_identifier(data->prefix, data->count);
 		check_texture(data->texture, data);
 		(*i)++;
 	}
 }
+
 
 void check_no_identifier(t_data *data)
 {
