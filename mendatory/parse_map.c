@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:38:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/06 15:47:02 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:10:10 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ void	check_colors(t_data *data)
 
 	data->count1 = 0;
 	data->len = 0;
-	data->prefix1 = malloc(2);
-	data->rest = malloc(100);
+	data->prefix1 = malloc(2 + 1);
+	data->rest = malloc(256);
 	if (!data->rest || !data->prefix1)
 		return ;
 	i = 0;

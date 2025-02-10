@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:49:56 by ahmed             #+#    #+#             */
-/*   Updated: 2025/02/10 12:56:15 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:11:56 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,14 @@ void iterate_in_map(size_t *i, t_data *data)
 			data->j++;
 		while (data->my_map[*i][data->j] != '\0')
 		{
+			while (data->my_map[*i][data->j] == '\t' || data->my_map[*i][data->j] == 32)
+				data->j++;
 			data->texture[data->y] = data->my_map[*i][data->j];
 			data->j++;
 			data->y++;
 		}
 		data->texture[data->y] = '\0';
+		printf("%s\n", data->texture);
 		data->count = check_for_identifier(data->prefix, data->count);
 		check_texture(data->texture, data);
 		(*i)++;
@@ -52,7 +55,7 @@ void check_no_identifier(t_data *data)
 
 	data->count = 0;
 	data->prefix = malloc(3 + 1);
-	data->texture = malloc(100);
+	data->texture = malloc(256);
 	if (!data->texture || !data->prefix)
 		return;
 	i = 0;
@@ -102,6 +105,8 @@ void iterate_color_map(t_data *data, int *i)
 			j++;
 		while (data->my_color[*i][j] != '\0')
 		{
+			while (data->my_color[*i][data->j] == '\t' || data->my_color[*i][data->j] == 32)
+				data->j++;
 			data->rest[w] = data->my_color[*i][j];
 			w++;
 			j++;

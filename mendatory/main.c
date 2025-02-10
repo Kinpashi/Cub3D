@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/10 12:51:45 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:29:53 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	function_call(t_data *data, t_path *path)
 {
+	(void)path;
 	check_all_in_map(data);
 	check_no_identifier(data);
 	check_colors(data);
 	check_mini_map(data);
-	pars_texture(data, path);
 }
 
 int	main(int argc, char **argv)

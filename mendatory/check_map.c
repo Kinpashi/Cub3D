@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:40:09 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/10 12:40:50 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/10 14:16:07 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,12 +255,6 @@ void read_lines(char *path, t_data *data)
 	lines = NULL;
 	split_map(data);
 	handle_spaces(data);
-	int j = 0;
-	while (data->new_map[j])
-	{
-		printf("%s\n", data->new_map[j]);
-		j++;
-	}
 	check_prefix(data);
 	assigne_colors(data);
 	assigne_texture(data);
