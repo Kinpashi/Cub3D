@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/11 18:09:14 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/11 22:21:43 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,14 +114,15 @@ typedef struct s_data
 	double camera_y;
 	double raydir_x;
 	double raydir_y;
-	double raymap_x;
-	double raymap_y;
-	double step_x;
-	double step_y;
+	int raymap_x;
+	int raymap_y;
+	int step_x;
+	int step_y;
 	double deltaDist_x;
 	double deltaDist_y;
 	double sideDist_x;
 	double sideDist_y;
+	int hit;
 }			t_data;
 
 char		*ft_strrchr(const char *s, int c);
