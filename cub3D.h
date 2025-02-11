@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/11 22:21:43 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/11 23:04:10 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct s_data
 	double sideDist_x;
 	double sideDist_y;
 	int hit;
+	int side;
 }			t_data;
 
 char		*ft_strrchr(const char *s, int c);

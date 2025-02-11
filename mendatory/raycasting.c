@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/11 22:27:44 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/11 23:07:51 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,21 @@ void init_dir_and_plan(t_data *data)
 
 void perform_dda(t_data *data)
 {
+    while (data->hit == 0)
+    {
+        if (data->sideDist_x < data->sideDist_y)
+        {
+            data->sideDist_x += data->deltaDist_x;
+            data->raymap_x += data->step_x;
+            data->side = 0;
+        }
+        else
+        {
+            data->sideDist_y += data->deltaDist_y;
+            data->raymap_y += data->step_y;
+            data->side = 1;
+        }
+    }
 }
 
 void raycasting(t_data *data)
