@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:35:21 by ahmed             #+#    #+#             */
-/*   Updated: 2025/02/06 15:46:54 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/11 16:11:51 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	check_bounds(t_data *data)
 
 void	key_movement(t_data *data, int keycode)
 {
-	if (keycode == 65361)
+	if (keycode == 97)
 		data->new_x--;
-	else if (keycode == 65363)
+	else if (keycode == 100)
 		data->new_x++;
-	else if (keycode == 65362)
+	else if (keycode == 119)
 		data->new_y--;
-	else if (keycode == 65364)
+	else if (keycode == 115)
 		data->new_y++;
 }
 
@@ -76,13 +76,13 @@ int	press_key(int keycode, t_data *data)
 {
 	if (keycode == 65307)
 		exit(0);
-	else if (keycode == 65361)
+	else if (keycode == 119) // w : up
 		move_player(data, keycode);
-	else if (keycode == 65363)
+	else if (keycode == 97) // A : left
 		move_player(data, keycode);
-	else if (keycode == 65362)
+	else if (keycode == 115) // S : down
 		move_player(data, keycode);
-	else if (keycode == 65364)
+	else if (keycode == 100) // D : right
 		move_player(data, keycode);
 	return (0);
 }

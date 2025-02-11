@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/10 12:51:36 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/11 17:21:35 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,15 @@ typedef struct s_data
 	int		mini_color;
 	int		max_size;
 	int		raduis_square;
+	/////////////////////
+	double dir_x;
+	double dir_y;
+	double plan_x;
+	double plan_y;
+	double camera_x;
+	double camera_y;
+	double raydir_x;
+	double raydir_y;
 }			t_data;
 
 char		*ft_strrchr(const char *s, int c);
@@ -167,5 +176,10 @@ void		find_player_position(t_data *data);
 int			draw_tile(char tile);
 
 int			close_win(t_data *data);
+
+////////////////////////////////////////////////
+
+void init_dir_and_plan(t_data *data);
+void raycasting(t_data *data);
 
 #endif
