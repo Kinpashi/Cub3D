@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/11 23:23:29 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/11 23:43:05 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void perform_dda(t_data *data)
             data->raymap_y += data->step_y;
             data->side = 1;
         }
-        if (data->mini_map[data->raymap_x][data->raymap_y] > 0)
+        if (data->mini_map[data->raymap_y][data->raymap_x] > 0)
             data->hit = 1;
     }
 }
