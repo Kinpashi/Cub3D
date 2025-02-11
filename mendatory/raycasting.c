@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/11 17:30:11 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/11 18:09:06 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,14 @@ void init_dir_and_plan(t_data *data)
     }
 }
 
+void perform_dda(t_data *data)
+{
+}
 
 void raycasting(t_data *data)
 {
     int x;
-    
+
     init_dir_and_plan(data);
     x = 0;
     while (x < SCREEN_WIDTH)
