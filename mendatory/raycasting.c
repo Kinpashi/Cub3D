@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/11 23:43:05 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/12 11:07:45 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,23 @@ void raycasting(t_data *data)
             data->sideDist_y = (data->raymap_y + 1.0 - data->player_y) * data->deltaDist_y;
         }
         perform_dda(data);
+        if (data->side == 0)
+            data->perpWallDist = (data->sideDist_x - data->deltaDist_x);
+        else
+            data->perpWallDist = (data->sideDist_y - data->deltaDist_y);
+        if (data->perpWallDist < 0.0001)
+            data->perpWallDist = 0.0001;
+        // if (data->perpWallDist < 0)
+        //     data->perpWallDist *= -1;
+        data->line_height = (int)(SCREEN_HEIGHT / data->perpWallDist);
+        if (data->line_height > SCREEN_HEIGHT * 10)
+            data->line_height = SCREEN_HEIGHT * 10;
+        data->drawStart = -data->line_height / 2 + SCREEN_HEIGHT / 2;
+        if (data->drawStart < 0)
+            data->drawStart = 0;
+        data->drawEnd = data->line_height / 2 + SCREEN_HEIGHT / 2;
+        if (data->drawEnd >= SCREEN_HEIGHT)
+            data->drawEnd = SCREEN_HEIGHT - 1;
         x++;
     }
 }

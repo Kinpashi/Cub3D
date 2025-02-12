@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/11 23:04:10 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/12 10:18:26 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,10 @@ typedef struct s_data
 	double sideDist_y;
 	int hit;
 	int side;
+	int line_height;
+	double perpWallDist;
+	int drawStart;
+	int drawEnd;
 }			t_data;
 
 char		*ft_strrchr(const char *s, int c);
