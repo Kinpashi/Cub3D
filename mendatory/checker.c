@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:49:56 by ahmed             #+#    #+#             */
-/*   Updated: 2025/02/13 14:36:27 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/13 15:04:34 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,12 @@ void check_no_identifier(t_data *data)
 
 void check_data(t_data *data)
 {
-	data->count1 = check_for_colors(data->prefix1, data->count1);
-	data->len = check_length_color(data->rest, data->len);
-	if (ft_strcmp(data->prefix1, "F") == 0)
-		check_floor_rgb(data->rest, data);
-	else if (ft_strcmp(data->prefix1, "C") == 0)
-		check_cell_rgb(data->rest, data);
+	data->count1 = check_for_colors((*data->prefix1), data->count1);
+	data->len = check_length_color((*data->rest), data->len);
+	if (ft_strcmp((*data->prefix1), "F") == 0)
+		check_floor_rgb((*data->rest), data);
+	else if (ft_strcmp((*data->prefix1), "C") == 0)
+		check_cell_rgb((*data->rest), data);
 	check_rgb_fllor_range(data);
 	check_rgb_cell_range(data);
 }
@@ -112,13 +112,19 @@ void iterate_color_map(t_data *data, int *i)
 	{
 		j = 0;
 		w = 0;
+		*data->prefix1 = malloc(sizeof(char) * 100);
+		if (!(*data->prefix1))
+		{
+			printf("Error while allocating memory !!\n");
+			exit(1);
+		}
 		while (data->my_color[*i][j] != ' ')
 		{
-			data->prefix1[j] = data->my_color[*i][j];
+			(*data->prefix1)[j] = data->my_color[*i][j];
 			j++;
 		}
-		data->prefix1[j] = '\0';
-		if (data->prefix1[0] == 'F')
+		(*data->prefix1)[j] = '\0';
+		if ((*data->prefix1)[0] == 'F')
 			data->color_counter++;
 		if (data->color_counter > 1)
 		{
@@ -127,15 +133,21 @@ void iterate_color_map(t_data *data, int *i)
 		}
 		if (data->my_color[*i][j] == ' ')
 			j++;
+		*data->rest = malloc(sizeof(char) * 100);
+		if (!(*data->rest))
+		{
+			printf("Error while allocating memory !!\n");
+			exit(1);
+		}
 		while (data->my_color[*i][j] != '\0')
 		{
 			while (data->my_color[*i][data->j] == '\t' || data->my_color[*i][data->j] == 32)
 				data->j++;
-			data->rest[w] = data->my_color[*i][j];
+			(*data->rest)[w] = data->my_color[*i][j];
 			w++;
 			j++;
 		}
-		data->rest[w] = '\0';
+		(*data->rest)[w] = '\0';
 		check_data(data);
 		(*i)++;
 	}

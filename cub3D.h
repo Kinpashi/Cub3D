@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/13 14:31:46 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:57:15 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct s_data
 	char *line;
 	char **prefix;
 	char **texture;
-	char *prefix1;
-	char *rest;
+	char **prefix1;
+	char **rest;
 	int count1;
 	int count;
 	int counter;
