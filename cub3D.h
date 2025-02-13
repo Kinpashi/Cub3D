@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/13 14:57:15 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/13 22:37:35 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,11 @@ typedef struct s_data
 	double perpWallDist;
 	int drawStart;
 	int drawEnd;
+	double wallx;
+	int txt_x;
+	int txt_y;
+	void *r_img;
+	void *r_addr;
 } t_data;
 
 char *ft_strrchr(const char *s, int c);

@@ -6,7 +6,7 @@
 #    By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 00:08:49 by aahlaqqa          #+#    #+#              #
-#    Updated: 2025/02/11 16:16:18 by aahlaqqa         ###   ########.fr        #
+#    Updated: 2025/02/13 16:18:25 by aahlaqqa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC= cc
 
 CFLAGS= -Wall -Wextra -Werror -g
 
-FLAGS=  -Lminilibx-linux -lmlx -lXext -lX11
+FLAGS=  -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
 NAME= cub3D
 

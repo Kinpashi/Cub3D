@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/13 15:34:17 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/13 22:44:14 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,26 @@ void perform_dda(t_data *data)
     }
 }
 
+void set_pixels(t_data *data, int x, int y, int color)
+{
+    char *dest;
+
+    if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
+        return;
+    dest = data->r_addr + (y * data->size_line + x * (data->bits_per_pixel / 8));
+    *(unsigned int *)dest = color;
+}
+
 void raycasting(t_data *data)
 {
     int x;
+    int y;
+    int r_color;
 
     init_dir_and_plan(data);
     x = 0;
+    data->r_img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+    data->r_addr = mlx_get_data_addr(data->r_img, &data->bits_per_pixel, &data->size_line, &data->endian);
     while (x < SCREEN_WIDTH)
     {
         data->camera_x = 2.0 * x / SCREEN_WIDTH - 1;
@@ -134,6 +148,23 @@ void raycasting(t_data *data)
         data->drawEnd = data->line_height / 2 + SCREEN_HEIGHT / 2;
         if (data->drawEnd >= SCREEN_HEIGHT)
             data->drawEnd = SCREEN_HEIGHT - 1;
+        if (data->side == 0)
+            data->wallx = data->player_y * data->perpWallDist + data->raydir_y;
+        else
+            data->wallx = data->player_x * data->perpWallDist + data->raydir_x;
+        data->wallx -= floor(data->wallx);
+        data->txt_x = (int)(data->wallx * ((double)64));
+        if ((data->side == 0 && data->raydir_x > 0) || (data->side == 1 && data->raydir_y < 0))
+            data->txt_x = 64 - data->txt_x - 1;
+        y = data->drawStart;
+        while (y < data->drawEnd)
+        {
+            data->txt_y = ((y - data->drawStart) * 64) / data->line_height;
+            r_color = 0xFF3333;
+            set_pixels(data, x, y, r_color);
+            y++;
+        }
         x++;
     }
+    mlx_put_image_to_window(data->mlx, data->mlx_win, data->r_img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/13 13:36:29 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/13 19:30:08 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int	main(int argc, char **argv)
 	data.line_height = 0;
 	data.drawStart = 0;
 	data.drawEnd = 0;
+	data.wallx = 0;
+	data.txt_x = 0;
+	data.txt_y = 0;
 	if (argc != 2)
 	{
 		printf("Too much arguments !\n");
