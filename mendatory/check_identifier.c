@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:24:59 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/06 15:46:08 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:37:57 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	check_texture(char *str, t_data *data)
 		return ;
 	if (ft_strcmp(extention, ".xpm") == 0)
 	{
-		data->texture = str;
+		(*data->texture) = str;
 	}
 	else
 	{
