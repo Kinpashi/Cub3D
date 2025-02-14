@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 23:57:58 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/10 22:29:09 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:39:45 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@ void	init_data(t_data *data)
 	data->floor_color = handle_rgb(data->floor[0], data->floor[1],
 			data->floor[2]);
 	data->cell_color = handle_rgb(data->cell[0], data->cell[1], data->cell[2]);
-	data->img = mlx_new_image(data->mlx, 1500, 940);
-	data->pixel_buffer = mlx_get_data_addr(data->img, &data->bits_per_pixel,
-			&data->size_line, &data->endian);
 }
 
 void	set_cell_pixel(t_data *data, int x, int y, int line_len)

@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/14 16:27:41 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:38:57 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,9 @@ void raycasting(t_data *data)
     int x;
     int y;
     int r_color;
-    int floor_color;
-    int cell_color;
 
     init_dir_and_plan(data);
     x = 0;
-    floor_color = 0x994C00;
-    cell_color = 0xC0C0C0;
     r_color = 0xFF3333;
     data->r_img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
     data->r_addr = mlx_get_data_addr(data->r_img, &data->bits_per_pixel, &data->size_line, &data->endian);
@@ -165,11 +161,11 @@ void raycasting(t_data *data)
         while (y < SCREEN_HEIGHT)
         {
             if (y < data->drawStart)
-                set_pixels(data, x, y, cell_color);
+                set_pixels(data, x, y, data->cell_color);
             else if (y >= data->drawStart && y < data->drawEnd)
                 set_pixels(data, x, y, r_color);
             else
-                set_pixels(data, x, y, floor_color);
+                set_pixels(data, x, y, data->floor_color);
             //data->txt_y = ((y - data->drawStart) * 64) / data->line_height;
             y++;
         }

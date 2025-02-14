@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/14 14:46:52 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:38:14 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,6 +193,7 @@ void render_mini_map(t_data *data);
 void handle_player(t_data *data, int x, int y);
 void find_player_position(t_data *data);
 int draw_tile(char tile);
+void	init_data(t_data *data);
 
 int close_win(t_data *data);
 
