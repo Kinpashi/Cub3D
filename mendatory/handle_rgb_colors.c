@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 23:57:58 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/14 16:39:45 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/15 09:39:16 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,45 +24,45 @@ void	init_data(t_data *data)
 	data->cell_color = handle_rgb(data->cell[0], data->cell[1], data->cell[2]);
 }
 
-void	set_cell_pixel(t_data *data, int x, int y, int line_len)
-{
-	int	offset;
+// void	set_cell_pixel(t_data *data, int x, int y, int line_len)
+// {
+// 	int	offset;
 
-	offset = (y * line_len) + (x * (data->bits_per_pixel / 8));
-	*(int *)(data->pixel_buffer + offset) = data->cell_color;
-}
+// 	offset = (y * line_len) + (x * (data->bits_per_pixel / 8));
+// 	*(int *)(data->pixel_buffer + offset) = data->cell_color;
+// }
 
-void	set_floor_pixel(t_data *data, int x, int y, int line_len)
-{
-	int	offset;
+// void	set_floor_pixel(t_data *data, int x, int y, int line_len)
+// {
+// 	int	offset;
 
-	offset = (y * line_len) + (x * (data->bits_per_pixel / 8));
-	*(int *)(data->pixel_buffer + offset) = data->floor_color;
-}
+// 	offset = (y * line_len) + (x * (data->bits_per_pixel / 8));
+// 	*(int *)(data->pixel_buffer + offset) = data->floor_color;
+// }
 
-void	draw_window(t_data *data)
-{
-	data->mini_y = 0;
-	init_data(data);
-	while (data->mini_y < SCREEN_HEIGHT)
-	{
-		data->mini_x = 0;
-		while (data->mini_x < SCREEN_WIDTH)
-		{
-			set_cell_pixel(data, data->mini_x, data->mini_y, data->size_line);
-			data->mini_x++;
-		}
-		data->mini_y++;
-	}
-	// while (data->mini_y < SCREEN_HEIGHT)
-	// {
-	// 	data->mini_x = 0;
-	// 	while (data->mini_x < SCREEN_WIDTH)
-	// 	{
-	// 		set_floor_pixel(data, data->mini_x, data->mini_y, data->size_line);
-	// 		data->mini_x++;
-	// 	}
-	// 	data->mini_y++;
-	// }
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
-}
+// void	draw_window(t_data *data)
+// {
+// 	data->mini_y = 0;
+// 	init_data(data);
+// 	while (data->mini_y < SCREEN_HEIGHT)
+// 	{
+// 		data->mini_x = 0;
+// 		while (data->mini_x < SCREEN_WIDTH)
+// 		{
+// 			set_cell_pixel(data, data->mini_x, data->mini_y, data->size_line);
+// 			data->mini_x++;
+// 		}
+// 		data->mini_y++;
+// 	}
+// 	// while (data->mini_y < SCREEN_HEIGHT)
+// 	// {
+// 	// 	data->mini_x = 0;
+// 	// 	while (data->mini_x < SCREEN_WIDTH)
+// 	// 	{
+// 	// 		set_floor_pixel(data, data->mini_x, data->mini_y, data->size_line);
+// 	// 		data->mini_x++;
+// 	// 	}
+// 	// 	data->mini_y++;
+// 	// }
+// 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
+// }

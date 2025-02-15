@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:34:38 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/13 22:58:46 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/15 09:59:56 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	calculate_view(t_data *data)
 {
 	data->start_x = data->player_x - data->view_width / 2;
 	data->start_y = data->player_y - data->view_height / 2;
+
 	if (data->start_x < 0)
 		data->start_x = 0;
 	if (data->start_y < 0)
@@ -25,6 +26,7 @@ void	calculate_view(t_data *data)
 	if (data->start_y + data->view_height > data->map_height)
 		data->start_y = data->map_height - data->view_height;
 }
+
 
 void	init_mini_map_2(t_data *data)
 {

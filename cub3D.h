@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/14 16:38:14 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/15 11:27:56 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 
 #define SCREEN_WIDTH 1000
 #define SCREEN_HEIGHT 500
+
+#define MOVE_SPEED 0.1
 
 typedef struct s_path
 {
@@ -194,6 +196,8 @@ void handle_player(t_data *data, int x, int y);
 void find_player_position(t_data *data);
 int draw_tile(char tile);
 void	init_data(t_data *data);
+void	calculate_view(t_data *data);
+void rotate_player(t_data *data, int keycode);
 
 int close_win(t_data *data);
 
@@ -202,6 +206,7 @@ int close_win(t_data *data);
 void init_dir_and_plan(t_data *data);
 void raycasting(t_data *data);
 void perform_dda(t_data *data);
-int key_moves(int keycode, t_data *data);
+int key_press(int keycode, t_data *data);
+void	find_player_position(t_data *data);
 
 #endif
