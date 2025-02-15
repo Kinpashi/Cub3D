@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:35:21 by ahmed             #+#    #+#             */
-/*   Updated: 2025/02/15 11:42:24 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/15 11:46:16 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int move_player(t_data *data, int keycode)
 	data->new_x = data->player_x;
 	data->new_y = data->player_y;
 	key_movement(data, keycode);
-
 	if (data->new_x >= 0 && data->new_x < data->map_width &&
 		data->new_y >= 0 && data->new_y < data->map_height &&
 		data->mini_map[(int)data->new_y][(int)data->new_x] == '0')
