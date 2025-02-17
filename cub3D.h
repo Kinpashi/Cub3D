@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/17 16:51:37 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/17 21:15:20 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 #define SCREEN_HEIGHT 500
 
 #define MOVE_SPEED 1.0
+
+#define ROT_SPEED 0.1
 
 typedef struct s_path
 {
