@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/17 14:04:26 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:51:37 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,7 +182,6 @@ void iterate_in_map(size_t *i, t_data *data);
 void check_no_identifier(t_data *data);
 void check_data(t_data *data);
 void iterate_color_map(t_data *data, int *i);
-int move_player(t_data *data, int keycode);
 int press_key(int keycode, t_data *data);
 void draw_player_as_circle(t_data *data, int center_x, int center_y,
 						   int radius);
@@ -193,6 +192,16 @@ int draw_tile(char tile);
 void init_data(t_data *data);
 void calculate_view(t_data *data);
 int close_win(t_data *data);
+void split_map(t_data *data);
+void print_malloc_error_message();
+void print_parsing_error_message();
+void handle_spaces(t_data *data);
+void check_prefix(t_data *data);
+void print_invalid_map_error_message();
+void assigne_colors(t_data *data);
+void assigne_texture(t_data *data);
+void print_incorrect_texture_error_message();
+void print_incorrect_prefix_error_message();;
 
 ////////////////////////////////////////////////
 

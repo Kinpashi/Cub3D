@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/17 15:39:14 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:26:41 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,6 @@ void raycasting(t_data *data)
                 set_pixels(data, x, y, r_color);
             else
                 set_pixels(data, x, y, data->floor_color);
-            //data->txt_y = ((y - data->drawStart) * 64) / data->line_height;
             y++;
         }
         x++;
