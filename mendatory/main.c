@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/15 10:08:55 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:38:36 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	main(int argc, char **argv)
 	//draw_window(&data);
 	init_data(&data);
 	raycasting(&data);
-	draw_mini_map(&data);
 	mlx_hook(data.mlx_win, 2, (1L << 0), press_key, &data);
 	mlx_hook(data.mlx_win, 17, 0, close_win, &data);
 	mlx_loop(data.mlx);

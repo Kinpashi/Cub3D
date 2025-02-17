@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/14 16:38:57 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:39:14 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,9 @@ void init_dir_and_plan(t_data *data)
                 data->plan_x = 0;
                 data->plan_y = -0.50;
             }
-            if (data->mini_map[i][j] == 'N' || data->mini_map[i][j] == 'S' || data->mini_map[i][j] == 'W' || data->mini_map[i][j] == 'E')
+            if ((data->mini_map[i][j] == 'N' || data->mini_map[i][j] == 'S' ||
+                 data->mini_map[i][j] == 'W' || data->mini_map[i][j] == 'E') &&
+                (data->player_x == 0 && data->player_y == 0)) 
             {
                 data->player_x = i + 0.5;
                 data->player_y = j + 0.5;
@@ -58,6 +60,7 @@ void init_dir_and_plan(t_data *data)
         i++;
     }
 }
+
 
 void perform_dda(t_data *data)
 {

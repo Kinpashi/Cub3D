@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/15 11:27:56 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:04:26 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 #define SCREEN_WIDTH 1000
 #define SCREEN_HEIGHT 500
 
-#define MOVE_SPEED 0.1
+#define MOVE_SPEED 1.0
 
 typedef struct s_path
 {
@@ -148,9 +148,7 @@ char **ft_split(char const *s, char c);
 int ft_atoi(const char *str);
 char *ft_strcpy(char *dst, const char *src);
 void *ft_memset(void *b, int c, size_t len);
-
 char *get_next_line(int fd);
-
 void check_player(t_data *data);
 void check_path(char *path);
 void read_lines(char *path, t_data *data);
@@ -165,12 +163,9 @@ void check_rgb_fllor_range(t_data *data);
 void check_rgb_cell_range(t_data *data);
 void check_mini_map(t_data *data);
 void check_texture(char *str, t_data *data);
-void draw_window(t_data *data);
+// void draw_window(t_data *data);
 int handle_rgb(int red, int green, int blue);
-void set_floor_pixel(t_data *data, int x, int y, int line_len);
-void set_cell_pixel(t_data *data, int x, int y, int line_len);
 void check_all_in_map(t_data *data);
-void pars_texture(t_data *data, t_path *path);
 void draw_mini_map(t_data *data);
 void check_map(t_data *data);
 void check_top_borders(t_data *data);
@@ -195,10 +190,8 @@ void render_mini_map(t_data *data);
 void handle_player(t_data *data, int x, int y);
 void find_player_position(t_data *data);
 int draw_tile(char tile);
-void	init_data(t_data *data);
-void	calculate_view(t_data *data);
-void rotate_player(t_data *data, int keycode);
-
+void init_data(t_data *data);
+void calculate_view(t_data *data);
 int close_win(t_data *data);
 
 ////////////////////////////////////////////////
@@ -206,7 +199,7 @@ int close_win(t_data *data);
 void init_dir_and_plan(t_data *data);
 void raycasting(t_data *data);
 void perform_dda(t_data *data);
-int key_press(int keycode, t_data *data);
-void	find_player_position(t_data *data);
+int press_key(int key, t_data *data);
+void find_player_position(t_data *data);
 
 #endif

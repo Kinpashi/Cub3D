@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 14:35:21 by ahmed             #+#    #+#             */
-/*   Updated: 2025/02/15 11:46:16 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:29:16 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,21 +76,5 @@ int move_player(t_data *data, int keycode)
 		data->player_y = data->new_y;
 	}
 	raycasting(data);
-	draw_mini_map(data);
 	return (0);
 }
-
-// int	press_key(int keycode, t_data *data)
-// {
-// 	if (keycode == 65307)
-// 		exit(0);
-// 	else if (keycode == 119) // w : up
-// 		move_player(data, keycode);
-// 	else if (keycode == 97) // A : left
-// 		move_player(data, keycode);
-// 	else if (keycode == 115) // S : down
-// 		move_player(data, keycode);
-// 	else if (keycode == 100) // D : right
-// 		move_player(data, keycode);
-// 	return (0);
-// }

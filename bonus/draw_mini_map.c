@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 18:34:38 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/15 09:59:56 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/15 13:42:43 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	init_mini_map_2(t_data *data)
 
 void	init_mini_map(t_data *data)
 {
-	data->max_size = 100;
+	data->max_size = RIGHT;
 	data->map_height = 0;
 	while (data->mini_map[data->map_height])
 		data->map_height++;

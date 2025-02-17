@@ -6,37 +6,40 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:45:20 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/15 11:47:58 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:41:26 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void rotate_player(t_data *data, int keycode)
+int press_key(int key, t_data *data)
 {
-    double rot_speed = 0.05;
-    double old_dir_x;
-    double old_plane_x;
-
-    if (keycode == 65361)
-        rot_speed *= -1;
-    old_dir_x = data->dir_x;
-    data->dir_x = data->dir_x * cos(rot_speed) - data->dir_y * sin(rot_speed);
-    data->dir_y = old_dir_x * sin(rot_speed) + data->dir_y * cos(rot_speed);
-    old_plane_x = data->plan_x;
-    data->plan_x = data->plan_x * cos(rot_speed) - data->plan_y * sin(rot_speed);
-    data->plan_y = old_plane_x * sin(rot_speed) + data->plan_y * cos(rot_speed);
-    raycasting(data);
-    draw_mini_map(data);
-}
-
-int press_key(int keycode, t_data *data)
-{
-    if (keycode == 65307)
+    printf("Current tile: %c\n", data->mini_map[(int)data->player_x][(int)data->player_y]);
+    printf("Tile ahead: %c\n", data->mini_map[(int)(data->player_x + data->dir_x * MOVE_SPEED)][(int)data->player_y]);
+    printf("Tile right: %c\n", data->mini_map[(int)data->player_x][(int)(data->player_y + data->dir_y * MOVE_SPEED)]);
+    if (key == 65307) // ESC key
         exit(0);
-    if (keycode == 119 || keycode == 115)
-        move_player(data, keycode);
-    if (keycode == 65361 || keycode == 65363)
-        rotate_player(data, keycode);
+    if (key == 119) // W Key
+    {
+        printf("Moving forward (W)\n");
+        printf("Before movement: x = %f, y = %f\n", data->player_x, data->player_y);
+
+        if (data->mini_map[(int)(data->player_x + data->dir_x * MOVE_SPEED)][(int)data->player_y] != '1')
+            data->player_x += data->dir_x * MOVE_SPEED;
+
+        if (data->mini_map[(int)data->player_x][(int)(data->player_y + data->dir_y * MOVE_SPEED)] != '1')
+            data->player_y += data->dir_y * MOVE_SPEED;
+
+        printf("After movement: x = %f, y = %f\n", data->player_x, data->player_y);
+    }
+    else if (key == 115) // S Key
+    {
+        if (data->mini_map[(int)(data->player_x - data->dir_x * MOVE_SPEED)][(int)data->player_y] != '1')
+            data->player_x -= data->dir_x * MOVE_SPEED;
+
+        if (data->mini_map[(int)data->player_x][(int)(data->player_y - data->dir_y * MOVE_SPEED)] != '1')
+            data->player_y -= data->dir_y * MOVE_SPEED;
+    }
+    raycasting(data);
     return (0);
 }
