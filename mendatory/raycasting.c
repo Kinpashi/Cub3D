@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/18 22:38:35 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/18 22:42:32 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,12 @@ void raycasting(t_data *data)
 {
     int x;
     int y;
-    // int r_color;
-    int color;
+    int r_color;
+    //int color;
     int *texture;
 
     x = 0;
-    // r_color = 0xFF3333;
+    r_color = 0xFF3333;
     texture = NULL;
     data->r_img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
     data->r_addr = mlx_get_data_addr(data->r_img, &data->bits_per_pixel, &data->size_line, &data->endian);
@@ -176,9 +176,10 @@ void raycasting(t_data *data)
                 set_pixels(data, x, y, data->cell_color);
             else if (y >= data->drawStart && y < data->drawEnd)
             {
-                data->txt_y = (int)(((y - data->drawStart) * data->tex_height) / data->line_height);
-                color = texture[data->txt_y * data->tex_width + data->txt_x];
-                set_pixels(data, x, y, color);
+                data->txt_x = (int)(data->wallx * ((double)64)); 
+                //data->txt_y = (int)(((y - data->drawStart) * data->tex_height) / data->line_height);
+                //color = texture[data->txt_y * data->tex_width + data->txt_x];
+                set_pixels(data, x, y, r_color);
             }
             else
                 set_pixels(data, x, y, data->floor_color);
@@ -186,5 +187,6 @@ void raycasting(t_data *data)
         }
         x++;
     }
+    printf("%p\n", texture);
     mlx_put_image_to_window(data->mlx, data->mlx_win, data->r_img, 0, 0);
 }
