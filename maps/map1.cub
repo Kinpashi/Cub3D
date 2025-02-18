@@ -1,14 +1,9 @@
-                NO      ./copy1.xpm
-
-SO ./copy2.xpm
+NO images/wall.xpm
+WE images/wall.xpm
+EA images/wall.xpm
+SO images/wall.xpm
 
 F 153,76,0
-
-
-
-WE ./copy3.xpm
-
-EA ./copy4.xpm
 C 192,192,192
 
 

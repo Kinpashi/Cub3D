@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/17 21:15:20 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/18 14:58:32 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,23 @@ typedef struct s_data
 	char **new_map;
 	char *line;
 	char **prefix;
+	char *no_texture;
+	char *so_texture;
+	char *we_texture;
+	char *ea_texture;
+	int tex_width;
+	int tex_height;
 	char **texture;
 	char **prefix1;
 	char **rest;
+	void *no_texture_img;
+	void *so_texture_img;
+	void *we_texture_img;
+	void *ea_texture_img;
+	int *no_texture_data;
+	int *so_texture_data;
+	int *ea_texture_data;
+	int *we_texture_data;
 	int count1;
 	int count;
 	int counter;
@@ -203,7 +217,9 @@ void print_invalid_map_error_message();
 void assigne_colors(t_data *data);
 void assigne_texture(t_data *data);
 void print_incorrect_texture_error_message();
-void print_incorrect_prefix_error_message();;
+void print_incorrect_prefix_error_message();
+void load_textures(t_data *data);
+void get_texture_data(t_data *data);
 
 ////////////////////////////////////////////////
 

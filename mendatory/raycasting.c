@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/17 22:09:18 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/18 22:38:35 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,13 @@ void raycasting(t_data *data)
 {
     int x;
     int y;
-    int r_color;
+    // int r_color;
+    int color;
+    int *texture;
 
     x = 0;
-    r_color = 0xFF3333;
+    // r_color = 0xFF3333;
+    texture = NULL;
     data->r_img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
     data->r_addr = mlx_get_data_addr(data->r_img, &data->bits_per_pixel, &data->size_line, &data->endian);
     while (x < SCREEN_WIDTH)
@@ -135,14 +138,20 @@ void raycasting(t_data *data)
             data->sideDist_y = (data->raymap_y + 1.0 - data->player_y) * data->deltaDist_y;
         }
         perform_dda(data);
+        if (data->side == 0 && data->raydir_x > 0)
+            texture = data->ea_texture_data;
+        else if (data->side == 0 && data->raydir_x < 0)
+            texture = data->we_texture_data;
+        else if (data->side == 1 && data->raydir_y > 0)
+            texture = data->so_texture_data;
+        else if (data->side == 1 && data->raydir_y < 0)
+            texture = data->no_texture_data;
         if (data->side == 0)
             data->perpWallDist = (data->sideDist_x - data->deltaDist_x);
         else
             data->perpWallDist = (data->sideDist_y - data->deltaDist_y);
         if (data->perpWallDist < 0.0001)
             data->perpWallDist = 0.0001;
-        // if (data->perpWallDist < 0)
-        //     data->perpWallDist *= -1;
         data->line_height = (int)(SCREEN_HEIGHT / data->perpWallDist);
         if (data->line_height > SCREEN_HEIGHT * 10)
             data->line_height = SCREEN_HEIGHT * 10;
@@ -157,7 +166,7 @@ void raycasting(t_data *data)
         else
             data->wallx = data->player_x * data->perpWallDist + data->raydir_x;
         data->wallx -= floor(data->wallx);
-        data->txt_x = (int)(data->wallx * ((double)64));
+        data->txt_x = (int)(data->wallx * ((double)data->tex_width));
         if ((data->side == 0 && data->raydir_x > 0) || (data->side == 1 && data->raydir_y < 0))
             data->txt_x = 64 - data->txt_x - 1;
         y = 0;
@@ -166,7 +175,11 @@ void raycasting(t_data *data)
             if (y < data->drawStart)
                 set_pixels(data, x, y, data->cell_color);
             else if (y >= data->drawStart && y < data->drawEnd)
-                set_pixels(data, x, y, r_color);
+            {
+                data->txt_y = (int)(((y - data->drawStart) * data->tex_height) / data->line_height);
+                color = texture[data->txt_y * data->tex_width + data->txt_x];
+                set_pixels(data, x, y, color);
+            }
             else
                 set_pixels(data, x, y, data->floor_color);
             y++;

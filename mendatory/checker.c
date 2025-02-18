@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:49:56 by ahmed             #+#    #+#             */
-/*   Updated: 2025/02/17 16:53:10 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/18 17:21:07 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void iterate_in_map(size_t *i, t_data *data)
 			print_invalid_map_error_message();
 		data->j = 0;
 		data->y = 0;
-		*data->prefix = malloc(sizeof(char) * 100);
+		*data->prefix = malloc(sizeof(char) * 3);
 		if (!(*data->prefix))
 			print_malloc_error_message();
 		while (data->my_map[*i][data->j] != ' ' && data->my_map[*i][data->j] != '\0')
@@ -51,6 +51,16 @@ void iterate_in_map(size_t *i, t_data *data)
 			print_incorrect_texture_error_message();
 		data->count = check_for_identifier((*data->prefix), data->count);
 		check_texture(*(data->texture), data);
+		if (strcmp(*data->prefix, "NO") == 0)
+			data->no_texture = strdup(*data->texture);
+		else if (strcmp(*data->prefix, "SO") == 0)
+			data->so_texture = strdup(*data->texture);
+		else if (strcmp(*data->prefix, "WE") == 0)
+			data->we_texture = strdup(*data->texture);
+		else if (strcmp(*data->prefix, "EA") == 0)
+			data->ea_texture = strdup(*data->texture);
+		else
+			print_incorrect_prefix_error_message();
 		(*i)++;
 	}
 }
