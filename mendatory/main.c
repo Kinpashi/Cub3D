@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/18 17:34:27 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/19 09:35:02 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int main(int argc, char **argv)
 	data.wallx = 0;
 	data.txt_x = 0;
 	data.txt_y = 0;
+	data.tex_height = 0;
+	data.tex_width = 0;
 	data.so_texture = malloc(sizeof(char) * 100);
 	data.no_texture = malloc(sizeof(char) * 100);
 	data.ea_texture = malloc(sizeof(char) * 100);
