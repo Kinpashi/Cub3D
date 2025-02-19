@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/18 22:42:32 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/19 10:23:26 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,12 @@ void raycasting(t_data *data)
 {
     int x;
     int y;
-    int r_color;
-    //int color;
+    // int r_color;
+    int color;
     int *texture;
 
     x = 0;
-    r_color = 0xFF3333;
+    // r_color = 0xFF3333;
     texture = NULL;
     data->r_img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
     data->r_addr = mlx_get_data_addr(data->r_img, &data->bits_per_pixel, &data->size_line, &data->endian);
@@ -162,13 +162,13 @@ void raycasting(t_data *data)
         if (data->drawEnd >= SCREEN_HEIGHT)
             data->drawEnd = SCREEN_HEIGHT - 1;
         if (data->side == 0)
-            data->wallx = data->player_y * data->perpWallDist + data->raydir_y;
+            data->wallx = data->player_y + data->perpWallDist * data->raydir_y;
         else
-            data->wallx = data->player_x * data->perpWallDist + data->raydir_x;
+            data->wallx = data->player_x + data->perpWallDist * data->raydir_x;
         data->wallx -= floor(data->wallx);
         data->txt_x = (int)(data->wallx * ((double)data->tex_width));
-        if ((data->side == 0 && data->raydir_x > 0) || (data->side == 1 && data->raydir_y < 0))
-            data->txt_x = 64 - data->txt_x - 1;
+        // if ((data->side == 0 && data->raydir_x > 0) || (data->side == 1 && data->raydir_y < 0))
+        //     data->txt_x = 64 - data->txt_x - 1;
         y = 0;
         while (y < SCREEN_HEIGHT)
         {
@@ -176,10 +176,12 @@ void raycasting(t_data *data)
                 set_pixels(data, x, y, data->cell_color);
             else if (y >= data->drawStart && y < data->drawEnd)
             {
-                data->txt_x = (int)(data->wallx * ((double)64)); 
-                //data->txt_y = (int)(((y - data->drawStart) * data->tex_height) / data->line_height);
-                //color = texture[data->txt_y * data->tex_width + data->txt_x];
-                set_pixels(data, x, y, r_color);
+                // data->txt_x = (int)(data->wallx * ((double)64));
+                data->txt_y = ((y - data->drawStart) * data->tex_height) / data->line_height;
+                if (data->txt_y >= data->tex_height)
+                    data->txt_y = data->tex_height - 1;
+                color = texture[data->txt_y * data->tex_width + data->txt_x];
+                set_pixels(data, x, y, color);
             }
             else
                 set_pixels(data, x, y, data->floor_color);
@@ -187,6 +189,6 @@ void raycasting(t_data *data)
         }
         x++;
     }
-    printf("%p\n", texture);
+    // printf("%p\n", texture);
     mlx_put_image_to_window(data->mlx, data->mlx_win, data->r_img, 0, 0);
 }
