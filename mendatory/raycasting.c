@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/19 10:23:26 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:15:05 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,8 +167,6 @@ void raycasting(t_data *data)
             data->wallx = data->player_x + data->perpWallDist * data->raydir_x;
         data->wallx -= floor(data->wallx);
         data->txt_x = (int)(data->wallx * ((double)data->tex_width));
-        // if ((data->side == 0 && data->raydir_x > 0) || (data->side == 1 && data->raydir_y < 0))
-        //     data->txt_x = 64 - data->txt_x - 1;
         y = 0;
         while (y < SCREEN_HEIGHT)
         {
@@ -176,7 +174,6 @@ void raycasting(t_data *data)
                 set_pixels(data, x, y, data->cell_color);
             else if (y >= data->drawStart && y < data->drawEnd)
             {
-                // data->txt_x = (int)(data->wallx * ((double)64));
                 data->txt_y = ((y - data->drawStart) * data->tex_height) / data->line_height;
                 if (data->txt_y >= data->tex_height)
                     data->txt_y = data->tex_height - 1;
@@ -189,6 +186,5 @@ void raycasting(t_data *data)
         }
         x++;
     }
-    // printf("%p\n", texture);
     mlx_put_image_to_window(data->mlx, data->mlx_win, data->r_img, 0, 0);
 }

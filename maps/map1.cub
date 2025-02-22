@@ -1,10 +1,10 @@
-NO images/eye.xpm
-WE images/eye.xpm
-EA images/eye.xpm
-SO images/eye.xpm
+NO images/walls.xpm
+WE images/red_wall.xpm
+EA images/walls.xpm
+SO images/red_wall.xpm
 
-F 153,76,0
-C 192,192,192
+F 51,25,0
+C 64,64,64
 
 
         1111111111111111111111111

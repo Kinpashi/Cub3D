@@ -1,7 +1,7 @@
-NO ./copy1.xpm
-SO ./copy2.xpm
-WE ./copy3.xpm
-EA ./copy4.xpm
+NO images/flame.xpm
+SO images/flame.xpm
+WE images/flame.xpm
+EA images/flame.xpm
 
 F 153,76,0
 C 192,192,192
