@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/18 14:58:32 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/22 14:47:56 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ typedef struct s_data
 	char *so_texture;
 	char *we_texture;
 	char *ea_texture;
+	int no_tex_width;
+	int no_tex_height;
+	int so_tex_width;
+	int so_tex_height;
+	int we_tex_width;
+	int we_tex_height;
+	int ea_tex_width;
+	int ea_tex_height;
 	int tex_width;
 	int tex_height;
 	char **texture;

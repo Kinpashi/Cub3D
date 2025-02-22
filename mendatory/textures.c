@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:46:38 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/19 09:57:28 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/22 14:49:39 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void load_textures(t_data *data)
 {
-    data->no_texture_img = mlx_xpm_file_to_image(data->mlx, data->no_texture, &data->tex_width, &data->tex_height);
+    data->no_texture_img = mlx_xpm_file_to_image(data->mlx, data->no_texture, &data->no_tex_width, &data->no_tex_height);
     if (!data->no_texture_img)
     {
         printf("Error\n Failed to load North texture: %s\n", data->no_texture);
         exit(1);
     }
-    data->so_texture_img = mlx_xpm_file_to_image(data->mlx, data->so_texture, &data->tex_width, &data->tex_height);
+    data->so_texture_img = mlx_xpm_file_to_image(data->mlx, data->so_texture, &data->so_tex_width, &data->so_tex_height);
     if (!data->so_texture_img)
     {
         printf("Error\n Failed to load South texture: %s\n", data->so_texture);
         mlx_destroy_image(data->mlx, data->no_texture_img);
         exit(1);
     }
-    data->we_texture_img = mlx_xpm_file_to_image(data->mlx, data->we_texture, &data->tex_width, &data->tex_height);
+    data->we_texture_img = mlx_xpm_file_to_image(data->mlx, data->we_texture, &data->we_tex_width, &data->we_tex_height);
     if (!data->we_texture_img)
     {
         printf("Error\n Failed to load West texture: %s\n", data->we_texture);
@@ -35,7 +35,7 @@ void load_textures(t_data *data)
         mlx_destroy_image(data->mlx, data->so_texture_img);
         exit(1);
     }
-    data->ea_texture_img = mlx_xpm_file_to_image(data->mlx, data->ea_texture, &data->tex_width, &data->tex_height);
+    data->ea_texture_img = mlx_xpm_file_to_image(data->mlx, data->ea_texture, &data->ea_tex_width, &data->ea_tex_height);
     if (!data->ea_texture_img)
     {
         printf("Error\n Failed to load East texture: %s\n", data->ea_texture);

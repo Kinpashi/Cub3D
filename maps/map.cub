@@ -1,10 +1,10 @@
-NO images/flame.xpm
-SO images/flame.xpm
-WE images/flame.xpm
-EA images/flame.xpm
+NO images/cartoone.xpm
+SO images/bob.xpm
+WE images/cartoone.xpm
+EA images/bob.xpm
 
-F 153,76,0
-C 192,192,192
+F 204,102,0
+C 0,255,255
 
 111111111
 100000001

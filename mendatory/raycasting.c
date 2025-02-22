@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/20 19:15:05 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/22 16:50:43 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,13 +139,29 @@ void raycasting(t_data *data)
         }
         perform_dda(data);
         if (data->side == 0 && data->raydir_x > 0)
+        {
             texture = data->ea_texture_data;
+            data->tex_width = data->ea_tex_width;
+            data->tex_height = data->ea_tex_height;
+        }
         else if (data->side == 0 && data->raydir_x < 0)
+        {
             texture = data->we_texture_data;
+            data->tex_width = data->we_tex_width;
+            data->tex_height = data->we_tex_height;
+        }
         else if (data->side == 1 && data->raydir_y > 0)
+        {
             texture = data->so_texture_data;
+            data->tex_width = data->so_tex_width;
+            data->tex_height = data->so_tex_height;
+        }
         else if (data->side == 1 && data->raydir_y < 0)
+        {
             texture = data->no_texture_data;
+            data->tex_width = data->no_tex_width;
+            data->tex_height = data->no_tex_height;
+        }
         if (data->side == 0)
             data->perpWallDist = (data->sideDist_x - data->deltaDist_x);
         else

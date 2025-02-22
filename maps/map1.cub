@@ -1,9 +1,9 @@
-NO images/walls.xpm
-WE images/red_wall.xpm
-EA images/walls.xpm
-SO images/red_wall.xpm
+NO images/wall_01.xpm
+WE images/wall_02.xpm
+EA images/wall_01.xpm
+SO images/wall_02.xpm
 
-F 51,25,0
+F 102,0,0
 C 64,64,64
 
 
