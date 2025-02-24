@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/22 14:47:56 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:07:05 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ typedef struct s_data
 	int ea_tex_height;
 	int tex_width;
 	int tex_height;
+	int prev_mouse_x;
 	char **texture;
 	char **prefix1;
 	char **rest;
@@ -228,6 +229,8 @@ void print_incorrect_texture_error_message();
 void print_incorrect_prefix_error_message();
 void load_textures(t_data *data);
 void get_texture_data(t_data *data);
+int handle_mouse_move(int x, int y, t_data *data);
+void rotate_player(t_data *data, double rotation_angle);
 
 ////////////////////////////////////////////////
 

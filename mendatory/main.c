@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/19 09:35:02 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:12:47 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ void function_call(t_data *data, t_path *path)
 	check_no_identifier(data);
 	check_colors(data);
 	check_mini_map(data);
+}
+
+void init_mouse(t_data *data)
+{
+	mlx_mouse_hide(data->mlx, data->mlx_win);
+	mlx_mouse_move(data->mlx,data->mlx_win, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+	mlx_hook(data->mlx_win, 6, 1L << 6, handle_mouse_move, data);
 }
 
 int main(int argc, char **argv)
@@ -63,6 +70,7 @@ int main(int argc, char **argv)
 	data.mlx_win = mlx_new_window(data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
 	init_data(&data);
 	init_dir_and_plan(&data);
+	init_mouse(&data);
 	raycasting(&data);
 	mlx_hook(data.mlx_win, 2, (1L << 0), press_key, &data);
 	mlx_hook(data.mlx_win, 17, 0, close_win, &data);
