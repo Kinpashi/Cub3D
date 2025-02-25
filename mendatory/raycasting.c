@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/24 17:22:03 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/25 17:20:04 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,10 @@ void raycasting(t_data *data)
 {
     int x;
     int y;
-    // int r_color;
     int color;
     int *texture;
 
     x = 0;
-    // r_color = 0xFF3333;
     texture = NULL;
     data->r_img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
     data->r_addr = mlx_get_data_addr(data->r_img, &data->bits_per_pixel, &data->size_line, &data->endian);
