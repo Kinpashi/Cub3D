@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/25 17:20:04 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/02/28 14:59:11 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,10 @@ void raycasting(t_data *data)
     int x;
     int y;
     int color;
-    int *texture;
+    //int *texture;
 
     x = 0;
-    texture = NULL;
+    //texture = NULL;
     data->r_img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
     data->r_addr = mlx_get_data_addr(data->r_img, &data->bits_per_pixel, &data->size_line, &data->endian);
     while (x < SCREEN_WIDTH)
@@ -136,36 +136,36 @@ void raycasting(t_data *data)
             data->sideDist_y = (data->raymap_y + 1.0 - data->player_y) * data->deltaDist_y;
         }
         perform_dda(data);
-        if (data->side == 0 && data->raydir_x > 0)
-        {
-            texture = data->ea_texture_data;
-            data->tex_width = data->ea_tex_width;
-            data->tex_height = data->ea_tex_height;
-        }
-        else if (data->side == 0 && data->raydir_x < 0)
-        {
-            texture = data->we_texture_data;
-            data->tex_width = data->we_tex_width;
-            data->tex_height = data->we_tex_height;
-        }
-        else if (data->side == 1 && data->raydir_y > 0)
-        {
-            texture = data->so_texture_data;
-            data->tex_width = data->so_tex_width;
-            data->tex_height = data->so_tex_height;
-        }
-        else if (data->side == 1 && data->raydir_y < 0)
-        {
-            texture = data->no_texture_data;
-            data->tex_width = data->no_tex_width;
-            data->tex_height = data->no_tex_height;
-        }
+        // if (data->side == 0 && data->raydir_x > 0)
+        // {
+        //     texture = data->ea_texture_data;
+        //     data->tex_width = data->ea_tex_width;
+        //     data->tex_height = data->ea_tex_height;
+        // }
+        // else if (data->side == 0 && data->raydir_x < 0)
+        // {
+        //     texture = data->we_texture_data;
+        //     data->tex_width = data->we_tex_width;
+        //     data->tex_height = data->we_tex_height;
+        // }
+        // else if (data->side == 1 && data->raydir_y > 0)
+        // {
+        //     texture = data->so_texture_data;
+        //     data->tex_width = data->so_tex_width;
+        //     data->tex_height = data->so_tex_height;
+        // }
+        // else if (data->side == 1 && data->raydir_y < 0)
+        // {
+        //     texture = data->no_texture_data;
+        //     data->tex_width = data->no_tex_width;
+        //     data->tex_height = data->no_tex_height;
+        // }
         if (data->side == 0)
             data->perpWallDist = (data->sideDist_x - data->deltaDist_x);
         else
             data->perpWallDist = (data->sideDist_y - data->deltaDist_y);
-        if (data->perpWallDist < 0.0001)
-            data->perpWallDist = 0.0001;
+        if (data->perpWallDist < 0.05)
+            data->perpWallDist = 0.05;
         data->line_height = (int)(SCREEN_HEIGHT / data->perpWallDist);
         if (data->line_height > SCREEN_HEIGHT * 10)
             data->line_height = SCREEN_HEIGHT * 10;
@@ -174,7 +174,7 @@ void raycasting(t_data *data)
             data->drawStart = 0;
         data->drawEnd = data->line_height / 2 + SCREEN_HEIGHT / 2;
         if (data->drawEnd >= SCREEN_HEIGHT)
-            data->drawEnd = SCREEN_HEIGHT - 1;
+            data->drawEnd = SCREEN_HEIGHT;
         if (data->side == 0)
             data->wallx = data->player_y + data->perpWallDist * data->raydir_y;
         else
@@ -188,10 +188,10 @@ void raycasting(t_data *data)
                 set_pixels(data, x, y, data->cell_color);
             else if (y >= data->drawStart && y < data->drawEnd)
             {
-                data->txt_y = ((y - data->drawStart) * data->tex_height) / data->line_height;
-                if (data->txt_y >= data->tex_height)
-                    data->txt_y = data->tex_height - 1;
-                color = texture[data->txt_y * data->tex_width + data->txt_x];
+                // data->txt_y = ((y - data->drawStart) * data->tex_height) / data->line_height;
+                // if (data->txt_y >= data->tex_height)
+                //     data->txt_y = data->tex_height - 1;
+                color = 0xf4d03f;
                 set_pixels(data, x, y, color);
             }
             else
