@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 00:10:29 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/05 03:17:05 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,11 @@ typedef struct s_data
 	int txt_y;
 	void *r_img;
 	void *r_addr;
+	double step;
+	double texPos;
+	int texY;
+	int p_color;
+	int *r_texture;
 
 	bool move_forward;
     bool move_backward;
@@ -246,6 +251,18 @@ int release_key(int key, t_data *data);
 int press_key(int key, t_data *data);
 int game_loop(t_data *data);
 void setup_hook(t_data *data);
+void init_north(t_data *data);
+void init_south(t_data *data);
+void init_east(t_data *data);
+void init_west(t_data *data);
+void check_if_position(t_data *data, int *i, int *j);
+void init_vars(t_data *data, int *x);
+void handle_raydir_x(t_data *data);
+void handle_raydir_y(t_data *data);
+void init_textures(t_data *data);
+void calculate_wall(t_data *data);
+void set_pixels(t_data *data, int x, int y, int color);
+void draw_column(t_data *data, int x);
 
 // bonus
 void bonus_init_dir_and_plan(t_data *data);

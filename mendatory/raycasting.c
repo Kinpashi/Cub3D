@@ -6,212 +6,88 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 00:48:49 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/05 03:18:31 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void init_dir_and_plan(t_data *data)
+void	init_dir_and_plan(t_data *data)
 {
-    int i;
-    int j;
+	int	i;
+	int	j;
 
-    i = 0;
-    while (data->mini_map[i])
-    {
-        j = 0;
-        while (data->mini_map[i][j])
-        {
-            if (data->mini_map[i][j] == 'N')
-            {
-                data->dir_x = 0;
-                data->dir_y = -1;
-                data->plan_x = 0.50;
-                data->plan_y = 0;
-            }
-            else if (data->mini_map[i][j] == 'S')
-            {
-                data->dir_x = 0;
-                data->dir_y = 1;
-                data->plan_x = -0.50;
-                data->plan_y = 0;
-            }
-            else if (data->mini_map[i][j] == 'E')
-            {
-                data->dir_x = 1;
-                data->dir_y = 0;
-                data->plan_x = 0;
-                data->plan_y = 0.50;
-            }
-            else if (data->mini_map[i][j] == 'W')
-            {
-                data->dir_x = -1;
-                data->dir_y = 0;
-                data->plan_x = 0;
-                data->plan_y = -0.50;
-            }
-
-            if ((data->mini_map[i][j] == 'N' || data->mini_map[i][j] == 'S' ||
-                 data->mini_map[i][j] == 'W' || data->mini_map[i][j] == 'E') &&
-                (data->player_x == 0 && data->player_y == 0))
-            {
-                data->player_x = i + 0.5;
-                data->player_y = j + 0.5;
-            }
-            j++;
-        }
-        i++;
-    }
+	i = 0;
+	while (data->mini_map[i])
+	{
+		j = 0;
+		while (data->mini_map[i][j])
+		{
+			if (data->mini_map[i][j] == 'N')
+				init_north(data);
+			else if (data->mini_map[i][j] == 'S')
+				init_south(data);
+			else if (data->mini_map[i][j] == 'E')
+				init_east(data);
+			else if (data->mini_map[i][j] == 'W')
+				init_west(data);
+			check_if_position(data, &i, &j);
+			j++;
+		}
+		i++;
+	}
 }
 
-void perform_dda(t_data *data)
+void	perform_dda(t_data *data)
 {
-    while (data->hit == 0)
-    {
-        if (data->sideDist_x < data->sideDist_y)
-        {
-            data->sideDist_x += data->deltaDist_x;
-            data->raymap_x += data->step_x;
-            data->side = 0;
-        }
-        else
-        {
-            data->sideDist_y += data->deltaDist_y;
-            data->raymap_y += data->step_y;
-            data->side = 1;
-        }
-        if (data->mini_map[data->raymap_x][data->raymap_y] == '1')
-            data->hit = 1;
-    }
+	while (data->hit == 0)
+	{
+		if (data->sideDist_x < data->sideDist_y)
+		{
+			data->sideDist_x += data->deltaDist_x;
+			data->raymap_x += data->step_x;
+			data->side = 0;
+		}
+		else
+		{
+			data->sideDist_y += data->deltaDist_y;
+			data->raymap_y += data->step_y;
+			data->side = 1;
+		}
+		if (data->mini_map[data->raymap_x][data->raymap_y] == '1')
+			data->hit = 1;
+	}
 }
 
-void set_pixels(t_data *data, int x, int y, int color)
+void	set_pixels(t_data *data, int x, int y, int color)
 {
-    char *dest;
+	char	*dest;
 
-    if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
-        return;
-    dest = data->r_addr + (y * data->size_line + x * (data->bits_per_pixel / 8));
-    *(unsigned int *)dest = color;
+	if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT)
+		return ;
+	dest = data->r_addr + (y * data->size_line + x * (data->bits_per_pixel
+				/ 8));
+	*(unsigned int *)dest = color;
 }
 
-void raycasting(t_data *data)
+void	raycasting(t_data *data)
 {
-    int x;
-    int y;
-    int *texture;
-    int color;
+	int	x;
 
-    x = 0;
-    texture = NULL;
-    // data->r_img = mlx_new_image(data->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-    // data->r_addr = mlx_get_data_addr(data->r_img, &data->bits_per_pixel, &data->size_line, &data->endian);
-    while (x < SCREEN_WIDTH)
-    {
-        data->camera_x = 2.0 * x / SCREEN_WIDTH - 1;
-        data->raydir_x = data->dir_x + data->plan_x * data->camera_x;
-        data->raydir_y = data->dir_y + data->plan_y * data->camera_x;
-        data->raymap_x = (int)data->player_x;
-        data->raymap_y = (int)data->player_y;
-        data->deltaDist_x = fabs(1 / data->raydir_x);
-        data->deltaDist_y = fabs(1 / data->raydir_y);
-        data->hit = 0;
-        if (data->raydir_x < 0)
-        {
-            data->step_x = -1;
-            data->sideDist_x = (data->player_x - data->raymap_x) * data->deltaDist_x;
-        }
-        else
-        {
-            data->step_x = 1;
-            data->sideDist_x = (data->raymap_x + 1.0 - data->player_x) * data->deltaDist_x;
-        }
-        if (data->raydir_y < 0)
-        {
-            data->step_y = -1;
-            data->sideDist_y = (data->player_y - data->raymap_y) * data->deltaDist_y;
-        }
-        else
-        {
-            data->step_y = 1;
-            data->sideDist_y = (data->raymap_y + 1.0 - data->player_y) * data->deltaDist_y;
-        }
-        perform_dda(data);
-        if (data->side == 0 && data->raydir_x > 0)
-        {
-            texture = data->ea_texture_data;
-            data->tex_width = data->ea_tex_width;
-            data->tex_height = data->ea_tex_height;
-        }
-        else if (data->side == 0 && data->raydir_x < 0)
-        {
-            texture = data->we_texture_data;
-            data->tex_width = data->we_tex_width;
-            data->tex_height = data->we_tex_height;
-        }
-        else if (data->side == 1 && data->raydir_y > 0)
-        {
-            texture = data->so_texture_data;
-            data->tex_width = data->so_tex_width;
-            data->tex_height = data->so_tex_height;
-        }
-        else if (data->side == 1 && data->raydir_y < 0)
-        {
-            texture = data->no_texture_data;
-            data->tex_width = data->no_tex_width;
-            data->tex_height = data->no_tex_height;
-        }
-        if (data->side == 0)
-            data->perpWallDist = (data->sideDist_x - data->deltaDist_x);
-        else
-            data->perpWallDist = (data->sideDist_y - data->deltaDist_y);
-        if (data->perpWallDist < 0.05)
-            data->perpWallDist = 0.05;
-        data->line_height = (int)(SCREEN_HEIGHT / data->perpWallDist);
-        if (data->line_height > SCREEN_HEIGHT * 10)
-            data->line_height = SCREEN_HEIGHT * 10;
-        data->drawStart = -data->line_height / 2 + SCREEN_HEIGHT / 2;
-        if (data->drawStart < 0)
-            data->drawStart = 0;
-        data->drawEnd = data->line_height / 2 + SCREEN_HEIGHT / 2;
-        if (data->drawEnd >= SCREEN_HEIGHT)
-            data->drawEnd = SCREEN_HEIGHT - 1;
-        if (data->side == 0)
-            data->wallx = data->player_y + data->perpWallDist * data->raydir_y;
-        else
-            data->wallx = data->player_x + data->perpWallDist * data->raydir_x;
-        data->wallx -= floor(data->wallx);
-        data->txt_x = (int)(data->wallx * (double)data->tex_width);
-        if (data->side == 0 && data->raydir_x > 0)
-            data->txt_x = data->tex_width - data->txt_x - 1;
-        if (data->side == 1 && data->raydir_y < 0)
-            data->txt_x = data->tex_width - data->txt_x - 1;
-        double step = 1.0 * data->tex_height / data->line_height;
-        double texPos = (data->drawStart - SCREEN_HEIGHT / 2 + data->line_height / 2) * step;
-
-        y = 0;
-        while (y < SCREEN_HEIGHT)
-        {
-            if (y < data->drawStart)
-                set_pixels(data, x, y, data->cell_color);
-            else if (y >= data->drawStart && y < data->drawEnd)
-            {
-                int texY = (int)texPos % data->tex_height;
-                texPos += step;
-
-                color = texture[texY * data->tex_width + data->txt_x];
-
-                if (data->side == 1)
-                    color = (color >> 1) & 8355711;
-
-                set_pixels(data, x, y, color);
-            }
-            else
-                set_pixels(data, x, y, data->floor_color);
-            y++;
-        }
-        x++;
-    }
-    mlx_put_image_to_window(data->mlx, data->mlx_win, data->r_img, 0, 0);
+	x = 0;
+	while (x < SCREEN_WIDTH)
+	{
+		init_vars(data, &x);
+		handle_raydir_x(data);
+		handle_raydir_y(data);
+		perform_dda(data);
+		init_textures(data);
+		calculate_wall(data);
+		data->step = 1.0 * data->tex_height / data->line_height;
+		data->texPos = (data->drawStart - SCREEN_HEIGHT / 2 + data->line_height
+				/ 2) * data->step;
+		draw_column(data, x);
+		x++;
+	}
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->r_img, 0, 0);
 }

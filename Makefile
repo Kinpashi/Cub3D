@@ -6,7 +6,7 @@
 #    By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 00:08:49 by aahlaqqa          #+#    #+#              #
-#    Updated: 2025/03/05 00:09:31 by aahlaqqa         ###   ########.fr        #
+#    Updated: 2025/03/05 02:52:43 by aahlaqqa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ Libft/ft_strlen.c Libft/ft_split.c get_next_line/get_next_line.c get_next_line/g
 mendatory/main.c mendatory/key_handles.c mendatory/check_identifier.c Libft/ft_atoi.c mendatory/handle_rgb_colors.c \
 mendatory/check_borders.c mendatory/ft_strcpy.c Libft/ft_memset.c mendatory/check_len.c mendatory/check_rgb.c mendatory/read_map.c \
 mendatory/checker.c mendatory/move_player.c mendatory/raycasting.c mendatory/cube_movements.c \
-mendatory/errors.c mendatory/check_map1.c mendatory/assigne.c mendatory/textures.c
+mendatory/errors.c mendatory/check_map1.c mendatory/assigne.c mendatory/textures.c \
+mendatory/init_dirs_and_plans.c mendatory/init_vars.c mendatory/init_textures.c \
+mendatory/calculate_wall.c
 
 BONUS= bonus/parse_map.c bonus/check_map.c bonus/ft_strcmp.c Libft/ft_strrchr.c \
 Libft/ft_strlen.c Libft/ft_split.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c \

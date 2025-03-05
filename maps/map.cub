@@ -1,10 +1,10 @@
-NO images/cartoone.xpm
-SO images/bob.xpm
-WE images/cartoone.xpm
-EA images/bob.xpm
+NO images/Dungeon_1.xpm
+SO images/Dungeon_2.xpm
+WE images/Dungeon_3.xpm
+EA images/Dungeon_4.xpm
 
-F 204,102,0
-C 0,255,255
+F 44, 62, 80
+C 97, 106, 107
 
 11111
 10001
