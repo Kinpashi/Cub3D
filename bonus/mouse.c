@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:56:11 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/24 21:35:42 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:44:45 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void rotate_player(t_data *data, double rotation_angle)
     data->dir_y = old_dir_x * sin(rotation_angle) + data->dir_y * cos(rotation_angle);
     data->plan_x = data->plan_x * cos(rotation_angle) - data->plan_y * sin(rotation_angle);
     data->plan_y = old_plane_x * sin(rotation_angle) + data->plan_y * cos(rotation_angle);
-    raycasting(data);
+    bonus_raycasting(data);
 }
 
 int handle_mouse_move(int x, int y, t_data *data)

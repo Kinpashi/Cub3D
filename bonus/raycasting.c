@@ -6,13 +6,13 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/25 17:20:04 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:40:43 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void init_dir_and_plan(t_data *data)
+void bonus_init_dir_and_plan(t_data *data)
 {
     int i = 0;
 
@@ -63,7 +63,7 @@ void init_dir_and_plan(t_data *data)
     }
 }
 
-void perform_dda(t_data *data)
+void bonus_perform_dda(t_data *data)
 {
     while (data->hit == 0)
     {
@@ -94,7 +94,7 @@ void set_pixels(t_data *data, int x, int y, int color)
     *(unsigned int *)dest = color;
 }
 
-void raycasting(t_data *data)
+void bonus_raycasting(t_data *data)
 {
     int x;
     int y;
@@ -135,7 +135,7 @@ void raycasting(t_data *data)
             data->step_y = 1;
             data->sideDist_y = (data->raymap_y + 1.0 - data->player_y) * data->deltaDist_y;
         }
-        perform_dda(data);
+        bonus_perform_dda(data);
         if (data->side == 0 && data->raydir_x > 0)
         {
             texture = data->ea_texture_data;

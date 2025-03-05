@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/27 19:06:22 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:44:09 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ int main(int argc, char **argv)
 	get_texture_data(&data);
 	data.mlx_win = mlx_new_window(data.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "Cub3D");
 	init_data(&data);
-	init_dir_and_plan(&data);
-	init_mouse(&data);
-	raycasting(&data);
-	mlx_hook(data.mlx_win, 2, (1L << 0), press_key, &data);
+	bonus_init_dir_and_plan(&data);
+	//init_mouse(&data);
+	bonus_raycasting(&data);
+	mlx_hook(data.mlx_win, 2, (1L << 0), bonus_press_key, &data);
 	mlx_hook(data.mlx_win, 17, 0, close_win, &data);
 	mlx_loop(data.mlx);
 	free(data.ea_texture);

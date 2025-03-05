@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/28 02:56:49 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/05 00:10:29 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@
 #include <stdbool.h>
 #include <unistd.h>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 #ifndef BUFFER_SIZE
 #define BUFFER_SIZE 42
 #endif
@@ -30,9 +34,9 @@
 #define SCREEN_WIDTH 1000
 #define SCREEN_HEIGHT 500
 
-#define MOVE_SPEED 1.0
+#define MOVE_SPEED 0.01
 
-#define ROT_SPEED 0.1
+#define ROT_SPEED 0.012
 
 typedef struct s_path
 {
@@ -42,6 +46,7 @@ typedef struct s_path
 
 typedef struct s_data
 {
+	int debug;
 	char **my_map;
 	char **my_color;
 	char **mini_map;
@@ -160,6 +165,13 @@ typedef struct s_data
 	int txt_y;
 	void *r_img;
 	void *r_addr;
+
+	bool move_forward;
+    bool move_backward;
+    bool move_left;
+    bool move_right;
+    bool rotate_left;
+    bool rotate_right;
 } t_data;
 
 char *ft_strrchr(const char *s, int c);
@@ -188,10 +200,8 @@ void check_rgb_fllor_range(t_data *data);
 void check_rgb_cell_range(t_data *data);
 void check_mini_map(t_data *data);
 void check_texture(char *str, t_data *data);
-// void draw_window(t_data *data);
 int handle_rgb(int red, int green, int blue);
 void check_all_in_map(t_data *data);
-void draw_mini_map(t_data *data);
 void check_map(t_data *data);
 void check_top_borders(t_data *data);
 void check_bottom_border(t_data *data);
@@ -208,14 +218,7 @@ void check_no_identifier(t_data *data);
 void check_data(t_data *data);
 void iterate_color_map(t_data *data, int *i);
 int press_key(int keycode, t_data *data);
-void draw_player_as_circle(t_data *data, int center_x, int center_y,
-						   int radius);
-void render_mini_map(t_data *data);
-void handle_player(t_data *data, int x, int y);
-void find_player_position(t_data *data);
-int draw_tile(char tile);
 void init_data(t_data *data);
-void calculate_view(t_data *data);
 int close_win(t_data *data);
 void split_map(t_data *data);
 void print_malloc_error_message();
@@ -238,6 +241,16 @@ void init_dir_and_plan(t_data *data);
 void raycasting(t_data *data);
 void perform_dda(t_data *data);
 int press_key(int key, t_data *data);
-void find_player_position(t_data *data);
+void move_player(t_data *data);
+int release_key(int key, t_data *data);
+int press_key(int key, t_data *data);
+int game_loop(t_data *data);
+void setup_hook(t_data *data);
+
+// bonus
+void bonus_init_dir_and_plan(t_data *data);
+void bonus_raycasting(t_data *data);
+void bonus_perform_dda(t_data *data);
+int bonus_press_key(int key, t_data *data);
 
 #endif

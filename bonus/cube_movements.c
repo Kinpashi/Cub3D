@@ -6,13 +6,13 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:45:20 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/22 18:49:48 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/03 15:44:22 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int press_key(int key, t_data *data)
+int bonus_press_key(int key, t_data *data)
 {
     if (key == 65307) // ESC key
         exit(0);
@@ -68,6 +68,6 @@ int press_key(int key, t_data *data)
         data->plan_x = data->plan_x * cos(ROT_SPEED) - data->plan_y * sin(ROT_SPEED);
         data->plan_y = old_planx * sin(ROT_SPEED) + data->plan_y * cos(ROT_SPEED);
     }
-    raycasting(data);
+    bonus_raycasting(data);
     return (0);
 }
