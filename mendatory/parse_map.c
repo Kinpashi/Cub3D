@@ -6,11 +6,20 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:38:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/10 14:10:10 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:37:34 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+void	pars_error(int argc)
+{
+	if (argc != 2)
+	{
+		printf("Inccorect number of arguments !\n");
+		exit(1);
+	}
+}
 
 void	check_player(t_data *data)
 {

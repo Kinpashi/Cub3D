@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 02:52:51 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 03:04:54 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:39:53 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	calculate_wall(t_data *data)
 		data->drawStart = 0;
 	data->drawEnd = data->line_height / 2 + SCREEN_HEIGHT / 2;
 	if (data->drawEnd >= SCREEN_HEIGHT)
-		data->drawEnd = SCREEN_HEIGHT - 1;
+		data->drawEnd = SCREEN_HEIGHT;
 	if (data->side == 0)
 		data->wallx = data->player_y + data->perpWallDist * data->raydir_y;
 	else

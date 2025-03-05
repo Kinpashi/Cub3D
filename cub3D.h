@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 03:17:05 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:37:41 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,6 +263,20 @@ void init_textures(t_data *data);
 void calculate_wall(t_data *data);
 void set_pixels(t_data *data, int x, int y, int color);
 void draw_column(t_data *data, int x);
+void move_up(t_data *data);
+void move_down(t_data *data);
+void move_left(t_data *data);
+void move_right(t_data *data);
+void rotate_left(t_data *data);
+void rotate_right(t_data *data);
+void free_texture_one(t_data *data);
+void free_texture_two(t_data *data);
+void free_texture_three(t_data *data);
+void texture_east_error_message();
+void texture_west_error_message();
+void texture_south_error_message();
+void texture_north_error_message();
+void pars_error(int argc);
 
 // bonus
 void bonus_init_dir_and_plan(t_data *data);
