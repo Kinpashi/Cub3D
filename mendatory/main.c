@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/06 15:43:21 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:17:21 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	init_first(t_data *data)
 	data->hit = 0;
 	data->side = 0;
 	data->line_height = 0;
-	data->drawStart = 0;
-	data->drawEnd = 0;
+	data->drawstart = 0;
+	data->drawend = 0;
 	data->wallx = 0;
 	data->txt_x = 0;
 	data->txt_y = 0;

@@ -12,10 +12,10 @@
 
 #include "../cub3D.h"
 
-void move_up(t_data *data)
+void	move_up(t_data *data)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	new_x = data->player_x + data->dir_x * MOVE_SPEED;
 	new_y = data->player_y + data->dir_y * MOVE_SPEED;
@@ -31,10 +31,10 @@ void move_up(t_data *data)
 	}
 }
 
-void move_down(t_data *data)
+void	move_down(t_data *data)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	new_x = data->player_x - data->dir_x * MOVE_SPEED;
 	new_y = data->player_y - data->dir_y * MOVE_SPEED;
@@ -50,10 +50,10 @@ void move_down(t_data *data)
 	}
 }
 
-void move_left(t_data *data)
+void	move_left(t_data *data)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	new_x = data->player_x - data->plan_x * MOVE_SPEED;
 	new_y = data->player_y - data->plan_y * MOVE_SPEED;
@@ -69,10 +69,10 @@ void move_left(t_data *data)
 	}
 }
 
-void move_right(t_data *data)
+void	move_right(t_data *data)
 {
-	double new_x;
-	double new_y;
+	double	new_x;
+	double	new_y;
 
 	new_x = data->player_x + data->plan_x * MOVE_SPEED;
 	new_y = data->player_y + data->plan_y * MOVE_SPEED;

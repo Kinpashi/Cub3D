@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 03:18:31 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:18:37 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	perform_dda(t_data *data)
 {
 	while (data->hit == 0)
 	{
-		if (data->sideDist_x < data->sideDist_y)
+		if (data->sidedistx < data->sidedisty)
 		{
-			data->sideDist_x += data->deltaDist_x;
+			data->sidedistx += data->deltadistx;
 			data->raymap_x += data->step_x;
 			data->side = 0;
 		}
 		else
 		{
-			data->sideDist_y += data->deltaDist_y;
+			data->sidedisty += data->deltadisty;
 			data->raymap_y += data->step_y;
 			data->side = 1;
 		}
@@ -84,7 +84,7 @@ void	raycasting(t_data *data)
 		init_textures(data);
 		calculate_wall(data);
 		data->step = 1.0 * data->tex_height / data->line_height;
-		data->texPos = (data->drawStart - SCREEN_HEIGHT / 2 + data->line_height
+		data->texpos = (data->drawstart - SCREEN_HEIGHT / 2 + data->line_height
 				/ 2) * data->step;
 		draw_column(data, x);
 		x++;

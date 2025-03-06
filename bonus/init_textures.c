@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 02:45:36 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 03:18:55 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:24:37 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	draw_column(t_data *data, int x)
 	y = 0;
 	while (y < SCREEN_HEIGHT)
 	{
-		if (y < data->drawStart)
+		if (y < data->drawstart)
 			set_pixels(data, x, y, data->cell_color);
-		else if (y >= data->drawStart && y < data->drawEnd)
+		else if (y >= data->drawstart && y < data->drawend)
 		{
-			data->texY = (int)data->texPos % data->tex_height;
-			data->texPos += data->step;
-			data->p_color = data->r_texture[data->texY * data->tex_width
+			data->texy = (int)data->texpos % data->tex_height;
+			data->texpos += data->step;
+			data->p_color = data->r_texture[data->texy * data->tex_width
 				+ data->txt_x];
 			if (data->side == 1)
 				data->p_color = (data->p_color >> 1) & 8355711;

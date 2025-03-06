@@ -6,18 +6,18 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 17:55:34 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:25:27 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void init_mouse(t_data *data)
-{
-	//mlx_mouse_hide(data->mlx, data->mlx_win);
-	mlx_mouse_move(data->mlx,data->mlx_win, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-	mlx_hook(data->mlx_win, 6, 1L << 6, handle_mouse_move, data);
-}
+// void init_mouse(t_data *data)
+// {
+// 	//mlx_mouse_hide(data->mlx, data->mlx_win);
+// 	mlx_mouse_move(data->mlx,data->mlx_win, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+// 	mlx_hook(data->mlx_win, 6, 1L << 6, handle_mouse_move, data);
+// }
 
 void	function_call(t_data *data, t_path *path)
 {
@@ -42,8 +42,8 @@ void	init_first(t_data *data)
 	data->hit = 0;
 	data->side = 0;
 	data->line_height = 0;
-	data->drawStart = 0;
-	data->drawEnd = 0;
+	data->drawstart = 0;
+	data->drawend = 0;
 	data->wallx = 0;
 	data->txt_x = 0;
 	data->txt_y = 0;
