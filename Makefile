@@ -6,7 +6,7 @@
 #    By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 00:08:49 by aahlaqqa          #+#    #+#              #
-#    Updated: 2025/03/05 16:43:10 by aahlaqqa         ###   ########.fr        #
+#    Updated: 2025/03/05 17:59:11 by aahlaqqa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,10 @@ bonus/main.c bonus/key_handles.c bonus/check_identifier.c Libft/ft_atoi.c bonus/
 bonus/check_borders.c bonus/ft_strcpy.c Libft/ft_memset.c bonus/check_len.c bonus/check_rgb.c bonus/read_map.c \
 bonus/checker.c bonus/move_player.c bonus/raycasting.c bonus/cube_movements.c \
 bonus/errors.c bonus/check_map1.c bonus/assigne.c bonus/textures.c \
-bonus/mouse.c
+bonus/init_dirs_and_plans.c bonus/init_vars.c bonus/init_textures.c \
+bonus/calculate_wall.c bonus/iterate_in_map.c bonus/iterate_color_map.c \
+bonus/handle_moves.c bonus/rotate.c bonus/free_textures.c \
+bonus/texture_errors.c bonus/mouse.c
 
 OBJECTS= $(SOURCES:.c=.o)
 

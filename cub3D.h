@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 17:37:41 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/05 18:04:28 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,7 +237,7 @@ void print_incorrect_texture_error_message();
 void print_incorrect_prefix_error_message();
 void load_textures(t_data *data);
 void get_texture_data(t_data *data);
-int handle_mouse_move(int x, int y, t_data *data);
+void handle_mouse_movement(t_data *data, int mouse_x, int mouse_y);
 void rotate_player(t_data *data, double rotation_angle);
 
 ////////////////////////////////////////////////
@@ -277,11 +277,5 @@ void texture_west_error_message();
 void texture_south_error_message();
 void texture_north_error_message();
 void pars_error(int argc);
-
-// bonus
-void bonus_init_dir_and_plan(t_data *data);
-void bonus_raycasting(t_data *data);
-void bonus_perform_dda(t_data *data);
-int bonus_press_key(int key, t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:04:31 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/06 15:43:43 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:04:53 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	allocate_and_copy_prefix(t_data *data, size_t i)
 		data->j++;
 	}
 	(*data->prefix)[data->j] = '\0';
-	if (ft_strcmp(*data->prefix, "NO") == 0)
+	if (strcmp(*data->prefix, "NO") == 0)
 		data->counter++;
 	if (data->counter > 1)
 		print_incorrect_prefix_error_message();
@@ -55,14 +55,14 @@ void	process_texture_assignment(t_data *data)
 {
 	data->count = check_for_identifier((*data->prefix), data->count);
 	check_texture(*(data->texture), data);
-	if (ft_strcmp(*data->prefix, "NO") == 0)
-		data->no_texture = ft_strdup(*data->texture);
-	else if (ft_strcmp(*data->prefix, "SO") == 0)
-		data->so_texture = ft_strdup(*data->texture);
-	else if (ft_strcmp(*data->prefix, "WE") == 0)
-		data->we_texture = ft_strdup(*data->texture);
-	else if (ft_strcmp(*data->prefix, "EA") == 0)
-		data->ea_texture = ft_strdup(*data->texture);
+	if (strcmp(*data->prefix, "NO") == 0)
+		data->no_texture = strdup(*data->texture);
+	else if (strcmp(*data->prefix, "SO") == 0)
+		data->so_texture = strdup(*data->texture);
+	else if (strcmp(*data->prefix, "WE") == 0)
+		data->we_texture = strdup(*data->texture);
+	else if (strcmp(*data->prefix, "EA") == 0)
+		data->ea_texture = strdup(*data->texture);
 	else
 		print_incorrect_prefix_error_message();
 }

@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:49:56 by ahmed             #+#    #+#             */
-/*   Updated: 2025/03/05 16:14:19 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/05 23:05:29 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ void	check_no_identifier(t_data *data)
 	data->prefix = malloc(3 + 1);
 	data->texture = malloc(256);
 	if (!data->texture || !data->prefix)
+	{
+		free(data->prefix);
+		free(data->texture);
 		return ;
+	}
 	i = 0;
 	iterate_in_map(&i, data);
 	if (data->count != 4)

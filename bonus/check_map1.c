@@ -6,50 +6,44 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:29:25 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/17 16:42:05 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/05 15:57:44 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void	split_map(t_data *data)
+void	copy_map_section(char **dest, char **src, int start, int count)
 {
 	int	i;
-	int	total_lines;
-	int	remaining_lines;
-	int	j;
 
 	i = 0;
-	j = 0;
+	while (i < count)
+	{
+		if (!src[start + i])
+			print_parsing_error_message();
+		dest[i] = ft_strdup(src[start + i]);
+		if (!dest[i])
+			print_malloc_error_message();
+		i++;
+	}
+	dest[i] = NULL;
+}
+
+void	split_map(t_data *data)
+{
+	int	total_lines;
+
 	total_lines = 0;
 	while (data->start_map[total_lines])
 		total_lines++;
-	data->new_map = malloc(sizeof(char *) * (6 + 1));
+	data->new_map = malloc(sizeof(char *) * 7);
 	if (!data->new_map)
 		print_malloc_error_message();
-	while (i < 6)
-	{
-		if (!data->start_map[i])
-			print_parsing_error_message();
-		data->new_map[i] = ft_strdup(data->start_map[i]);
-		if (!data->new_map[i])
-			print_malloc_error_message();
-		i++;
-	}
-	data->new_map[i] = NULL;
-	remaining_lines = total_lines - 6;
-	data->mini_map = malloc(sizeof(char *) * (remaining_lines + 1));
+	copy_map_section(data->new_map, data->start_map, 0, 6);
+	data->mini_map = malloc(sizeof(char *) * (total_lines - 5));
 	if (!data->mini_map)
 		print_malloc_error_message();
-	while (i < total_lines)
-	{
-		data->mini_map[j] = ft_strdup(data->start_map[i]);
-		if (!data->mini_map[j])
-			print_malloc_error_message();
-		i++;
-		j++;
-	}
-	data->mini_map[j] = NULL;
+	copy_map_section(data->mini_map, data->start_map, 6, total_lines - 6);
 }
 
 void	handle_spaces(t_data *data)
