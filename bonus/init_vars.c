@@ -29,8 +29,7 @@ void	handle_raydir_x(t_data *data)
 	if (data->raydir_x < 0)
 	{
 		data->step_x = -1;
-		data->sidedistx = (data->player_x - data->raymap_x)
-			* data->deltadistx;
+		data->sidedistx = (data->player_x - data->raymap_x) * data->deltadistx;
 	}
 	else
 	{
@@ -45,8 +44,7 @@ void	handle_raydir_y(t_data *data)
 	if (data->raydir_y < 0)
 	{
 		data->step_y = -1;
-		data->sidedisty = (data->player_y - data->raymap_y)
-			* data->deltadisty;
+		data->sidedisty = (data->player_y - data->raymap_y) * data->deltadisty;
 	}
 	else
 	{

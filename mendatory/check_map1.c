@@ -6,11 +6,35 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:29:25 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 15:57:44 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/07 15:44:38 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+void	calculate_map(t_data *data)
+{
+	int	i;
+	int	j;
+	int	max_width;
+
+	i = 0;
+	while (data->mini_map[i])
+		i++;
+	data->map_height = i;
+	max_width = 0;
+	i = 0;
+	while (i < data->map_height)
+	{
+		j = 0;
+		while (data->mini_map[i][j])
+			j++;
+		if (j > max_width)
+			max_width = j;
+		i++;
+	}
+	data->map_width = max_width;
+}
 
 void	copy_map_section(char **dest, char **src, int start, int count)
 {
@@ -40,10 +64,11 @@ void	split_map(t_data *data)
 	if (!data->new_map)
 		print_malloc_error_message();
 	copy_map_section(data->new_map, data->start_map, 0, 6);
-	data->mini_map = malloc(sizeof(char *) * (total_lines - 5));
+	data->mini_map = malloc(sizeof(char *) * (total_lines - 5 + 1));
 	if (!data->mini_map)
 		print_malloc_error_message();
 	copy_map_section(data->mini_map, data->start_map, 6, total_lines - 6);
+	data->mini_map[total_lines - 6] = NULL;
 }
 
 void	handle_spaces(t_data *data)

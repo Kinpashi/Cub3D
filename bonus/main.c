@@ -6,18 +6,11 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/06 16:25:27 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/07 16:15:21 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
-
-// void init_mouse(t_data *data)
-// {
-// 	//mlx_mouse_hide(data->mlx, data->mlx_win);
-// 	mlx_mouse_move(data->mlx,data->mlx_win, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-// 	mlx_hook(data->mlx_win, 6, 1L << 6, handle_mouse_move, data);
-// }
 
 void	function_call(t_data *data, t_path *path)
 {
@@ -48,11 +41,8 @@ void	init_first(t_data *data)
 	data->txt_x = 0;
 	data->txt_y = 0;
 	data->tex_height = 0;
-	data->tex_width = 0;
-	data->so_texture = malloc(sizeof(char) * 100);
-	data->no_texture = malloc(sizeof(char) * 100);
-	data->ea_texture = malloc(sizeof(char) * 100);
-	data->we_texture = malloc(sizeof(char) * 100);
+	data->player_x = 0;
+	data->player_y = 0;
 }
 
 void	free_data(t_data *data)
@@ -78,6 +68,7 @@ int	main(int argc, char **argv)
 	t_path	path;
 
 	init_first(&data);
+	alloc_textures(&data);
 	pars_error(argc);
 	check_path(argv[1]);
 	read_lines(argv[1], &data);

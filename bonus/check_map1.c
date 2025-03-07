@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:29:25 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 15:57:44 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/07 16:14:31 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,11 @@ void	split_map(t_data *data)
 	if (!data->new_map)
 		print_malloc_error_message();
 	copy_map_section(data->new_map, data->start_map, 0, 6);
-	data->mini_map = malloc(sizeof(char *) * (total_lines - 5));
+	data->mini_map = malloc(sizeof(char *) * (total_lines - 5 + 1));
 	if (!data->mini_map)
 		print_malloc_error_message();
 	copy_map_section(data->mini_map, data->start_map, 6, total_lines - 6);
+	data->mini_map[total_lines - 6] = NULL;
 }
 
 void	handle_spaces(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/06 16:17:01 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/07 16:15:36 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,8 @@ typedef struct s_data
 	int		texy;
 	int		p_color;
 	int		*r_texture;
+	int		map_width;
+	int		map_height;
 	//////////////////////
 	bool	move_forward;
 	bool	move_backward;
@@ -213,7 +215,6 @@ void		print_incorrect_texture_error_message(void);
 void		print_incorrect_prefix_error_message(void);
 void		load_textures(t_data *data);
 void		get_texture_data(t_data *data);
-void		handle_mouse_movement(t_data *data, int mouse_x, int mouse_y);
 void		rotate_player(t_data *data, double rotation_angle);
 
 ////////////////////////////////////////////////
@@ -253,5 +254,9 @@ void		texture_west_error_message(void);
 void		texture_south_error_message(void);
 void		texture_north_error_message(void);
 void		pars_error(int argc);
+int			handle_mouse_movement(int mouse_x, int mouse_y, t_data *data);
+void		calculate_map(t_data *data);
+void		alloc_textures(t_data *data);
+void		init_mouse(t_data *data);
 
 #endif
