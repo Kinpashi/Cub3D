@@ -6,15 +6,15 @@
 #    By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 00:08:49 by aahlaqqa          #+#    #+#              #
-#    Updated: 2025/03/07 16:03:32 by aahlaqqa         ###   ########.fr        #
+#    Updated: 2025/03/08 17:56:25 by aahlaqqa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 CC= cc
 
-CFLAGS= -Wall -Wextra -Werror -g
-
+CFLAGS= -Wall -Wextra -Werror
+# LDFLAGS = -g3 -fsanitize=address
 FLAGS=  -Lminilibx-linux -lmlx -lXext -lX11 -lm
 
 NAME= cub3D
@@ -66,4 +66,4 @@ re: fclean $(NAME)
 
 .PHONY: all clean fclean re bonus
 
-.SECONDARY: $(OBJECTS)
+.SECONDARY: $(OBJECTS) $(BOBJECTS)
