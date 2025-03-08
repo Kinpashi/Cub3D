@@ -53,13 +53,13 @@ void	free_data(t_data *data)
 	free(data->so_texture);
 }
 
-void setup_functions(t_data *data)
+void	setup_functions(t_data *data)
 {
-    init_data(data);
-    init_dir_and_plan(data);
-    raycasting(data);  
-    setup_hook(data);
-    init_mouse(data);
+	init_data(data);
+	init_dir_and_plan(data);
+	raycasting(data);
+	setup_hook(data);
+	init_mouse(data);
 }
 
 int	main(int argc, char **argv)
