@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 17:56:11 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/08 01:12:55 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/08 16:02:06 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int handle_mouse_movement(int mouse_x, int mouse_y, t_data *data)
 
 void	init_mouse(t_data *data)
 {
+    mlx_mouse_hide(data->mlx, data->mlx_win);
 	mlx_mouse_move(data->mlx, data->mlx_win, SCREEN_WIDTH / 2, SCREEN_HEIGHT
 		/ 2);
 	mlx_hook(data->mlx_win, 6, 1L << 6, handle_mouse_movement, data);
