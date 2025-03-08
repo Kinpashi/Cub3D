@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/07 16:15:21 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/08 01:13:18 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ void	free_data(t_data *data)
 	free(data->so_texture);
 }
 
-void	setup_functions(t_data *data)
+void setup_functions(t_data *data)
 {
-	init_data(data);
-	init_dir_and_plan(data);
-	init_mouse(data);
-	raycasting(data);
-	setup_hook(data);
+    init_data(data);
+    init_dir_and_plan(data);
+    raycasting(data);  
+    setup_hook(data);
+    init_mouse(data);
 }
 
 int	main(int argc, char **argv)
