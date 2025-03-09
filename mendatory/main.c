@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/07 16:06:22 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/09 03:05:35 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ void	init_first(t_data *data)
 	data->map_height = 0;
 	data->player_x = 0;
 	data->player_y = 0;
+	data->so_count = 0;
+	data->no_count = 0;
+	data->we_count = 0;
+	data->ea_count = 0;
+	data->f_count = 0;
+	data->c_count = 0;
 }
 
 void	free_data(t_data *data)

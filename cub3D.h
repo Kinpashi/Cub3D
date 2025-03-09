@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/08 17:56:30 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/09 03:05:18 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,12 @@ typedef struct s_data
 	int		*r_texture;
 	int		map_width;
 	int		map_height;
+	int no_count;
+	int so_count;
+	int we_count;
+	int ea_count;
+	int f_count;
+	int c_count;
 	//////////////////////
 	bool	move_forward;
 	bool	move_backward;
