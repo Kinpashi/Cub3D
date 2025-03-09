@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iterate_color_map.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:13:55 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 16:15:06 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/09 03:08:14 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ void	allocate_and_copy_prefix1(t_data *data, int i, int *j)
 		(*j)++;
 	}
 	(*data->prefix1)[*j] = '\0';
-	if ((*data->prefix1)[0] == 'F')
-		data->color_counter++;
-	if (data->color_counter > 1)
+	if (ft_strcmp(*data->prefix1, "F") == 0)
+		data->f_count++;
+	else if (ft_strcmp(*data->prefix1, "C") == 0)
+		data->c_count++;
+	if (data->f_count > 1 || data->c_count > 1)
 		print_incorrect_prefix_error_message();
 	if (data->my_color[i][*j] == ' ')
 		(*j)++;

@@ -12,14 +12,13 @@
 
 
 
+NO images/res1.xpm
+WE images/res2.xpm
+EA images/res3.xpm
+SO images/res4.xpm
 
-NO images/wall_01.xpm
-WE images/wall_02.xpm
-EA images/wall_03.xpm
-SO images/wall_04.xpm
-
-F 102,0,0
-C 64,64,         64
+F 98, 101, 103 
+C 192, 57,    43
 
 
 
