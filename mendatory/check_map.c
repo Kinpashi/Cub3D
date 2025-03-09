@@ -65,8 +65,8 @@ void	check_all_in_map(t_data *data)
 
 bool	is_empty_line(char *line)
 {
-	int	i;
-	bool result;
+	int		i;
+	bool	result;
 
 	i = 0;
 	while (line[i] == ' ' || line[i] == '\t')

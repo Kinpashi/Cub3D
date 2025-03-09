@@ -4,7 +4,7 @@ EA images/wall_03.xpm
 SO images/wall_04.xpm
 
 F 102,0,0
-C 64,64,64
+C 64,64,         64
 
 
         1111111111111111111111111

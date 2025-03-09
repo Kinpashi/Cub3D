@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/09 03:05:18 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/03/09 16:14:47 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,12 +148,12 @@ typedef struct s_data
 	int		*r_texture;
 	int		map_width;
 	int		map_height;
-	int no_count;
-	int so_count;
-	int we_count;
-	int ea_count;
-	int f_count;
-	int c_count;
+	int		no_count;
+	int		so_count;
+	int		we_count;
+	int		ea_count;
+	int		f_count;
+	int		c_count;
 	//////////////////////
 	bool	move_forward;
 	bool	move_backward;
@@ -264,5 +264,6 @@ int			handle_mouse_movement(int mouse_x, int mouse_y, t_data *data);
 void		calculate_map(t_data *data);
 void		alloc_textures(t_data *data);
 void		init_mouse(t_data *data);
+void		init_second(t_data *data);
 
 #endif

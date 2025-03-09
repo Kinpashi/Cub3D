@@ -32,8 +32,8 @@ void	allocate_and_copy_prefix(t_data *data, size_t i)
 		data->we_count++;
 	else if (ft_strcmp(*data->prefix, "EA") == 0)
 		data->ea_count++;
-	if (data->no_count > 1 || data->so_count > 1 || 
-		data->we_count > 1 || data->ea_count > 1)
+	if (data->no_count > 1 || data->so_count > 1 || data->we_count > 1
+		|| data->ea_count > 1)
 	{
 		print_incorrect_prefix_error_message();
 	}
@@ -41,25 +41,24 @@ void	allocate_and_copy_prefix(t_data *data, size_t i)
 		data->j++;
 }
 
-
-void allocate_and_copy_texture(t_data *data, size_t i)
+void	allocate_and_copy_texture(t_data *data, size_t i)
 {
-    size_t len;
+	size_t	len;
 
-    len = ft_strlen(data->my_map[i] + data->j);
-    *data->texture = malloc(len + 1);
-    if (!(*data->texture))
-        print_malloc_error_message();
-    data->y = 0;
-    while (data->my_map[i][data->j] != '\0')
-    {
-        (*data->texture)[data->y] = data->my_map[i][data->j];
-        data->j++;
-        data->y++;
-    }
-    (*data->texture)[data->y] = '\0';
-    if (data->y == 0)
-        print_incorrect_texture_error_message();
+	len = ft_strlen(data->my_map[i] + data->j);
+	*data->texture = malloc(len + 1);
+	if (!(*data->texture))
+		print_malloc_error_message();
+	data->y = 0;
+	while (data->my_map[i][data->j] != '\0')
+	{
+		(*data->texture)[data->y] = data->my_map[i][data->j];
+		data->j++;
+		data->y++;
+	}
+	(*data->texture)[data->y] = '\0';
+	if (data->y == 0)
+		print_incorrect_texture_error_message();
 }
 
 void	process_texture_assignment(t_data *data)

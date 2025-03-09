@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:38:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/09 03:03:19 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/03/09 16:08:28 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,30 +49,29 @@ void	check_player(t_data *data)
 	}
 }
 
- void	check_colors(t_data *data)
- {
- 	int	i;
+void	check_colors(t_data *data)
+{
+	int	i;
 
- 	data->count1 = 0;
- 	data->len = 0;
- 	data->prefix1 = malloc(2 + 1);
- 	data->rest = malloc(256);
- 	if (!data->rest || !data->prefix1)
- 		return ;
- 	i = 0;
- 	iterate_color_map(data, &i);
- 	if (data->count1 != 2)
- 	{
- 		printf("Error\n incorrect identifier !");
- 		exit(1);
- 	}
- 	if (data->len != 4)
- 	{
- 		printf("Error\n missing or adding ',' !");
- 		exit(1);
- 	}
- }
-
+	data->count1 = 0;
+	data->len = 0;
+	data->prefix1 = malloc(2 + 1);
+	data->rest = malloc(256);
+	if (!data->rest || !data->prefix1)
+		return ;
+	i = 0;
+	iterate_color_map(data, &i);
+	if (data->count1 != 2)
+	{
+		printf("Error\n incorrect identifier !");
+		exit(1);
+	}
+	if (data->len != 4)
+	{
+		printf("Error\n missing or adding ',' !");
+		exit(1);
+	}
+}
 
 void	check_map(t_data *data)
 {
