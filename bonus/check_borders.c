@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_borders.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 00:00:08 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/06 15:45:16 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/09 02:08:41 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	check_bottom_border(t_data *data)
 	}
 }
 
-void	check_left_border(t_data *data)
+void	check_right_border(t_data *data)
 {
 	int	len;
 	int	j;
@@ -70,7 +70,7 @@ void	check_left_border(t_data *data)
 	}
 }
 
-void	check_right_border(t_data *data)
+void	check_left_border(t_data *data)
 {
 	int	j;
 

@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   check_map1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:29:25 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/07 16:14:31 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/09 01:45:22 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+void	calculate_map(t_data *data)
+{
+	int	i;
+	int	j;
+	int	max_width;
+
+	i = 0;
+	while (data->mini_map[i])
+		i++;
+	data->map_height = i;
+	max_width = 0;
+	i = 0;
+	while (i < data->map_height)
+	{
+		j = 0;
+		while (data->mini_map[i][j])
+			j++;
+		if (j > max_width)
+			max_width = j;
+		i++;
+	}
+	data->map_width = max_width;
+}
 
 void	copy_map_section(char **dest, char **src, int start, int count)
 {

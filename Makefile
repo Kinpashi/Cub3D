@@ -6,7 +6,7 @@
 #    By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 00:08:49 by aahlaqqa          #+#    #+#              #
-#    Updated: 2025/03/09 16:14:13 by aahlaqqa         ###   ########.fr        #
+#    Updated: 2025/03/11 16:31:33 by aahlaqqa         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ bonus/errors.c bonus/check_map1.c bonus/assigne.c bonus/textures.c \
 bonus/init_dirs_and_plans.c bonus/init_vars.c bonus/init_textures.c \
 bonus/calculate_wall.c bonus/iterate_in_map.c bonus/iterate_color_map.c \
 bonus/handle_moves.c bonus/rotate.c bonus/free_textures.c \
-bonus/texture_errors.c bonus/mouse.c bonus/alloc_texture.c bonus/init.c
+bonus/texture_errors.c bonus/alloc_texture.c bonus/init.c bonus/mouse.c
 
 OBJECTS= $(SOURCES:.c=.o)
 

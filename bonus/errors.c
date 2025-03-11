@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:31:26 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 16:28:43 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/09 01:43:30 by ahmed            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	print_malloc_error_message(void)
 
 void	print_parsing_error_message(void)
 {
-	printf("Error: start_map has less than 6 lines!\n");
+	printf("Error\nInvalid line !!\n");
 	exit(1);
 }
 

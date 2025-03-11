@@ -1,10 +1,16 @@
-NO images/Dungeon_1.xpm     
-SO images/Dungeon_2.xpm                                                     
+C 97, 106,      107    
+NO  images/Dungeon_1.xpm   
+
 WE images/Dungeon_3.xpm
-EA images/Dungeon_4.xpm
+
+SO images/Dungeon_2.xpm                                                     
+
 
 F 44, 62, 80
-C 97, 106,      107                                                     
+                                                 
+
+
+EA images/Dungeon_4.xpm
 
 1111111
 1001001

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iterate_in_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:04:31 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/09 02:59:50 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/03/09 17:55:05 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,24 @@ void	allocate_and_copy_prefix(t_data *data, size_t i)
 void	allocate_and_copy_texture(t_data *data, size_t i)
 {
 	size_t	len;
+	size_t	end;
 
 	len = ft_strlen(data->my_map[i] + data->j);
-	*data->texture = malloc(len + 1);
+	end = len;
+	while (end > 0 && (data->my_map[i][data->j + end - 1] == ' '
+		|| data->my_map[i][data->j + end - 1] == '\t'))
+		end--;
+	*data->texture = malloc(end + 1);
 	if (!(*data->texture))
 		print_malloc_error_message();
 	data->y = 0;
-	while (data->my_map[i][data->j] != '\0')
+	while (data->y < end)
 	{
-		(*data->texture)[data->y] = data->my_map[i][data->j];
-		data->j++;
+		(*data->texture)[data->y] = data->my_map[i][data->j + data->y];
 		data->y++;
 	}
 	(*data->texture)[data->y] = '\0';
+	data->j += len;
 	if (data->y == 0)
 		print_incorrect_texture_error_message();
 }

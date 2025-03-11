@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/08 01:13:18 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/11 16:32:09 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,12 @@ void	init_first(t_data *data)
 	data->txt_x = 0;
 	data->txt_y = 0;
 	data->tex_height = 0;
+	data->tex_width = 0;
+	data->map_width = 0;
+	data->map_height = 0;
 	data->player_x = 0;
 	data->player_y = 0;
+	init_second(data);
 }
 
 void	free_data(t_data *data)
@@ -56,10 +60,11 @@ void	free_data(t_data *data)
 void	setup_functions(t_data *data)
 {
 	init_data(data);
+	calculate_map(data);
 	init_dir_and_plan(data);
 	raycasting(data);
-	setup_hook(data);
 	init_mouse(data);
+	setup_hook(data);
 }
 
 int	main(int argc, char **argv)

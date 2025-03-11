@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 02:35:06 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/06 16:25:04 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/06 16:20:54 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	handle_raydir_x(t_data *data)
 	if (data->raydir_x < 0)
 	{
 		data->step_x = -1;
-		data->sidedistx = (data->player_x - data->raymap_x) * data->deltadistx;
+		data->sidedistx = (data->player_x - data->raymap_x)
+			* data->deltadistx;
 	}
 	else
 	{
@@ -44,7 +45,8 @@ void	handle_raydir_y(t_data *data)
 	if (data->raydir_y < 0)
 	{
 		data->step_y = -1;
-		data->sidedisty = (data->player_y - data->raymap_y) * data->deltadisty;
+		data->sidedisty = (data->player_y - data->raymap_y)
+			* data->deltadisty;
 	}
 	else
 	{

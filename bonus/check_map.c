@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:40:09 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/02/17 16:41:19 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/08 18:07:26 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,17 @@ void	check_all_in_map(t_data *data)
 
 bool	is_empty_line(char *line)
 {
-	int	i;
+	int		i;
+	bool	result;
 
 	i = 0;
 	while (line[i] == ' ' || line[i] == '\t')
 		i++;
-	return (line[i] == '\0' || line[i] == '\n');
+	if (line[i] == '\0' || line[i] == '\n')
+		result = true;
+	else
+		result = false;
+	return (result);
 }
 
 char	*start_reading(int fd, char *line)
@@ -84,9 +89,7 @@ char	*start_reading(int fd, char *line)
 		if (!line)
 			break ;
 		if (!is_empty_line(line))
-		{
 			lines = ft_strjoin(lines, line);
-		}
 		free(line);
 	}
 	return (lines);
