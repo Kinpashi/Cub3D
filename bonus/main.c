@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:33:48 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/11 16:32:09 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:37:59 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	init_first(t_data *data)
 	data->map_height = 0;
 	data->player_x = 0;
 	data->player_y = 0;
+	data->door = 0;
 	init_second(data);
 }
 
@@ -55,6 +56,7 @@ void	free_data(t_data *data)
 	free(data->we_texture);
 	free(data->no_texture);
 	free(data->so_texture);
+	free(data->door_texture);
 }
 
 void	setup_functions(t_data *data)

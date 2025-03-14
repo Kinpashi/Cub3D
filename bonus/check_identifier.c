@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_identifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 17:24:59 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/09 02:58:24 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/03/14 15:09:56 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	check_for_identifier(char *str, int i)
 {
 	if (ft_strcmp(str, "NO") == 0 || ft_strcmp(str, "SO") == 0 || ft_strcmp(str,
-			"WE") == 0 || ft_strcmp(str, "EA") == 0)
+			"WE") == 0 || ft_strcmp(str, "EA") == 0 || ft_strcmp(str, "D") == 0)
 		i++;
 	return (i);
 }

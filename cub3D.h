@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/09 16:14:47 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:37:41 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_data
 	char	*so_texture;
 	char	*we_texture;
 	char	*ea_texture;
+	char *door_texture;
 	int		no_tex_width;
 	int		no_tex_height;
 	int		so_tex_width;
@@ -65,6 +66,8 @@ typedef struct s_data
 	int		we_tex_height;
 	int		ea_tex_width;
 	int		ea_tex_height;
+	int d_tex_width;
+	int d_tex_height;
 	int		tex_width;
 	int		tex_height;
 	int		prev_mouse_x;
@@ -75,10 +78,12 @@ typedef struct s_data
 	void	*so_texture_img;
 	void	*we_texture_img;
 	void	*ea_texture_img;
+	void *d_texture_img;
 	int		*no_texture_data;
 	int		*so_texture_data;
 	int		*ea_texture_data;
 	int		*we_texture_data;
+	int *d_texture_data;
 	int		count1;
 	int		count;
 	int		counter;
@@ -152,8 +157,10 @@ typedef struct s_data
 	int		so_count;
 	int		we_count;
 	int		ea_count;
+	int door_count;
 	int		f_count;
 	int		c_count;
+	int door;
 	//////////////////////
 	bool	move_forward;
 	bool	move_backward;
@@ -265,5 +272,7 @@ void		calculate_map(t_data *data);
 void		alloc_textures(t_data *data);
 void		init_mouse(t_data *data);
 void		init_second(t_data *data);
+void free_door_texture(t_data *data);
+void texture_door_error_message(void);
 
 #endif

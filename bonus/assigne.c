@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assigne.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:41:52 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/09 02:06:05 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/03/14 15:04:20 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	assigne_texture(t_data *data)
 
 	i = 0;
 	j = 0;
-	data->my_map = malloc(sizeof(char *) * 5);
+	data->my_map = malloc(sizeof(char *) * 6);
 	if (!data->my_map)
 		print_malloc_error_message();
 	while (data->new_map[i])
@@ -54,7 +54,8 @@ void	assigne_texture(t_data *data)
 		if ((data->new_map[i][0] == 'N' && data->new_map[i][1] == 'O')
 			|| (data->new_map[i][0] == 'S' && data->new_map[i][1] == 'O')
 			|| (data->new_map[i][0] == 'E' && data->new_map[i][1] == 'A')
-			|| (data->new_map[i][0] == 'W' && data->new_map[i][1] == 'E'))
+			|| (data->new_map[i][0] == 'W' && data->new_map[i][1] == 'E')
+			|| (data->new_map[i][0] == 'D'))
 		{
 			data->my_map[j] = ft_strdup(data->new_map[i]);
 			if (!data->my_map[j])

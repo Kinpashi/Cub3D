@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 16:14:17 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/09 16:15:07 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/14 14:52:49 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_second(t_data *data)
 	data->no_count = 0;
 	data->we_count = 0;
 	data->ea_count = 0;
+	data->door_count = 0;
 	data->f_count = 0;
 	data->c_count = 0;
 }

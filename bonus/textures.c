@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 14:46:38 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 16:47:23 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:33:19 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ void	load_textures(t_data *data)
 			&data->ea_tex_width, &data->ea_tex_height);
 	if (!data->ea_texture_img)
 		free_texture_three(data);
+	data->d_texture_img = mlx_xpm_file_to_image(data->mlx, data->door_texture, &data->d_tex_width, &data->d_tex_height);
+	if (!data->d_texture_img)
+		free_door_texture(data);
 }
 
 void	get_texture_data(t_data *data)
@@ -53,4 +56,7 @@ void	get_texture_data(t_data *data)
 			&data->bits_per_pixel, &data->size_line, &data->endian);
 	if (!data->ea_texture_data)
 		texture_east_error_message();
+	data->d_texture_data = (int *)mlx_get_data_addr(data->d_texture_img, &data->bits_per_pixel, &data->size_line, &data->endian);
+	if (!data->d_texture_data)
+		texture_door_error_message();
 }

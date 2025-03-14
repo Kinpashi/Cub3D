@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 14:40:09 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/08 18:07:26 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:06:30 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	check_all_in_map(t_data *data)
 			if (data->mini_map[i][j] != '1' && data->mini_map[i][j] != '0'
 				&& data->mini_map[i][j] != 'N' && data->mini_map[i][j] != 'W'
 				&& data->mini_map[i][j] != 'S' && data->mini_map[i][j] != 'E'
-				&& data->mini_map[i][j] != ' ')
+				&& data->mini_map[i][j] != ' ' && data->mini_map[i][j] != 'D')
 			{
 				printf("Error\n incorrect caracter !");
 				exit(1);

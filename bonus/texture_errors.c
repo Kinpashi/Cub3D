@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:43:15 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/05 16:46:09 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/14 15:33:08 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,11 @@ void	texture_south_error_message(void)
 void	texture_north_error_message(void)
 {
 	printf("Error\n Failed to get data address for North texture.\n");
+	exit(1);
+}
+
+void texture_door_error_message(void)
+{
+	printf("Error\n Failed to get data addres for Door texture.\n");
 	exit(1);
 }

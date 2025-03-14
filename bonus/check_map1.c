@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahmed <ahmed@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:29:25 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/09 01:45:22 by ahmed            ###   ########.fr       */
+/*   Updated: 2025/03/14 15:02:59 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ void	split_map(t_data *data)
 	data->new_map = malloc(sizeof(char *) * 7);
 	if (!data->new_map)
 		print_malloc_error_message();
-	copy_map_section(data->new_map, data->start_map, 0, 6);
-	data->mini_map = malloc(sizeof(char *) * (total_lines - 5 + 1));
+	copy_map_section(data->new_map, data->start_map, 0, 7);
+	data->mini_map = malloc(sizeof(char *) * (total_lines - 6 + 1));
 	if (!data->mini_map)
 		print_malloc_error_message();
-	copy_map_section(data->mini_map, data->start_map, 6, total_lines - 6);
-	data->mini_map[total_lines - 6] = NULL;
+	copy_map_section(data->mini_map, data->start_map, 7, total_lines - 7);
+	data->mini_map[total_lines - 7] = NULL;
 }
 
 void	handle_spaces(t_data *data)
@@ -117,10 +117,12 @@ void	check_prefix(t_data *data)
 			data->flag++;
 		else if (data->new_map[i][0] == 'C')
 			data->flag++;
+		else if (data->new_map[i][0] == 'D')
+			data->flag++;
 		else
 			print_invalid_map_error_message();
 		i++;
 	}
-	if (data->flag != 6)
+	if (data->flag != 7)
 		print_incorrect_prefix_error_message();
 }

@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/07 15:57:50 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/14 16:39:57 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	perform_dda(t_data *data)
 		}
 		if (data->mini_map[data->raymap_x][data->raymap_y] == '1')
 			data->hit = 1;
+		if (data->mini_map[data->raymap_x][data->raymap_y] == 'D')
+			data->door = 1;
 	}
 }
 
