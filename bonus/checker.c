@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:49:56 by ahmed             #+#    #+#             */
-/*   Updated: 2025/03/14 16:07:28 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/15 02:01:05 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,31 @@ void	check_data(t_data *data)
 		check_cell_rgb((*data->rest), data);
 	check_rgb_fllor_range(data);
 	check_rgb_cell_range(data);
+}
+
+
+void check_door(t_data *data)
+{
+	int i;
+	int j;
+	int d;
+
+	i = 0;
+	d = 0;
+	while (data->mini_map[i])
+	{
+		j = 0;
+		while (data->mini_map[i][j])
+		{
+			if (data->mini_map[i][j] == 'D')
+				d++;
+			j++;
+		}
+		i++;
+	}
+	if (d < 1)
+	{
+		printf("Error\n One Door nedded at least !!\n");
+		exit(1);
+	}
 }

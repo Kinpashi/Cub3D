@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 01:38:03 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/09 16:08:28 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/15 01:57:55 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,6 @@ void	check_map(t_data *data)
 void	check_mini_map(t_data *data)
 {
 	check_player(data);
+	check_door(data);
 	check_map(data);
 }

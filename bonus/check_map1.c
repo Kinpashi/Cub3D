@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:29:25 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/14 15:02:59 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/15 01:46:49 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,12 @@ void	split_map(t_data *data)
 	total_lines = 0;
 	while (data->start_map[total_lines])
 		total_lines++;
-	data->new_map = malloc(sizeof(char *) * 7);
+	data->new_map = malloc(sizeof(char *) * (7 + 1));
 	if (!data->new_map)
 		print_malloc_error_message();
 	copy_map_section(data->new_map, data->start_map, 0, 7);
-	data->mini_map = malloc(sizeof(char *) * (total_lines - 6 + 1));
+	data->new_map[7] = NULL;
+	data->mini_map = malloc(sizeof(char *) * (total_lines - 7 + 1));
 	if (!data->mini_map)
 		print_malloc_error_message();
 	copy_map_section(data->mini_map, data->start_map, 7, total_lines - 7);

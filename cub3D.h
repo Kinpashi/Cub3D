@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/14 16:37:41 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/15 01:58:42 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,5 +274,6 @@ void		init_mouse(t_data *data);
 void		init_second(t_data *data);
 void free_door_texture(t_data *data);
 void texture_door_error_message(void);
+void check_door(t_data *data);
 
 #endif

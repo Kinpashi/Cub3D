@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:16:04 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/14 16:39:57 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/15 01:50:40 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	init_dir_and_plan(t_data *data)
 
 void	perform_dda(t_data *data)
 {
+	data->door = 0;
 	while (data->hit == 0)
 	{
 		if (data->sidedistx < data->sidedisty)
@@ -56,8 +57,11 @@ void	perform_dda(t_data *data)
 		}
 		if (data->mini_map[data->raymap_x][data->raymap_y] == '1')
 			data->hit = 1;
-		if (data->mini_map[data->raymap_x][data->raymap_y] == 'D')
+		else if (data->mini_map[data->raymap_x][data->raymap_y] == 'D')
+		{
+			data->hit = 1;
 			data->door = 1;
+		}
 	}
 }
 
