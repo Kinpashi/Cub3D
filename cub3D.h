@@ -6,7 +6,7 @@
 /*   By: aahlaqqa <aahlaqqa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 00:40:18 by aahlaqqa          #+#    #+#             */
-/*   Updated: 2025/03/15 01:58:42 by aahlaqqa         ###   ########.fr       */
+/*   Updated: 2025/03/15 17:40:26 by aahlaqqa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define SCREEN_WIDTH 1000
 # define SCREEN_HEIGHT 500
 
-# define MOVE_SPEED 0.01
+# define MOVE_SPEED 0.016
 
 # define ROT_SPEED 0.012
 
