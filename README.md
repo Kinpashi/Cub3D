@@ -2,10 +2,10 @@
 A custom 3D raycasting engine developed in C, inspired by the classic Wolfenstein 3D.
 
 ## Features
-* **Raycasting Engine:** Implemented from scratch to render a 3D perspective from a 2D map[cite: 1].
-* **Collision Detection:** Developed efficient logic to handle player movement and wall interactions[cite: 1].
-* **Rendering:** Custom graphics handling for textures, sprites, and floor/ceiling colors[cite: 1].
-* **Input Handling:** Smooth keyboard event processing for player movement and camera rotation[cite: 1].
+* **Raycasting Engine:** Implemented from scratch to render a 3D perspective from a 2D map.
+* **Collision Detection:** Developed efficient logic to handle player movement and wall interactions.
+* **Rendering:** Custom graphics handling for textures, sprites, and floor/ceiling colors.
+* **Input Handling:** Smooth keyboard event processing for player movement and camera rotation.
 
 ## Build
 ```bash
